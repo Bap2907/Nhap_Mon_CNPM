@@ -7,10 +7,10 @@ git add .
 git commit -m "Ghi chú"
 
 //Lấy code về từ link
-git clone https://github.com/Bap2907/Nhap_Mon_CNPM.git
+git clone https://github.com/Bap2907/Thuc_Tap_Co_So.git
 
 //Clone 1 branch cụ thể
-git clone -b <ten-branch> https://github.com/Bap2907/Nhap_Mon_CNPM.git
+git clone -b <ten-branch> https://github.com/Bap2907/Thuc_Tap_Co_So.git
 
 Tạo và chuyển sang branch mới
 ```
@@ -29,7 +29,7 @@ git checkout -b <ten branch moi>
 Cập từ từ local lên github
 
 ```
-  git remote add origin https://github.com/Bap2907/Nhap_Mon_CNPM.git (thêm url, tên origin)
+  git remote add origin https://github.com/Bap2907/Thuc_Tap_Co_So.git (thêm url, tên origin)
 
   git push origin <ten branch>  
 ```
