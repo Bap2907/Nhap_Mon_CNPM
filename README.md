@@ -1,4 +1,4 @@
-# Nhap_Mon_CNPM
+# Thuc_Tap_Co_So
 //Trên laptop
 git init
 
