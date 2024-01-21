@@ -10,7 +10,7 @@ git commit -m "Ghi chú"
 git clone https://github.com/Bap2907/Thuc_Tap_Co_So.git
 
 //Clone 1 branch cụ thể
-git clone -b <ten-branch> https://github.com/Bap2907/Thuc_Tap_Co_So.git
+git clone -b (ten-branch) https://github.com/Bap2907/Thuc_Tap_Co_So.git
 
 Tạo và chuyển sang branch mới
 ```
