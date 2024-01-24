@@ -33,7 +33,7 @@ public class KetNoiSQL {
             // crate statement
             Statement stmt = conn.createStatement();
             // get data from table 'student'
-            ResultSet rs = stmt.executeQuery("select * from sinhvien");
+            ResultSet rs = stmt.executeQuery("select * from SinhVien");
             // show data
             while (rs.next()) {
                 System.out.println(rs.getString(1) 

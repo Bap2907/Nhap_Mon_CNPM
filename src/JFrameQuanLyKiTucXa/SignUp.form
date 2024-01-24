@@ -274,7 +274,6 @@
                                           </Group>
                                           <EmptySpace min="0" pref="15" max="32767" attributes="0"/>
                                       </Group>
-                                      <Component id="jDateNgaySinhSV" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -324,11 +323,8 @@
                           <Component id="txtCCCDSV" min="-2" pref="23" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jLabel16" min="-2" pref="17" max="-2" attributes="0"/>
-                      <Component id="jDateNgaySinhSV" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                  <Component id="jLabel16" min="-2" pref="17" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel19" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
@@ -964,8 +960,6 @@
           <Events>
             <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="show_eyeMousePressed"/>
           </Events>
-        </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="jDateNgaySinhSV">
         </Component>
       </SubComponents>
     </Container>

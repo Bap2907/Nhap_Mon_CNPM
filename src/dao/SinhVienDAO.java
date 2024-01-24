@@ -1,7 +1,7 @@
 package dao;
 
 import Connector.KetNoiSQL;
-import JFrameQuanLyKyTucXa.DangKyPhong;
+//import JFrameQuanLyKiTucXa.DangKyPhong;
 import java.util.List;
 import java.sql.Connection;
 import java.sql.DriverManager;

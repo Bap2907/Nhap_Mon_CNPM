@@ -7,6 +7,23 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+//import dao.HopDongKTXDAO;
+import dao.QuanLySinhVienDAO;
+//import dao.ThongTinDichVuDAO;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.ThongTinSinhVien;
+
 
 public class Main extends javax.swing.JFrame {
     Connector.KetNoiSQL connect = new Connector.KetNoiSQL();
@@ -58,6 +75,9 @@ public class Main extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         Contents = new javax.swing.JPanel();
 
+        trangChu1 = new JFrameQuanLyKiTucXa.TrangChu();
+        quanLySinhVien1 = new JFrameQuanLyKiTucXa.QuanLySinhVien();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Trangchu.setBackground(new java.awt.Color(255, 255, 255));
@@ -90,6 +110,11 @@ public class Main extends javax.swing.JFrame {
         quanlysv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/quanlysinhvien.png"))); // NOI18N
         quanlysv.setText("Quản lý sinh viên");
         quanlysv.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        quanlysv.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                quanlysvMouseClicked(evt);
+            }
+        });
 
         quanlynv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         quanlynv.setForeground(new java.awt.Color(255, 255, 255));
@@ -241,9 +266,9 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(txtnameuser, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(trangchu, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addComponent(quanlysv)
                 .addGap(27, 27, 27)
                 .addComponent(quanlynv)
@@ -279,14 +304,14 @@ public class Main extends javax.swing.JFrame {
         NameKTXLayout.setHorizontalGroup(
             NameKTXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(NameKTXLayout.createSequentialGroup()
-                .addContainerGap(272, Short.MAX_VALUE)
+                .addContainerGap(300, Short.MAX_VALUE)
                 .addGroup(NameKTXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NameKTXLayout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(230, 230, 230))
+                        .addGap(179, 179, 179))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NameKTXLayout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(278, 278, 278))))
+                        .addGap(235, 235, 235))))
         );
         NameKTXLayout.setVerticalGroup(
             NameKTXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,17 +323,11 @@ public class Main extends javax.swing.JFrame {
         );
 
         Contents.setBackground(new java.awt.Color(255, 255, 255));
+        Contents.setLayout(new java.awt.CardLayout());
 
-        javax.swing.GroupLayout ContentsLayout = new javax.swing.GroupLayout(Contents);
-        Contents.setLayout(ContentsLayout);
-        ContentsLayout.setHorizontalGroup(
-            ContentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        ContentsLayout.setVerticalGroup(
-            ContentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 528, Short.MAX_VALUE)
-        );
+        trangChu1.setBackground(new java.awt.Color(255, 255, 255));
+        Contents.add(trangChu1, "card2");
+        Contents.add(quanLySinhVien1, "card3");
 
         javax.swing.GroupLayout TrangchuLayout = new javax.swing.GroupLayout(Trangchu);
         Trangchu.setLayout(TrangchuLayout);
@@ -319,19 +338,30 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(TrangchuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(NameKTX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+
                     .addGroup(TrangchuLayout.createSequentialGroup()
                         .addGap(1110, 1110, 1110)
                         .addComponent(Contents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 12, Short.MAX_VALUE))
+
+                    .addComponent(Contents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+
         );
         TrangchuLayout.setVerticalGroup(
             TrangchuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(TrangchuLayout.createSequentialGroup()
                 .addComponent(NameKTX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(Contents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51))
+
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Contents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(119, 119, 119))
+
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -342,7 +372,9 @@ public class Main extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Trangchu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(Trangchu, javax.swing.GroupLayout.PREFERRED_SIZE, 721, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -382,47 +414,15 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_quanlyphongMouseClicked
 
     private void trangchuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trangchuMouseClicked
-
+        trangChu1.setVisible(true);
+        quanLySinhVien1.setVisible(false);
     }//GEN-LAST:event_trangchuMouseClicked
 
     private void dangxuat1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dangxuat1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_dangxuat1MouseClicked
 
-    private void quanlynvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quanlynvMouseClicked
-        // TODO add your handling code here:
-//        JPanelQuanLyNhanVien.setVisible(true);
-//        setnameuser(email);
-    }//GEN-LAST:event_quanlynvMouseClicked
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
 //                new Main().setVisible(true);
@@ -444,11 +444,13 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private JFrameQuanLyKiTucXa.QuanLySinhVien quanLySinhVien1;
     private javax.swing.JLabel quanlynv;
     private javax.swing.JLabel quanlyphong;
     private javax.swing.JLabel quanlysv;
     private javax.swing.JLabel thongke;
     private javax.swing.JLabel thongtintaikhoan;
+    private JFrameQuanLyKiTucXa.TrangChu trangChu1;
     private javax.swing.JLabel trangchu;
     private javax.swing.JLabel txtnameuser;
     // End of variables declaration//GEN-END:variables
