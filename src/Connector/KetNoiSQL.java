@@ -1,5 +1,4 @@
 package Connector;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -9,13 +8,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class KetNoiSQL {
-    private Connection con = null;
     static String instance = "";
     static String serverName = "localhost";
     static String portNumber = "1433";
-    static String dbName = "quanliktxsinhvien";
+    static String dbName = "quanliktx";
     static String userID = "sa";
-    static String password = "dung01236999860";
+    static String password = "sa";
 
     public static Connection getConnection() {
         String url = "jdbc:sqlserver://" + serverName + ":" + portNumber + ";databaseName=" + dbName;
@@ -27,19 +25,7 @@ public class KetNoiSQL {
         }
         return con;
     }
-   
-    public ResultSet GetResultSet(String tableName) throws SQLException {
-        ResultSet rs = null;
-        Statement stmt = con.createStatement();
-        String sql = "select * from " + tableName;
-        rs = stmt.executeQuery(sql);
-        return rs;
-    }
-   
-    public void Close() throws Exception {
-        con.close();
-    }
-
+    
     public static void main(String args[]) {
         try {
             // connnect to database 'testdb'

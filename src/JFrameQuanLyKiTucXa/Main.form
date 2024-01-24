@@ -49,8 +49,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="NameKTX" min="-2" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Component id="trangChu2" min="-2" pref="1098" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="1110" max="-2" attributes="0"/>
                           <Component id="Contents" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -64,10 +63,7 @@
               <Group type="102" attributes="0">
                   <Component id="NameKTX" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="18" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="Contents" min="-2" max="-2" attributes="0"/>
-                      <Component id="trangChu2" min="-2" pref="528" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="Contents" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -85,7 +81,6 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="trangchu" alignment="0" max="32767" attributes="0"/>
-                  <Component id="quanlyphong" alignment="1" max="32767" attributes="0"/>
                   <Component id="quanlynv" alignment="0" max="32767" attributes="0"/>
                   <Component id="quanlysv" alignment="0" max="32767" attributes="0"/>
                   <Component id="hopdongktx" alignment="0" max="32767" attributes="0"/>
@@ -97,12 +92,20 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtnameuser" min="-2" pref="100" max="-2" attributes="0"/>
+                          </Group>
                           <Component id="jLabel3" min="-2" pref="47" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="99" max="32767" attributes="0"/>
                   </Group>
                   <Component id="dangxuat1" alignment="1" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="quanlyphong" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -111,7 +114,10 @@
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       <Component id="dangxuat1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtnameuser" alignment="3" min="-2" pref="18" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -134,7 +140,7 @@
                       <Component id="cailaimatkhau" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="dangxuat" min="-2" pref="30" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="50" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -218,6 +224,9 @@
                   <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="quanlynvMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="quanlyphong">
               <Properties>
@@ -386,6 +395,18 @@
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="dangxuat1MouseClicked"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JLabel" name="txtnameuser">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/img/user_name.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="username"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="NameKTX">
@@ -469,8 +490,6 @@
             </DimensionLayout>
           </Layout>
         </Container>
-        <Component class="JFrameQuanLyKiTucXa.TrangChu" name="trangChu2">
-        </Component>
       </SubComponents>
     </Container>
   </SubComponents>
