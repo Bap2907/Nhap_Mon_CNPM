@@ -153,6 +153,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         setLayout(new java.awt.CardLayout());
 
         QuanLyThongTinSV.setBackground(new java.awt.Color(255, 255, 255));
+        QuanLyThongTinSV.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -160,6 +161,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Quản lý thông tin sinh viên");
         jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(19, 90, 118)));
+        QuanLyThongTinSV.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1203, 58));
 
         loadSV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         loadSV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/loading.png"))); // NOI18N
@@ -168,6 +170,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
                 loadSVMouseClicked(evt);
             }
         });
+        QuanLyThongTinSV.add(loadSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(79, 109, 50, 50));
 
         addSV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         addSV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/add.png"))); // NOI18N
@@ -177,6 +180,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
                 addSVMouseClicked(evt);
             }
         });
+        QuanLyThongTinSV.add(addSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(141, 109, 50, 50));
 
         viewSV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         viewSV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/magnifyingglass.png"))); // NOI18N
@@ -189,6 +193,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
                 viewSVMouseEntered(evt);
             }
         });
+        QuanLyThongTinSV.add(viewSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 109, 50, 50));
 
         updateSV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         updateSV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/copywriting.png"))); // NOI18N
@@ -197,6 +202,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
                 updateSVMouseClicked(evt);
             }
         });
+        QuanLyThongTinSV.add(updateSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(271, 109, 50, 50));
 
         deleteSV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         deleteSV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/delete.png"))); // NOI18N
@@ -205,6 +211,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
                 deleteSVMouseClicked(evt);
             }
         });
+        QuanLyThongTinSV.add(deleteSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(333, 109, 56, 50));
 
         ScrollPaneSV.setBackground(new java.awt.Color(255, 255, 255));
         ScrollPaneSV.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -245,56 +252,16 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         });
         ScrollPaneSV.setViewportView(tableSV);
 
+        QuanLyThongTinSV.add(ScrollPaneSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 177, 1049, -1));
+
         txtSearch.setBorder(null);
         txtSearch.setForeground(new java.awt.Color(19, 90, 118));
-        txtSearch.setColorOverlay1(new java.awt.Color(0, 204, 153));
-        txtSearch.setColorOverlay2(new java.awt.Color(0, 102, 102));
         txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtSearchKeyReleased(evt);
             }
         });
-
-        javax.swing.GroupLayout QuanLyThongTinSVLayout = new javax.swing.GroupLayout(QuanLyThongTinSV);
-        QuanLyThongTinSV.setLayout(QuanLyThongTinSVLayout);
-        QuanLyThongTinSVLayout.setHorizontalGroup(
-            QuanLyThongTinSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(QuanLyThongTinSVLayout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(loadSV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(addSV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(viewSV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(updateSV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(deleteSV, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(87, 87, 87))
-            .addGroup(QuanLyThongTinSVLayout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(ScrollPaneSV, javax.swing.GroupLayout.PREFERRED_SIZE, 1049, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(66, Short.MAX_VALUE))
-        );
-        QuanLyThongTinSVLayout.setVerticalGroup(
-            QuanLyThongTinSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, QuanLyThongTinSVLayout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addGroup(QuanLyThongTinSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(addSV, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                    .addComponent(loadSV, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                    .addComponent(viewSV, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                    .addComponent(updateSV, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                    .addComponent(deleteSV, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                    .addComponent(txtSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(ScrollPaneSV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(88, 88, 88))
-        );
+        QuanLyThongTinSV.add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(817, 109, 299, 50));
 
         add(QuanLyThongTinSV, "card10");
 

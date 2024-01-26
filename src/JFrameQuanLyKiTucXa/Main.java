@@ -20,7 +20,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import model.ThongTinSinhVien;
 
@@ -28,6 +30,9 @@ import model.ThongTinSinhVien;
 public class Main extends javax.swing.JFrame {
     Connector.KetNoiSQL connect = new Connector.KetNoiSQL();
     private String email;
+    JPanel panel_QuanLyNhanVien;
+    JPanel QuanLySinhVien;
+    JPanel TrangChu;
     public Main(String email) {
         this.email = email;
         initComponents();
@@ -35,6 +40,7 @@ public class Main extends javax.swing.JFrame {
         //Cho giao diện nằm giữa màn hình
         setLocationRelativeTo(null);
     }
+    
     public void setnameuser(String email) {
         Connection conn = KetNoiSQL.getConnection();
         String sql = "select * from nhanvien where email='" + email + "'";
@@ -74,8 +80,8 @@ public class Main extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         Contents = new javax.swing.JPanel();
-        quanLySinhVien1 = new JFrameQuanLyKiTucXa.QuanLySinhVien();
-        trangChu1 = new JFrameQuanLyKiTucXa.TrangChu();
+        jPanelTrangChu = new JFrameQuanLyKiTucXa.TrangChu();
+        jPanelQuanLySinhVien = new JFrameQuanLyKiTucXa.QuanLySinhVien();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -235,7 +241,7 @@ public class Main extends javax.swing.JFrame {
             .addComponent(hopdongktx, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(cackhoanphi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(thongke, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(thongtintaikhoan, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+            .addComponent(thongtintaikhoan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(dangxuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(MenuLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
@@ -305,29 +311,29 @@ public class Main extends javax.swing.JFrame {
         NameKTXLayout.setHorizontalGroup(
             NameKTXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(NameKTXLayout.createSequentialGroup()
-                .addContainerGap(300, Short.MAX_VALUE)
                 .addGroup(NameKTXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NameKTXLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(179, 179, 179))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NameKTXLayout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(235, 235, 235))))
+                    .addGroup(NameKTXLayout.createSequentialGroup()
+                        .addGap(358, 358, 358)
+                        .addComponent(jLabel1))
+                    .addGroup(NameKTXLayout.createSequentialGroup()
+                        .addGap(423, 423, 423)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         NameKTXLayout.setVerticalGroup(
             NameKTXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(NameKTXLayout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(jLabel4))
         );
 
         Contents.setBackground(new java.awt.Color(255, 255, 255));
+        Contents.setPreferredSize(new java.awt.Dimension(1183, 642));
         Contents.setLayout(new java.awt.CardLayout());
-        Contents.add(quanLySinhVien1, "card3");
-
-        trangChu1.setBackground(new java.awt.Color(255, 255, 255));
+        Contents.add(jPanelTrangChu, "card2");
+        Contents.add(jPanelQuanLySinhVien, "card3");
 
         javax.swing.GroupLayout TrangchuLayout = new javax.swing.GroupLayout(Trangchu);
         Trangchu.setLayout(TrangchuLayout);
@@ -336,25 +342,22 @@ public class Main extends javax.swing.JFrame {
             .addGroup(TrangchuLayout.createSequentialGroup()
                 .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(TrangchuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(NameKTX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(TrangchuLayout.createSequentialGroup()
-                        .addGap(549, 549, 549)
-                        .addComponent(trangChu1, javax.swing.GroupLayout.PREFERRED_SIZE, 1203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Contents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(TrangchuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Contents, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(NameKTX, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         TrangchuLayout.setVerticalGroup(
             TrangchuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(TrangchuLayout.createSequentialGroup()
-                .addComponent(NameKTX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(TrangchuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Contents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(trangChu1, javax.swing.GroupLayout.PREFERRED_SIZE, 692, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(TrangchuLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(NameKTX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Contents, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -362,15 +365,14 @@ public class Main extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Trangchu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(51, 51, 51))
+                .addComponent(Trangchu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(Trangchu, javax.swing.GroupLayout.PREFERRED_SIZE, 721, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(Trangchu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
@@ -410,8 +412,8 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_quanlyphongMouseClicked
 
     private void trangchuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trangchuMouseClicked
-        trangChu1.setVisible(true);
-        quanLySinhVien1.setVisible(false);
+        jPanelTrangChu.setVisible(true);
+        jPanelQuanLySinhVien.setVisible(false);
     }//GEN-LAST:event_trangchuMouseClicked
 
     private void dangxuat1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dangxuat1MouseClicked
@@ -419,11 +421,25 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_dangxuat1MouseClicked
 
     private void quanlysinhvienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quanlysinhvienMouseClicked
-        // TODO add your handling code here:
+        jPanelTrangChu.setVisible(false);
+        jPanelQuanLySinhVien.setVisible(true);
+//        jPanelQuanLyDK.setVisible(false);
+//        jPanelThongKe.setVisible(false);
+//        jPanelQuanLyPhong.setVisible(false);
+//        jPanelThongTinTaiKhoan.setVisible(false);
+//        jPanelKhoanPhi.setVisible(false);
+//        jPanelHopDongKTX.setVisible(false);
+//        //jPanelPhanQuyen.setVisible(false);
+//        jPanelCaiDatTaiKhoan.setVisible(false);
+//        jPanelQuanLyNhanVien.setVisible(false);
+//        thongbao1.setVisible(false);
+//        jPanelPhanQuyen.setVisible(false);
+//        jPanelChuyenPhong.setVisible(false);
+        setnameuser(email);
     }//GEN-LAST:event_quanlysinhvienMouseClicked
 
     private void quanlynhanvienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quanlynhanvienMouseClicked
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_quanlynhanvienMouseClicked
 
     public static void main(String args[]) {
@@ -448,13 +464,13 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private JFrameQuanLyKiTucXa.QuanLySinhVien quanLySinhVien1;
+    private JFrameQuanLyKiTucXa.QuanLySinhVien jPanelQuanLySinhVien;
+    private JFrameQuanLyKiTucXa.TrangChu jPanelTrangChu;
     private javax.swing.JLabel quanlynhanvien;
     private javax.swing.JLabel quanlyphong;
     private javax.swing.JLabel quanlysinhvien;
     private javax.swing.JLabel thongke;
     private javax.swing.JLabel thongtintaikhoan;
-    private JFrameQuanLyKiTucXa.TrangChu trangChu1;
     private javax.swing.JLabel trangchu;
     private javax.swing.JLabel txtnameuser;
     // End of variables declaration//GEN-END:variables

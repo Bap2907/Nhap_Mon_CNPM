@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -23,18 +23,17 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="Trangchu" max="32767" attributes="0"/>
-              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="Trangchu" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <Component id="Trangchu" min="-2" pref="721" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Component id="Trangchu" alignment="1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="29" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -53,30 +52,27 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="Menu" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="NameKTX" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="549" max="-2" attributes="0"/>
-                          <Component id="trangChu1" min="-2" pref="1203" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="Contents" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="Contents" max="32767" attributes="0"/>
+                      <Component id="NameKTX" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="Menu" max="32767" attributes="0"/>
               <Group type="102" attributes="0">
-                  <Component id="NameKTX" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="Contents" min="-2" max="-2" attributes="0"/>
-                      <Component id="trangChu1" min="-2" pref="692" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="NameKTX" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="Contents" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="Menu" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -96,7 +92,7 @@
                   <Component id="hopdongktx" alignment="0" max="32767" attributes="0"/>
                   <Component id="cackhoanphi" alignment="0" max="32767" attributes="0"/>
                   <Component id="thongke" alignment="1" max="32767" attributes="0"/>
-                  <Component id="thongtintaikhoan" alignment="0" pref="288" max="32767" attributes="0"/>
+                  <Component id="thongtintaikhoan" alignment="0" max="32767" attributes="0"/>
                   <Component id="dangxuat" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
@@ -438,26 +434,26 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace pref="300" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="358" max="-2" attributes="0"/>
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="179" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="423" max="-2" attributes="0"/>
                               <Component id="jLabel4" min="-2" pref="475" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="235" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace pref="17" max="32767" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="17" max="32767" attributes="0"/>
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -493,11 +489,21 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[1183, 642]"/>
+            </Property>
           </Properties>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
           <SubComponents>
-            <Component class="JFrameQuanLyKiTucXa.QuanLySinhVien" name="quanLySinhVien1">
+            <Component class="JFrameQuanLyKiTucXa.TrangChu" name="jPanelTrangChu">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+                  <CardConstraints cardName="card2"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="JFrameQuanLyKiTucXa.QuanLySinhVien" name="jPanelQuanLySinhVien">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
                   <CardConstraints cardName="card3"/>
@@ -506,13 +512,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="JFrameQuanLyKiTucXa.TrangChu" name="trangChu1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-          </Properties>
-        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

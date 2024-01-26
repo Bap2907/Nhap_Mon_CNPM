@@ -72,7 +72,7 @@ public class Login extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Có thắc mắc liên hệ : 0989898989 or Email: pctsv@ptithcm.edu.vn");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Source.Img.Login_Signup_Forgetpass/7413309.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/7413309.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -86,13 +86,13 @@ public class Login extends javax.swing.JFrame {
                             .addContainerGap()
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(137, 137, 137)
-                            .addComponent(jLabel1))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(22, 22, 22)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(137, 137, 137)
+                            .addComponent(jLabel1))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -287,22 +287,11 @@ public class Login extends javax.swing.JFrame {
                             }
                         } else if (phanQuyen.equals("Sinh Viên")) {
                             dispose();
-                            Main_USER main = new Main_USER(email);
+                            MainSV main = new MainSV();
                             main.setVisible(true);
 //                            email = new TaiKhoanDAO().LayEmail(jnameuser.getText());
                             main.setEmail(email);
 //                            main.setnameuser(un);
-                        } else if (phanQuyen.equals("Nhân viên")) {
-    //                        email = new TaiKhoanDAO().LayEmail(un);
-                            ThongTinNhanVien nv = new QuanLyNhanVienDAO().getAllThongTinNVTheoEmail(email);
-                            if (nv.getTrangThai().equals("Đã nghỉ việc")) {
-                                JOptionPane.showMessageDialog(null, "Bạn đã nghĩ việc ! Không thể đăng nhập đc!");
-    //                        } else {
-    //                            dispose();
-                                Main_NV main = new Main_NV();
-                                main.setVisible(true);
-    //                            main.setnameuser(email);
-                            }
                         }
                 }else{ 
                     JOptionPane.showMessageDialog(null,"UserName hoặc Password Không Đúng !!!");
