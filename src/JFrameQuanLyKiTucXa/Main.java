@@ -55,6 +55,12 @@ public class Main extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+    private void hideAllPanels() {
+        jPanelTrangChu.setVisible(false);
+        jPanelQuanLySinhVien.setVisible(false);
+        jPanelQuanLyNhanVien.setVisible(false);
+        
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -82,6 +88,7 @@ public class Main extends javax.swing.JFrame {
         Contents = new javax.swing.JPanel();
         jPanelTrangChu = new JFrameQuanLyKiTucXa.TrangChu();
         jPanelQuanLySinhVien = new JFrameQuanLyKiTucXa.QuanLySinhVien();
+        jPanelQuanLyNhanVien = new JFrameQuanLyKiTucXa.QuanLyNhanVien();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -334,6 +341,7 @@ public class Main extends javax.swing.JFrame {
         Contents.setLayout(new java.awt.CardLayout());
         Contents.add(jPanelTrangChu, "card2");
         Contents.add(jPanelQuanLySinhVien, "card3");
+        Contents.add(jPanelQuanLyNhanVien, "card4");
 
         javax.swing.GroupLayout TrangchuLayout = new javax.swing.GroupLayout(Trangchu);
         Trangchu.setLayout(TrangchuLayout);
@@ -355,7 +363,7 @@ public class Main extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(NameKTX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Contents, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(Contents, javax.swing.GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE))
                     .addComponent(Menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -412,8 +420,8 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_quanlyphongMouseClicked
 
     private void trangchuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trangchuMouseClicked
+        hideAllPanels();
         jPanelTrangChu.setVisible(true);
-        jPanelQuanLySinhVien.setVisible(false);
     }//GEN-LAST:event_trangchuMouseClicked
 
     private void dangxuat1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dangxuat1MouseClicked
@@ -421,25 +429,15 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_dangxuat1MouseClicked
 
     private void quanlysinhvienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quanlysinhvienMouseClicked
-        jPanelTrangChu.setVisible(false);
+        hideAllPanels();
         jPanelQuanLySinhVien.setVisible(true);
-//        jPanelQuanLyDK.setVisible(false);
-//        jPanelThongKe.setVisible(false);
-//        jPanelQuanLyPhong.setVisible(false);
-//        jPanelThongTinTaiKhoan.setVisible(false);
-//        jPanelKhoanPhi.setVisible(false);
-//        jPanelHopDongKTX.setVisible(false);
-//        //jPanelPhanQuyen.setVisible(false);
-//        jPanelCaiDatTaiKhoan.setVisible(false);
-//        jPanelQuanLyNhanVien.setVisible(false);
-//        thongbao1.setVisible(false);
-//        jPanelPhanQuyen.setVisible(false);
-//        jPanelChuyenPhong.setVisible(false);
         setnameuser(email);
     }//GEN-LAST:event_quanlysinhvienMouseClicked
 
     private void quanlynhanvienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quanlynhanvienMouseClicked
-
+        hideAllPanels();
+        jPanelQuanLyNhanVien.setVisible(true);
+        setnameuser(email);
     }//GEN-LAST:event_quanlynhanvienMouseClicked
 
     public static void main(String args[]) {
@@ -464,6 +462,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private JFrameQuanLyKiTucXa.QuanLyNhanVien jPanelQuanLyNhanVien;
     private JFrameQuanLyKiTucXa.QuanLySinhVien jPanelQuanLySinhVien;
     private JFrameQuanLyKiTucXa.TrangChu jPanelTrangChu;
     private javax.swing.JLabel quanlynhanvien;
