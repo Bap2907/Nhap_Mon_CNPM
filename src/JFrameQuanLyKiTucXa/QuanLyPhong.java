@@ -24,7 +24,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.ThongTinPhong;
 import model.ThongTinSinhVien;
-import textfield.SearchOptinEvent;
+import textfield.SearchOptionEvent;
 import textfield.SearchOption;
 
 /**
