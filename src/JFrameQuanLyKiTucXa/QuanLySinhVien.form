@@ -54,9 +54,7 @@
                   <Component id="updateSV" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="deleteSV" min="-2" pref="56" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="txtSearch" min="-2" pref="299" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                  <EmptySpace min="87" pref="814" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
@@ -69,14 +67,13 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <Component id="jLabel1" min="-2" pref="58" max="-2" attributes="0"/>
-                  <EmptySpace pref="26" max="32767" attributes="0"/>
+                  <EmptySpace pref="51" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="addSV" pref="50" max="32767" attributes="0"/>
                       <Component id="loadSV" pref="50" max="32767" attributes="0"/>
                       <Component id="viewSV" pref="50" max="32767" attributes="0"/>
                       <Component id="updateSV" pref="50" max="32767" attributes="0"/>
                       <Component id="deleteSV" pref="50" max="32767" attributes="0"/>
-                      <Component id="txtSearch" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="ScrollPaneSV" min="-2" max="-2" attributes="0"/>
@@ -217,25 +214,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="textfield.TextFieldSearchOption" name="txtSearch">
-          <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="null"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="76" green="5a" red="13" type="rgb"/>
-            </Property>
-            <Property name="colorOverlay1" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="cc" red="0" type="rgb"/>
-            </Property>
-            <Property name="colorOverlay2" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="66" green="66" red="0" type="rgb"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSearchKeyReleased"/>
-          </Events>
-        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="AddSV">
@@ -264,14 +242,8 @@
                                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
                                           <Component id="jLabel44" min="-2" pref="67" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="txtNgaySinh" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
-                                                  <Component id="txtMaLopSV" min="-2" pref="282" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
+                                          <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
+                                          <Component id="txtMaLopSV" min="-2" pref="282" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
@@ -453,11 +425,8 @@
                                       </Group>
                                   </Group>
                                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtNgaySinh" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel41" alignment="0" min="-2" pref="17" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                  <Component id="jLabel41" min="-2" pref="17" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
@@ -931,14 +900,6 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel2MouseClicked"/>
           </Events>
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="txtNgaySinh">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="76" green="5a" red="13" type="rgb"/>
-            </Property>
-            <Property name="dateFormatString" type="java.lang.String" value="dd-MM-yyyy"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel49">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -1126,11 +1087,7 @@
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel33" min="-2" pref="135" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="txtViewNgaySinhSV" min="-2" pref="263" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="jLabel33" alignment="0" min="-2" pref="135" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel36" min="-2" pref="60" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
@@ -1204,11 +1161,8 @@
                       <Component id="jLabel31" min="-2" pref="17" max="-2" attributes="0"/>
                       <Component id="txtViewCCCDSV" min="-2" pref="23" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jLabel33" min="-2" pref="17" max="-2" attributes="0"/>
-                      <Component id="txtViewNgaySinhSV" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  <Component id="jLabel33" min="-2" pref="17" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel36" alignment="1" min="-2" pref="17" max="-2" attributes="0"/>
@@ -1234,7 +1188,7 @@
                       <Component id="jLabel35" min="-2" pref="17" max="-2" attributes="0"/>
                       <Component id="txtViewEmailSV" min="-2" pref="23" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="142" max="32767" attributes="0"/>
+                  <EmptySpace pref="146" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -1359,11 +1313,6 @@
               <Color blue="76" green="5a" red="13" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Ng&#xe0;y sinh :"/>
-          </Properties>
-        </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="txtViewNgaySinhSV">
-          <Properties>
-            <Property name="dateFormatString" type="java.lang.String" value="dd-MM-yyyy"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel36">
@@ -1530,10 +1479,9 @@
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtUpTenSV" max="32767" attributes="0"/>
+                                  <Component id="txtUpTenSV" pref="263" max="32767" attributes="0"/>
                                   <Component id="txtUpMaSoSV" max="32767" attributes="0"/>
                                   <Component id="txtUpCCCD" max="32767" attributes="0"/>
-                                  <Component id="txtUpNgaySinh" pref="263" max="32767" attributes="0"/>
                                   <Component id="txtUpMaLopSV" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -1593,11 +1541,8 @@
                       <Component id="txtUpCCCD" min="-2" pref="23" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel38" min="-2" pref="17" max="-2" attributes="0"/>
-                      <Component id="txtUpNgaySinh" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                  <Component id="jLabel38" min="-2" pref="17" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="jLabel39" min="-2" pref="17" max="-2" attributes="0"/>
                       <Component id="txtUpMaLopSV" min="-2" pref="26" max="-2" attributes="0"/>
@@ -1628,7 +1573,7 @@
                   </Group>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Component id="btnUpdateSV" min="-2" pref="35" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="39" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="43" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -1976,11 +1921,6 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUpCCCDActionPerformed1"/>
           </Events>
-        </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="txtUpNgaySinh">
-          <Properties>
-            <Property name="dateFormatString" type="java.lang.String" value="dd-MM-yyyy"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtUpMaLopSV">
           <Properties>

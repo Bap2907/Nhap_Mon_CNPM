@@ -65,7 +65,6 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         deleteSV = new javax.swing.JLabel();
         ScrollPaneSV = new javax.swing.JScrollPane();
         tableSV = new javax.swing.JTable();
-        txtSearch = new textfield.TextFieldSearchOption();
         AddSV = new javax.swing.JPanel();
         jLabel40 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -94,7 +93,6 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         btnAddSV = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtNgaySinh = new com.toedter.calendar.JDateChooser();
         jLabel49 = new javax.swing.JLabel();
         txtSoDienThoaiSV = new javax.swing.JTextField();
         jLabel50 = new javax.swing.JLabel();
@@ -113,7 +111,6 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         jLabel31 = new javax.swing.JLabel();
         txtViewCCCDSV = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
-        txtViewNgaySinhSV = new com.toedter.calendar.JDateChooser();
         jLabel36 = new javax.swing.JLabel();
         txtViewMaLopSV = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
@@ -144,7 +141,6 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         txtUpTenSV = new javax.swing.JTextField();
         txtUpMaSoSV = new javax.swing.JTextField();
         txtUpCCCD = new javax.swing.JTextField();
-        txtUpNgaySinh = new com.toedter.calendar.JDateChooser();
         txtUpMaLopSV = new javax.swing.JTextField();
         txtUpSoDienThoaiSV = new javax.swing.JTextField();
         txtUpEmail = new javax.swing.JTextField();
@@ -245,16 +241,6 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         });
         ScrollPaneSV.setViewportView(tableSV);
 
-        txtSearch.setBorder(null);
-        txtSearch.setForeground(new java.awt.Color(19, 90, 118));
-        txtSearch.setColorOverlay1(new java.awt.Color(0, 204, 153));
-        txtSearch.setColorOverlay2(new java.awt.Color(0, 102, 102));
-        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtSearchKeyReleased(evt);
-            }
-        });
-
         javax.swing.GroupLayout QuanLyThongTinSVLayout = new javax.swing.GroupLayout(QuanLyThongTinSV);
         QuanLyThongTinSV.setLayout(QuanLyThongTinSVLayout);
         QuanLyThongTinSVLayout.setHorizontalGroup(
@@ -271,9 +257,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
                 .addComponent(updateSV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(deleteSV, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(87, 87, 87))
+                .addGap(87, 814, Short.MAX_VALUE))
             .addGroup(QuanLyThongTinSVLayout.createSequentialGroup()
                 .addGap(68, 68, 68)
                 .addComponent(ScrollPaneSV, javax.swing.GroupLayout.PREFERRED_SIZE, 1049, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -283,14 +267,13 @@ public class QuanLySinhVien extends javax.swing.JPanel {
             QuanLyThongTinSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, QuanLyThongTinSVLayout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(QuanLyThongTinSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(addSV, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
                     .addComponent(loadSV, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
                     .addComponent(viewSV, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
                     .addComponent(updateSV, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                    .addComponent(deleteSV, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                    .addComponent(txtSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(deleteSV, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(ScrollPaneSV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(88, 88, 88))
@@ -496,9 +479,6 @@ public class QuanLySinhVien extends javax.swing.JPanel {
             }
         });
 
-        txtNgaySinh.setBackground(new java.awt.Color(19, 90, 118));
-        txtNgaySinh.setDateFormatString("dd-MM-yyyy");
-
         jLabel49.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel49.setForeground(new java.awt.Color(255, 255, 255));
         jLabel49.setText("Số điện thoại :");
@@ -561,12 +541,8 @@ public class QuanLySinhVien extends javax.swing.JPanel {
                                 .addGroup(AddSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(AddSVLayout.createSequentialGroup()
                                         .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(114, 114, 114)
-                                        .addGroup(AddSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(AddSVLayout.createSequentialGroup()
-                                                .addGap(2, 2, 2)
-                                                .addComponent(txtMaLopSV, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGap(116, 116, 116)
+                                        .addComponent(txtMaLopSV, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, AddSVLayout.createSequentialGroup()
                                         .addGroup(AddSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddSVLayout.createSequentialGroup()
@@ -701,10 +677,8 @@ public class QuanLySinhVien extends javax.swing.JPanel {
                                         .addGap(6, 6, 6)
                                         .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(38, 38, 38)
-                                .addGroup(AddSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(26, 26, 26)
+                                .addComponent(jLabel41, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)
                                 .addGroup(AddSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(AddSVLayout.createSequentialGroup()
                                         .addGap(1, 1, 1)
@@ -781,8 +755,6 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         jLabel33.setForeground(new java.awt.Color(19, 90, 118));
         jLabel33.setText("Ngày sinh :");
 
-        txtViewNgaySinhSV.setDateFormatString("dd-MM-yyyy");
-
         jLabel36.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(19, 90, 118));
         jLabel36.setText("Mã lớp :");
@@ -843,10 +815,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
                                 .addGap(80, 80, 80))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ViewSVLayout.createSequentialGroup()
                                 .addGroup(ViewSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(ViewSVLayout.createSequentialGroup()
-                                        .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtViewNgaySinhSV, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(ViewSVLayout.createSequentialGroup()
                                         .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -901,10 +870,8 @@ public class QuanLySinhVien extends javax.swing.JPanel {
                 .addGroup(ViewSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtViewCCCDSV, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(ViewSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtViewNgaySinhSV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addGroup(ViewSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel36, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -925,7 +892,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
                 .addGroup(ViewSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtViewEmailSV, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(142, Short.MAX_VALUE))
+                .addContainerGap(146, Short.MAX_VALUE))
         );
 
         add(ViewSV, "card4");
@@ -1060,8 +1027,6 @@ public class QuanLySinhVien extends javax.swing.JPanel {
             }
         });
 
-        txtUpNgaySinh.setDateFormatString("dd-MM-yyyy");
-
         txtUpMaLopSV.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtUpMaLopSV.setForeground(new java.awt.Color(19, 90, 118));
         txtUpMaLopSV.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(19, 90, 118)));
@@ -1117,10 +1082,9 @@ public class QuanLySinhVien extends javax.swing.JPanel {
                                 .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(UpdateSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtUpTenSV)
+                                .addComponent(txtUpTenSV, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
                                 .addComponent(txtUpMaSoSV)
                                 .addComponent(txtUpCCCD)
-                                .addComponent(txtUpNgaySinh, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
                                 .addComponent(txtUpMaLopSV)))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, UpdateSVLayout.createSequentialGroup()
                             .addGroup(UpdateSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1164,10 +1128,8 @@ public class QuanLySinhVien extends javax.swing.JPanel {
                     .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtUpCCCD, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
-                .addGroup(UpdateSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtUpNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addGroup(UpdateSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel39, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtUpMaLopSV, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1192,7 +1154,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
                     .addComponent(txtUpEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addComponent(btnUpdateSV, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 39, Short.MAX_VALUE))
+                .addGap(0, 43, Short.MAX_VALUE))
         );
 
         add(UpdateSV, "card5");
@@ -1673,10 +1635,8 @@ public class QuanLySinhVien extends javax.swing.JPanel {
     private javax.swing.JTextField txtMaLopSV;
     private javax.swing.JTextField txtMaSoSV;
     private javax.swing.JPasswordField txtMatKhauSV;
-    private com.toedter.calendar.JDateChooser txtNgaySinh;
     private javax.swing.JPasswordField txtNhapLaiMatKhauSV;
     private javax.swing.JComboBox<String> txtQueQuanSV;
-    private textfield.TextFieldSearchOption txtSearch;
     private javax.swing.JTextField txtSoDienThoaiSV;
     private javax.swing.JTextField txtTenDangNhapSV;
     private javax.swing.JTextField txtTenSV;
@@ -1684,7 +1644,6 @@ public class QuanLySinhVien extends javax.swing.JPanel {
     private javax.swing.JTextField txtUpEmail;
     private javax.swing.JTextField txtUpMaLopSV;
     private javax.swing.JTextField txtUpMaSoSV;
-    private com.toedter.calendar.JDateChooser txtUpNgaySinh;
     private javax.swing.JComboBox<String> txtUpQueQuanSV;
     private javax.swing.JTextField txtUpSoDienThoaiSV;
     private javax.swing.JTextField txtUpTenSV;
@@ -1694,7 +1653,6 @@ public class QuanLySinhVien extends javax.swing.JPanel {
     private javax.swing.JLabel txtViewHoTenSV;
     private javax.swing.JLabel txtViewMaLopSV;
     private javax.swing.JLabel txtViewMaSoSV;
-    private com.toedter.calendar.JDateChooser txtViewNgaySinhSV;
     private javax.swing.JLabel txtViewQueQuan;
     private javax.swing.JLabel txtViewSoDienThoaiSV;
     private javax.swing.JLabel updateSV;
