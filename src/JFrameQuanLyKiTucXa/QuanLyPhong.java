@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package JFrameQuanLyKiTucXa;
 
 import Connector.KetNoiSQL;
@@ -27,10 +24,6 @@ import model.ThongTinSinhVien;
 import textfield.SearchOptionEvent;
 import textfield.SearchOption;
 
-/**
- *
- * @author PhanTien
- */
 public class QuanLyPhong extends javax.swing.JPanel {
 
     private List<ThongTinPhong> listphong;
@@ -82,6 +75,7 @@ public class QuanLyPhong extends javax.swing.JPanel {
         viewPhong = new javax.swing.JLabel();
         editPhong = new javax.swing.JLabel();
         deletePhong = new javax.swing.JLabel();
+        txtSearch = new textfield.TextFieldSearchOption();
         ViewPhong = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel51 = new javax.swing.JLabel();
@@ -207,39 +201,47 @@ public class QuanLyPhong extends javax.swing.JPanel {
             }
         });
 
+        txtSearch.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtSearch.setForeground(new java.awt.Color(19, 90, 118));
+
         javax.swing.GroupLayout QuanLyThongTinPhongLayout = new javax.swing.GroupLayout(QuanLyThongTinPhong);
         QuanLyThongTinPhong.setLayout(QuanLyThongTinPhongLayout);
         QuanLyThongTinPhongLayout.setHorizontalGroup(
             QuanLyThongTinPhongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, QuanLyThongTinPhongLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ScrollPaneSV, javax.swing.GroupLayout.PREFERRED_SIZE, 975, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(QuanLyThongTinPhongLayout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addComponent(addPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(viewPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(editPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(deletePhong, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 789, Short.MAX_VALUE))
+                .addGroup(QuanLyThongTinPhongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(QuanLyThongTinPhongLayout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(addPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(viewPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(editPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(deletePhong, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(QuanLyThongTinPhongLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ScrollPaneSV, javax.swing.GroupLayout.PREFERRED_SIZE, 975, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         QuanLyThongTinPhongLayout.setVerticalGroup(
             QuanLyThongTinPhongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(QuanLyThongTinPhongLayout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
-                .addGroup(QuanLyThongTinPhongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(deletePhong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(viewPhong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(addPhong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(editPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(QuanLyThongTinPhongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(QuanLyThongTinPhongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(deletePhong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(viewPhong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(addPhong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(editPhong, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ScrollPaneSV, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 66, Short.MAX_VALUE))
+                .addGap(0, 63, Short.MAX_VALUE))
         );
 
         add(QuanLyThongTinPhong, "card2");
@@ -1035,6 +1037,7 @@ public class QuanLyPhong extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> txtAddLoaiPhong;
     private javax.swing.JTextField txtAddMaPhong;
     private javax.swing.JTextField txtAddTenPhong;
+    private textfield.TextFieldSearchOption txtSearch;
     private javax.swing.JComboBox<String> txtUpLoaiPhong;
     private javax.swing.JTextField txtUpSoLuongSinhVienPhong;
     private javax.swing.JTextField txtUpTenPhong;
@@ -1212,7 +1215,7 @@ public class QuanLyPhong extends javax.swing.JPanel {
     }
 
     void AddSearch() {
-        txtSearch.addEventOptionSelected(new SearchOptinEvent() {
+        txtSearch.addEventOptionSelected(new SearchOptionEvent() {
             @Override
             public void optionSelected(SearchOption option, int index) {
                 txtSearch.setHint("Tìm kiếm " + option.getName() + "....");

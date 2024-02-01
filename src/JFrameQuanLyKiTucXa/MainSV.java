@@ -9,10 +9,28 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 public class MainSV extends javax.swing.JFrame {
-
-    public MainSV() {
+    Connector.KetNoiSQL connect = new Connector.KetNoiSQL();
+    private String email;
+    public MainSV(String email) {
+        this.email = email;
         initComponents();
+        //setSize(1450,720); 
+        //Cho giao diện nằm giữa màn hình
         setLocationRelativeTo(null);
+    }
+    public void setnameuser(String email) {
+        Connection conn = KetNoiSQL.getConnection();
+        String sql = "select * from SinhVien where email='" + email + "'";
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                txtnameuser.setText(rs.getString("tenNV"));
+            }
+            conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -30,12 +48,12 @@ public class MainSV extends javax.swing.JFrame {
         cailaimatkhau = new javax.swing.JLabel();
         dangxuat = new javax.swing.JLabel();
         dangxuat1 = new javax.swing.JLabel();
+        txtnameuser = new javax.swing.JLabel();
         NameKTX = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         Contents = new javax.swing.JPanel();
         trangChu1 = new JFrameQuanLyKiTucXa.TrangChu();
-        dangKiPhong2 = new JFrameQuanLyKiTucXa.DangKiPhong();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -129,6 +147,8 @@ public class MainSV extends javax.swing.JFrame {
             }
         });
 
+        txtnameuser.setText("jLabel5");
+
         javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
         Menu.setLayout(MenuLayout);
         MenuLayout.setHorizontalGroup(
@@ -139,9 +159,12 @@ public class MainSV extends javax.swing.JFrame {
             .addGroup(MenuLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
+                    .addGroup(MenuLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(32, 32, 32)
+                        .addComponent(txtnameuser, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
             .addComponent(dangxuat1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(MenuLayout.createSequentialGroup()
                 .addContainerGap()
@@ -157,7 +180,9 @@ public class MainSV extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addComponent(dangxuat1)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtnameuser))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -213,7 +238,6 @@ public class MainSV extends javax.swing.JFrame {
 
         trangChu1.setBackground(new java.awt.Color(255, 255, 255));
         Contents.add(trangChu1, "card2");
-        Contents.add(dangKiPhong2, "card3");
 
         javax.swing.GroupLayout TrangchuLayout = new javax.swing.GroupLayout(Trangchu);
         Trangchu.setLayout(TrangchuLayout);
@@ -306,7 +330,7 @@ public class MainSV extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainSV().setVisible(true);
+//                new MainSV().setVisible(true);
             }
         });
     }
@@ -317,7 +341,6 @@ public class MainSV extends javax.swing.JFrame {
     private javax.swing.JPanel NameKTX;
     private javax.swing.JPanel Trangchu;
     private javax.swing.JLabel cailaimatkhau;
-    private JFrameQuanLyKiTucXa.DangKiPhong dangKiPhong2;
     private javax.swing.JLabel dangxuat;
     private javax.swing.JLabel dangxuat1;
     private javax.swing.JLabel jLabel1;
@@ -329,5 +352,6 @@ public class MainSV extends javax.swing.JFrame {
     private javax.swing.JLabel thongtintaikhoan;
     private JFrameQuanLyKiTucXa.TrangChu trangChu1;
     private javax.swing.JLabel trangchu;
+    private javax.swing.JLabel txtnameuser;
     // End of variables declaration//GEN-END:variables
 }

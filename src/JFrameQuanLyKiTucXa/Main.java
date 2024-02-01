@@ -30,9 +30,6 @@ import model.ThongTinSinhVien;
 public class Main extends javax.swing.JFrame {
     Connector.KetNoiSQL connect = new Connector.KetNoiSQL();
     private String email;
-    JPanel panel_QuanLyNhanVien;
-    JPanel QuanLySinhVien;
-    JPanel TrangChu;
     public Main(String email) {
         this.email = email;
         initComponents();
@@ -43,7 +40,7 @@ public class Main extends javax.swing.JFrame {
     
     public void setnameuser(String email) {
         Connection conn = KetNoiSQL.getConnection();
-        String sql = "select * from nhanvien where email='" + email + "'";
+        String sql = "select * from NhanVien where email='" + email + "'";
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             ResultSet rs = preparedStatement.executeQuery();
@@ -57,8 +54,8 @@ public class Main extends javax.swing.JFrame {
     }
     private void hideAllPanels() {
         jPanelTrangChu.setVisible(false);
-        jPanelQuanLySinhVien.setVisible(false);
         jPanelQuanLyNhanVien.setVisible(false);
+        jPanelQuanLySinhVien.setVisible(false);
         
     }
 
@@ -87,8 +84,8 @@ public class Main extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         Contents = new javax.swing.JPanel();
         jPanelTrangChu = new JFrameQuanLyKiTucXa.TrangChu();
-        jPanelQuanLySinhVien = new JFrameQuanLyKiTucXa.QuanLySinhVien();
         jPanelQuanLyNhanVien = new JFrameQuanLyKiTucXa.QuanLyNhanVien();
+        jPanelQuanLySinhVien = new JFrameQuanLyKiTucXa.QuanLySinhVien();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -340,8 +337,8 @@ public class Main extends javax.swing.JFrame {
         Contents.setPreferredSize(new java.awt.Dimension(1183, 642));
         Contents.setLayout(new java.awt.CardLayout());
         Contents.add(jPanelTrangChu, "card2");
-        Contents.add(jPanelQuanLySinhVien, "card3");
         Contents.add(jPanelQuanLyNhanVien, "card4");
+        Contents.add(jPanelQuanLySinhVien, "card4");
 
         javax.swing.GroupLayout TrangchuLayout = new javax.swing.GroupLayout(Trangchu);
         Trangchu.setLayout(TrangchuLayout);
@@ -363,7 +360,7 @@ public class Main extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(NameKTX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Contents, javax.swing.GroupLayout.DEFAULT_SIZE, 692, Short.MAX_VALUE))
+                        .addComponent(Contents, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE))
                     .addComponent(Menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -380,7 +377,7 @@ public class Main extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(Trangchu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

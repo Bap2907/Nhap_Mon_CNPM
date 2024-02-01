@@ -33,7 +33,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Component id="Trangchu" alignment="1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="29" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -68,7 +68,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="NameKTX" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="Contents" pref="692" max="32767" attributes="0"/>
+                          <Component id="Contents" pref="1000" max="32767" attributes="0"/>
                       </Group>
                       <Component id="Menu" alignment="0" max="32767" attributes="0"/>
                   </Group>
@@ -503,14 +503,14 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="JFrameQuanLyKiTucXa.QuanLySinhVien" name="jPanelQuanLySinhVien">
+            <Component class="JFrameQuanLyKiTucXa.QuanLyNhanVien" name="jPanelQuanLyNhanVien">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-                  <CardConstraints cardName="card3"/>
+                  <CardConstraints cardName="card4"/>
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="JFrameQuanLyKiTucXa.QuanLyNhanVien" name="jPanelQuanLyNhanVien">
+            <Component class="JFrameQuanLyKiTucXa.QuanLySinhVien" name="jPanelQuanLySinhVien">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
                   <CardConstraints cardName="card4"/>

@@ -849,7 +849,7 @@ public class SignUp extends javax.swing.JFrame {
             if (row > 0) {
                 JOptionPane.showMessageDialog(this, "Thêm Tài khoản thành công");
             } else {
-                JOptionPane.showMessageDialog(this, "Nhap ma xhua dung");
+                JOptionPane.showMessageDialog(this, "Nhap ma chua dung");
             }
             conn.close();
         } catch (SQLException ex) {

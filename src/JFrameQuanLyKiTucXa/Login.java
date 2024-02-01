@@ -287,11 +287,11 @@ public class Login extends javax.swing.JFrame {
                             }
                         } else if (phanQuyen.equals("Sinh Viên")) {
                             dispose();
-                            MainSV main = new MainSV();
+                            MainSV main = new MainSV(email);
                             main.setVisible(true);
 //                            email = new TaiKhoanDAO().LayEmail(jnameuser.getText());
-                            main.setEmail(email);
-//                            main.setnameuser(un);
+//                            main.setEmail(email);
+                            main.setnameuser(email);
                         }
                 }else{ 
                     JOptionPane.showMessageDialog(null,"UserName hoặc Password Không Đúng !!!");
