@@ -7,7 +7,7 @@ package dao;
 import Connector.KetNoiSQL;
 import model.HopDongKTX;
 import Connector.KetNoiSQL;
-import JFrameQuanLyKiTucXa.DangKiPhong;
+import JFrameQuanLyKyTucXa.DangKiPhong;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

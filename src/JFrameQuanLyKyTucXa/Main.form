@@ -496,21 +496,21 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
           <SubComponents>
-            <Component class="JFrameQuanLyKiTucXa.TrangChu" name="jPanelTrangChu">
+            <Component class="JFrameQuanLyKyTucXa.TrangChu" name="jPanelTrangChu">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
                   <CardConstraints cardName="card2"/>
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="JFrameQuanLyKiTucXa.QuanLyNhanVien" name="jPanelQuanLyNhanVien">
+            <Component class="JFrameQuanLyKyTucXa.QuanLyNhanVien" name="jPanelQuanLyNhanVien">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
                   <CardConstraints cardName="card4"/>
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="JFrameQuanLyKiTucXa.QuanLySinhVien" name="jPanelQuanLySinhVien">
+            <Component class="JFrameQuanLyKyTucXa.QuanLySinhVien" name="jPanelQuanLySinhVien">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
                   <CardConstraints cardName="card4"/>

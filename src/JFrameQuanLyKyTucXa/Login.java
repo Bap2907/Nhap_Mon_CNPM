@@ -1,10 +1,10 @@
 
-package JFrameQuanLyKiTucXa;
+package JFrameQuanLyKyTucXa;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-import JFrameQuanLyKiTucXa.Main;
+import JFrameQuanLyKyTucXa.Main;
 //import JFrameQuanLyKiTucXa.Main_NV;
 //import JFrameQuanLyKiTucXa.Main_USER;
 import dao.QuanLyNhanVienDAO;
