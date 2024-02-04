@@ -1,8 +1,8 @@
-package JFrameQuanLyKiTucXa;
+package JFrameQuanLyKyTucXa;
 
 import Connector.KetNoiSQL;
-import JFrameQuanLyKiTucXa.Login;
-import JFrameQuanLyKiTucXa.QuanLyNhanVien;
+import JFrameQuanLyKyTucXa.Login;
+import JFrameQuanLyKyTucXa.QuanLyNhanVien;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -83,9 +83,9 @@ public class Main extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         Contents = new javax.swing.JPanel();
-        jPanelTrangChu = new JFrameQuanLyKiTucXa.TrangChu();
-        jPanelQuanLyNhanVien = new JFrameQuanLyKiTucXa.QuanLyNhanVien();
-        jPanelQuanLySinhVien = new JFrameQuanLyKiTucXa.QuanLySinhVien();
+        jPanelTrangChu = new JFrameQuanLyKyTucXa.TrangChu();
+        jPanelQuanLyNhanVien = new JFrameQuanLyKyTucXa.QuanLyNhanVien();
+        jPanelQuanLySinhVien = new JFrameQuanLyKyTucXa.QuanLySinhVien();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -459,9 +459,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private JFrameQuanLyKiTucXa.QuanLyNhanVien jPanelQuanLyNhanVien;
-    private JFrameQuanLyKiTucXa.QuanLySinhVien jPanelQuanLySinhVien;
-    private JFrameQuanLyKiTucXa.TrangChu jPanelTrangChu;
+    private JFrameQuanLyKyTucXa.QuanLyNhanVien jPanelQuanLyNhanVien;
+    private JFrameQuanLyKyTucXa.QuanLySinhVien jPanelQuanLySinhVien;
+    private JFrameQuanLyKyTucXa.TrangChu jPanelTrangChu;
     private javax.swing.JLabel quanlynhanvien;
     private javax.swing.JLabel quanlyphong;
     private javax.swing.JLabel quanlysinhvien;

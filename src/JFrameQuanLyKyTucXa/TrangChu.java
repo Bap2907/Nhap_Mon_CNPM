@@ -1,4 +1,4 @@
-package JFrameQuanLyKiTucXa;
+package JFrameQuanLyKyTucXa;
 
 public class TrangChu extends javax.swing.JPanel {
 

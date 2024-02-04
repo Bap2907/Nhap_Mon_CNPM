@@ -1,5 +1,5 @@
 
-package JFrameQuanLyKiTucXa;
+package JFrameQuanLyKyTucXa;
 
 import Connector.KetNoiSQL;
 import dao.PhongDAO;

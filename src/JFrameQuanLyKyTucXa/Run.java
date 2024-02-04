@@ -1,7 +1,7 @@
-package JFrameQuanLyKiTucXa;
+package JFrameQuanLyKyTucXa;
 
 
-import JFrameQuanLyKiTucXa.Login;
+import JFrameQuanLyKyTucXa.Login;
 public class Run {
     public static void main(String[] args) {
         java.awt.EventQueue.invokeLater(() -> {

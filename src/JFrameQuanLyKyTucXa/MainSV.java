@@ -1,4 +1,4 @@
-package JFrameQuanLyKiTucXa;
+package JFrameQuanLyKyTucXa;
 
 import Connector.KetNoiSQL;
 import dao.QuanLySinhVienDAO;
@@ -53,7 +53,7 @@ public class MainSV extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         Contents = new javax.swing.JPanel();
-        trangChu1 = new JFrameQuanLyKiTucXa.TrangChu();
+        trangChu1 = new JFrameQuanLyKyTucXa.TrangChu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -350,7 +350,7 @@ public class MainSV extends javax.swing.JFrame {
     private javax.swing.JLabel quanlynv;
     private javax.swing.JLabel quanlysv;
     private javax.swing.JLabel thongtintaikhoan;
-    private JFrameQuanLyKiTucXa.TrangChu trangChu1;
+    private JFrameQuanLyKyTucXa.TrangChu trangChu1;
     private javax.swing.JLabel trangchu;
     private javax.swing.JLabel txtnameuser;
     // End of variables declaration//GEN-END:variables
