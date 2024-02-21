@@ -269,4 +269,40 @@ public class QuanLySinhVienDAO {
         }
         return listSinhVien;
     }
+    
+    public String layGTSinhVienTuEmail(String email) {
+        String k = "";
+        String sql = "select gioiTinh from SinhVien where email= '" + email + "'";
+        Connection con = KetNoiSQL.getConnection();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                k = rs.getString("gioiTinh");
+            }
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLySinhVienDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return k;
+    }
+    
+    public String layMaSinhVienTuEmail(String email) {
+        String k = "";
+        String sql = "select maSV from SinhVien where email= '" + email + "'";
+        Connection con = KetNoiSQL.getConnection();
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                k = rs.getString("maSV");
+            }
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLySinhVienDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return k;
+    }
 }
