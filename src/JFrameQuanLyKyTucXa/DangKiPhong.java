@@ -33,7 +33,7 @@ public class DangKiPhong extends javax.swing.JPanel {
     public DangKiPhong() {
         initComponents();
         ketNoiSQL = new KetNoiSQL();
-        displayData();
+//        displayData();
     }
 
     private void displayData() {
