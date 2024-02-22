@@ -391,10 +391,17 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="JFrameQuanLyKyTucXa.DangKiPhong" name="dangKiPhong2">
+            <Component class="JFrameQuanLyKyTucXa.DangKiPhong" name="dangKiPhong1">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
                   <CardConstraints cardName="card3"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="JFrameQuanLyKyTucXa.TBDangKiPhongThanhCong" name="tBDangKiPhongThanhCong1">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+                  <CardConstraints cardName="card4"/>
                 </Constraint>
               </Constraints>
             </Component>

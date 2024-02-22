@@ -18,6 +18,7 @@ public class Login extends javax.swing.JFrame {
         
         initComponents();
         this.hide.setVisible(false);
+        setLocationRelativeTo(null);
     }
     Statement st;
     ResultSet rs;
@@ -289,8 +290,8 @@ public class Login extends javax.swing.JFrame {
                             dispose();
                             MainSV main = new MainSV(email);
                             main.setVisible(true);
-//                            email = new TaiKhoanDAO().LayEmail(jnameuser.getText());
-//                            main.setEmail(email);
+                            email = new TaiKhoanDAO().LayEmail(jnameuser.getText());
+                            main.setEmail(email);
                             main.setnameuser(email);
                         }
                 }else{ 

@@ -305,4 +305,23 @@ public class QuanLySinhVienDAO {
         }
         return k;
     }
+    
+    public int LayTrangThaiTheoEmail(String email) {
+        int trangthai =0;
+        Connection conn = KetNoiSQL.getConnection();
+        String sql = "select * from SinhVien where email ='" + email + "'";
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                trangthai = rs.getInt("trangThai");
+
+            }
+            preparedStatement.close();
+            conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return trangthai;
+    }
 }
