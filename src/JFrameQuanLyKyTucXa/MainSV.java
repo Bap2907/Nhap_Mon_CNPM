@@ -7,13 +7,22 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import java.sql.SQLException;
+import JFrameQuanLyKyTucXa.DangKiPhong;
 
 public class MainSV extends javax.swing.JFrame {
     Connector.KetNoiSQL connect = new Connector.KetNoiSQL();
     private String email;
+    private DangKiPhong dangKiPhong;
+    
     public MainSV(String email) {
         this.email = email;
+        dangKiPhong = new DangKiPhong(email);
+        dangKiPhong.setEmail(email); // Truyền giá trị của biến email
+        //dangKiPhong.displayData();
         initComponents();
+        //System.out.println("Giá trị của email Main: " + email);
+
         //setSize(1450,720); 
         //Cho giao diện nằm giữa màn hình
         setLocationRelativeTo(null);
@@ -25,13 +34,47 @@ public class MainSV extends javax.swing.JFrame {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                txtnameuser.setText(rs.getString("tenNV"));
+                txtnameuser.setText(rs.getString("tenSV"));
             }
             conn.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+    
+    public String getGenderForEmail(String email) {
+        String gioiTinh = ""; // Giới tính mặc định hoặc giá trị cần thiết
+
+        Connection conn = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet rs = null;
+
+        try {
+            conn = KetNoiSQL.getConnection();
+            String sql = "SELECT gioiTinh FROM SinhVien WHERE email=?";
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(1, email);
+            rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                gioiTinh = rs.getString("gioiTinh");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Đảm bảo đóng tất cả các tài nguyên
+            try {
+                if (rs != null) rs.close();
+                if (preparedStatement != null) preparedStatement.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return gioiTinh;
+    }
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -41,8 +84,8 @@ public class MainSV extends javax.swing.JFrame {
         Menu = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        trangchu = new javax.swing.JLabel();
         quanlysv = new javax.swing.JLabel();
+        trangchu = new javax.swing.JLabel();
         quanlynv = new javax.swing.JLabel();
         thongtintaikhoan = new javax.swing.JLabel();
         cailaimatkhau = new javax.swing.JLabel();
@@ -54,6 +97,7 @@ public class MainSV extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         Contents = new javax.swing.JPanel();
         trangChu1 = new JFrameQuanLyKyTucXa.TrangChu();
+        dangKiPhong2 = new JFrameQuanLyKyTucXa.DangKiPhong();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,18 +113,6 @@ public class MainSV extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Menu:");
 
-        trangchu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        trangchu.setForeground(new java.awt.Color(255, 255, 255));
-        trangchu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        trangchu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/trangchu.png"))); // NOI18N
-        trangchu.setText("Trang chủ");
-        trangchu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        trangchu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                trangchuMouseClicked(evt);
-            }
-        });
-
         quanlysv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         quanlysv.setForeground(new java.awt.Color(255, 255, 255));
         quanlysv.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -90,6 +122,18 @@ public class MainSV extends javax.swing.JFrame {
         quanlysv.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 quanlysvMouseClicked(evt);
+            }
+        });
+
+        trangchu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        trangchu.setForeground(new java.awt.Color(255, 255, 255));
+        trangchu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        trangchu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/trangchu.png"))); // NOI18N
+        trangchu.setText("Trang chủ");
+        trangchu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        trangchu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                trangchuMouseClicked(evt);
             }
         });
 
@@ -238,6 +282,7 @@ public class MainSV extends javax.swing.JFrame {
 
         trangChu1.setBackground(new java.awt.Color(255, 255, 255));
         Contents.add(trangChu1, "card2");
+        Contents.add(dangKiPhong2, "card3");
 
         javax.swing.GroupLayout TrangchuLayout = new javax.swing.GroupLayout(Trangchu);
         Trangchu.setLayout(TrangchuLayout);
@@ -341,6 +386,7 @@ public class MainSV extends javax.swing.JFrame {
     private javax.swing.JPanel NameKTX;
     private javax.swing.JPanel Trangchu;
     private javax.swing.JLabel cailaimatkhau;
+    private JFrameQuanLyKyTucXa.DangKiPhong dangKiPhong2;
     private javax.swing.JLabel dangxuat;
     private javax.swing.JLabel dangxuat1;
     private javax.swing.JLabel jLabel1;
