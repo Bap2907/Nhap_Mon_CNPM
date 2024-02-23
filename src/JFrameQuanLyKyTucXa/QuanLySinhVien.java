@@ -66,6 +66,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         ScrollPaneSV = new javax.swing.JScrollPane();
         tableSV = new javax.swing.JTable();
         txtSearch = new textfield.TextFieldSearchOption();
+        cbbtrangthai = new javax.swing.JComboBox<>();
         AddSV = new javax.swing.JPanel();
         jLabel40 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -245,8 +246,20 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         });
         ScrollPaneSV.setViewportView(tableSV);
 
-        txtSearch.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtSearch.setBorder(null);
         txtSearch.setForeground(new java.awt.Color(19, 90, 118));
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
+            }
+        });
+
+        cbbtrangthai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Chưa đăng ký", "Đang chờ duyệt", "Đang ở", "Đã xoá" }));
+        cbbtrangthai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbtrangthaiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout QuanLyThongTinSVLayout = new javax.swing.GroupLayout(QuanLyThongTinSV);
         QuanLyThongTinSV.setLayout(QuanLyThongTinSVLayout);
@@ -264,7 +277,9 @@ public class QuanLySinhVien extends javax.swing.JPanel {
                 .addComponent(updateSV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(deleteSV, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(420, 420, 420)
+                .addGap(151, 151, 151)
+                .addComponent(cbbtrangthai, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(107, 107, 107)
                 .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(QuanLyThongTinSVLayout.createSequentialGroup()
                 .addGap(54, 54, 54)
@@ -274,16 +289,21 @@ public class QuanLySinhVien extends javax.swing.JPanel {
             QuanLyThongTinSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(QuanLyThongTinSVLayout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
                 .addGroup(QuanLyThongTinSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(loadSV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addSV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(viewSV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(updateSV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deleteSV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(QuanLyThongTinSVLayout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(12, 12, 12)
+                        .addGroup(QuanLyThongTinSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(loadSV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addSV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(viewSV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateSV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(deleteSV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(QuanLyThongTinSVLayout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(QuanLyThongTinSVLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(cbbtrangthai, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(ScrollPaneSV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -291,6 +311,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         add(QuanLyThongTinSV, "card10");
 
         AddSV.setBackground(new java.awt.Color(0, 102, 102));
+        AddSV.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel40.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel40.setForeground(new java.awt.Color(255, 255, 255));
@@ -442,7 +463,6 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("Nhập lại mật khẩu :");
 
-        txtMatKhauSV.setEditable(false);
         txtMatKhauSV.setBackground(new java.awt.Color(0, 102, 102));
         txtMatKhauSV.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtMatKhauSV.setForeground(new java.awt.Color(255, 255, 255));
@@ -684,7 +704,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
                                 .addGroup(AddSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtMaSoSV, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(33, 33, 33)
                                 .addGroup(AddSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtCCCDSV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(AddSVLayout.createSequentialGroup()
@@ -1218,147 +1238,6 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         AddSV.setVisible(true);
     }//GEN-LAST:event_addSVMouseClicked
 
-    private void txtCCCDSVjCanCuocSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCCCDSVjCanCuocSVActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCCCDSVjCanCuocSVActionPerformed
-
-    private void txtEmailjEmailSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailjEmailSVActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailjEmailSVActionPerformed
-
-    private void rdNamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdNamMouseClicked
-        
-    }//GEN-LAST:event_rdNamMouseClicked
-
-    private void rdNuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdNuMouseClicked
-        
-    }//GEN-LAST:event_rdNuMouseClicked
-
-    private void rdNujRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdNujRadioButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rdNujRadioButton2ActionPerformed
-
-    private void txtTenSVjHoTenSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenSVjHoTenSVActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTenSVjHoTenSVActionPerformed
-
-    private void txtMaSoSVjMaSoSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaSoSVjMaSoSVActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMaSoSVjMaSoSVActionPerformed
-
-    private void txtMaLopSVjMaLopSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaLopSVjMaLopSVActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMaLopSVjMaLopSVActionPerformed
-
-    private void txtTenDangNhapSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenDangNhapSVActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTenDangNhapSVActionPerformed
-
-    private void btnAddSVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddSVMouseClicked
-        String hotensv = txtTenSV.getText().trim();
-        String masv = txtMaSoSV.getText().trim();
-        String cccdsv = txtCCCDSV.getText().trim();
-        Date ngaysinhsv = txtNgaySinh.getDate();
-        String malopsv = txtMaLopSV.getText().trim();
-        String sodienthoaisv = txtSoDienThoaiSV.getText().trim();
-        String emailsv = txtEmail.getText().trim();
-        String tendangnhapsv = txtTenDangNhapSV.getText().trim();
-        String matkhau = txtMatKhauSV.getText().trim();
-        String nhaplaimatkhau = txtNhapLaiMatKhauSV.getText().trim();
-        
-        // Ràng buộc điều kiện chi tiết
-        String ycmasv = "[A-Z]{1}[0-9]{2}[A-Z]{4}[0-9]{3}";
-        String ycsdt = "^[0]{1}[0-9]{9}";
-        String yccccd = "^([0-9]{9})*([0-9]{12})*$";
-        String ycmalop = "^[A-Z]{1}[0-9]{2}[A-Z]{4}[0-9]{2}";
-        String yctandangnhap = "^[a-zA-Z0-9]+$";
-
-        //Kiểm tra tài khoản, thông tin đã tồn tại hay chưa
-        boolean kiemtramaso = new QuanLySinhVienDAO().KiemTraMaSoSV(masv);
-        boolean kiemtracccd = new QuanLySinhVienDAO().KiemTraCCCDSV(cccdsv);
-        boolean kiemtraemail = new QuanLySinhVienDAO().KiemTraEmailSV(emailsv);
-        boolean kiemtrasdt = new QuanLySinhVienDAO().KiemTraSDTSV(sodienthoaisv);
-
-        if (hotensv.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Không để trống họ tên sinh viên. Vui lòng điền thông tin đầy đủ!");
-        } else if (masv.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Không để trống mã số sinh viên. Vui lòng điền thông tin đầy đủ!");
-        } else if (cccdsv.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Không để trống căn cước công dân sinh viên. Vui lòng điền thông tin đầy đủ!");
-        } else if (malopsv.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Không để trống mã lớp sinh viên. Vui lòng điền thông tin đầy đủ!");
-        } else if (sodienthoaisv.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Không để trống số điện thoại sinh viên. Vui lòng điền thông tin đầy đủ!");
-        } else if (emailsv.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Không để trống email sinh viên. Vui lòng điền thông tin đầy đủ!");
-        } else if (tendangnhapsv.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Không để trống tên đăng nhập. Vui lòng điền thông tin đầy đủ!");
-        } else if (matkhau.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Không để trống mật khẩu. Vui lòng điền thông tin đầy đủ!");
-        } else if (nhaplaimatkhau.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Không để trống nhập lại mật khẩu. Vui lòng điền thông tin đầy đủ!");
-        } else if (!masv.matches(ycmasv)) {
-            JOptionPane.showMessageDialog(null, "Định dạng mã số sinh viên không dúng. Ví dụ : N21DCCN001");
-        } else if (!cccdsv.matches(yccccd)) {
-            JOptionPane.showMessageDialog(null, "Định dạng căn cước công dân không đúng. Vui lòng nhập lại!");
-        } else if (!sodienthoaisv.matches(ycsdt)) {
-            JOptionPane.showMessageDialog(null, "Định dạng số điện thoại không dúng. Ví dụ : 0827364857");
-        } else if (!malopsv.matches(ycmalop)) {
-            JOptionPane.showMessageDialog(null, "Định dạng mã lớp không dúng. Ví dụ : D21CQCN01");
-        } else if (!emailsv.contains("@gmail.com")) {
-            JOptionPane.showMessageDialog(null, "Định dạng gmail không đúng. Vui lòng nhập lại");
-        } else if (!matkhau.equals(nhaplaimatkhau)) {
-            JOptionPane.showMessageDialog(null, "Mật khẩu nhập lại không trùng với mật khẩu. Vui lòng nhập lại!");
-        } else if (kiemtramaso) {
-            JOptionPane.showMessageDialog(null, "Mã số sinh viên đã được đăng ký!");
-        } else {
-            int test = JOptionPane.showConfirmDialog(null, "Bạn chắc có muốn thêm sinh viên hay không !", "Thông báo đăng ký", JOptionPane.YES_NO_OPTION);
-            if (test == JOptionPane.YES_OPTION) {
-                AddTaiKhoan();
-                AddSinhVien();
-                resetForm();
-            } else if (test == JOptionPane.NO_OPTION) {
-                JOptionPane.showMessageDialog(null, "Bạn đã hủy thêm sinh viên thành công");
-            }
-        }
-    }//GEN-LAST:event_btnAddSVMouseClicked
-
-    private void btnAddSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSVActionPerformed
-
-    }//GEN-LAST:event_btnAddSVActionPerformed
-
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        QuanLyThongTinSV.setVisible(true);
-        AddSV.setVisible(false);
-    }//GEN-LAST:event_jLabel2MouseClicked
-
-    private void txtSoDienThoaiSVjMaLopSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSoDienThoaiSVjMaLopSVActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSoDienThoaiSVjMaLopSVActionPerformed
-
-    private void txtQueQuanSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQueQuanSVActionPerformed
-
-    }//GEN-LAST:event_txtQueQuanSVActionPerformed
-
-    private void show_eyeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_show_eyeMousePressed
-        show_eye.setVisible(false);
-        hide_eye.setVisible(true);
-        txtMatKhauSV.setEchoChar((char) 0);
-        txtNhapLaiMatKhauSV.setEchoChar((char) 0);
-    }//GEN-LAST:event_show_eyeMousePressed
-
-    private void hide_eyeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hide_eyeMousePressed
-        hide_eye.setVisible(false);
-        show_eye.setVisible(true);
-        txtMatKhauSV.setEchoChar('*');
-        txtNhapLaiMatKhauSV.setEchoChar('*');
-    }//GEN-LAST:event_hide_eyeMousePressed
-
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-        QuanLyThongTinSV.setVisible(true);
-        AddSV.setVisible(false);
-    }//GEN-LAST:event_jLabel5MouseClicked
-
     private void jLabel55MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel55MouseClicked
         QuanLyThongTinSV.setVisible(true);
         AddSV.setVisible(false);
@@ -1529,76 +1408,222 @@ public class QuanLySinhVien extends javax.swing.JPanel {
     }//GEN-LAST:event_txtUpEmailActionPerformed1
 
     private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
-//        if (txtSearch.isSelected()) {
-//            int option = txtSearch.getSelectedIndex();
-//            String textsearch = txtSearch.getText().trim();
-//            if (evcbbtt == 0) {
-//                if (option == 0) {
-//                    showTable("maSV", textsearch);
-//                } else if (option == 1) {
-//                    showTable("tenSV", textsearch);
-//                } else if (option == 2) {
-//                    showTable("CCCD", textsearch);
-//                } else if (option == 3) {
-//                    showTable("maLop", textsearch);
-//                }
-//            } else if (evcbbtt == 1) {
-//                if (option == 0) {
-//                    showTableTT("maSV", textsearch, 0);
-//                } else if (option == 1) {
-//                    showTableTT("tenSV", textsearch, 0);
-//                } else if (option == 2) {
-//                    showTableTT("CCCD", textsearch, 0);
-//                } else if (option == 3) {
-//                    showTableTT("maLop", textsearch, 0);
-//                }
-//            } else if (evcbbtt == 2) {
-//                if (option == 0) {
-//                    showTableTT("maSV", textsearch, 1);
-//                } else if (option == 1) {
-//                    showTableTT("tenSV", textsearch, 1);
-//                } else if (option == 2) {
-//                    showTableTT("CCCD", textsearch, 1);
-//                } else if (option == 3) {
-//                    showTableTT("maLop", textsearch, 1);
-//                }
-//            } else if (evcbbtt == 3) {
-//                if (option == 0) {
-//                    showTableTT("maSV", textsearch, 2);
-//                } else if (option == 1) {
-//                    showTableTT("tenSV", textsearch, 2);
-//                } else if (option == 2) {
-//                    showTableTT("CCCD", textsearch, 2);
-//                } else if (option == 3) {
-//                    showTableTT("maLop", textsearch, 2);
-//                }
-//            } else if (evcbbtt == 4) {
-//                if (option == 0) {
-//                    showTableTT("maSV", textsearch, 3);
-//                } else if (option == 1) {
-//                    showTableTT("tenSV", textsearch, 3);
-//                } else if (option == 2) {
-//                    showTableTT("CCCD", textsearch, 3);
-//                } else if (option == 3) {
-//                    showTableTT("maLop", textsearch, 3);
-//                }
-//            }
-//
-//        }
         if (txtSearch.isSelected()) {
             int option = txtSearch.getSelectedIndex();
             String textsearch = txtSearch.getText().trim();
-            if (option == 0) {
-                showTable("maSV", textsearch);
-            } else if (option == 1) {
-                showTable("tenSV", textsearch);
-            } else if (option == 2) {
-                showTable("CCCD", textsearch);
-            } else if (option == 3) {
-                showTable("maLop", textsearch);
+            if (evcbbtt == 0) {
+                if (option == 0) {
+                    showTable("maSV", textsearch);
+                } else if (option == 1) {
+                    showTable("tenSV", textsearch);
+                } else if (option == 2) {
+                    showTable("CCCD", textsearch);
+                } else if (option == 3) {
+                    showTable("maLop", textsearch);
+                }
+            } else if (evcbbtt == 1) {
+                if (option == 0) {
+                    showTableTT("maSV", textsearch, 1);
+                } else if (option == 1) {
+                    showTableTT("tenSV", textsearch, 1);
+                } else if (option == 2) {
+                    showTableTT("CCCD", textsearch, 1);
+                } else if (option == 3) {
+                    showTableTT("maLop", textsearch, 1);
+                }
+            } else if (evcbbtt == 2) {
+                if (option == 0) {
+                    showTableTT("maSV", textsearch, 3);
+                } else if (option == 1) {
+                    showTableTT("tenSV", textsearch, 3);
+                } else if (option == 2) {
+                    showTableTT("CCCD", textsearch, 3);
+                } else if (option == 3) {
+                    showTableTT("maLop", textsearch, 3);
+                }
+            } else if (evcbbtt == 3) {
+                if (option == 0) {
+                    showTableTT("maSV", textsearch, 2);
+                } else if (option == 1) {
+                    showTableTT("tenSV", textsearch, 2);
+                } else if (option == 2) {
+                    showTableTT("CCCD", textsearch, 2);
+                } else if (option == 3) {
+                    showTableTT("maLop", textsearch, 2);
+                }
+            } else if (evcbbtt == 4) {
+                if (option == 0) {
+                    showTableTT("maSV", textsearch, 0);
+                } else if (option == 1) {
+                    showTableTT("tenSV", textsearch, 0);
+                } else if (option == 2) {
+                    showTableTT("CCCD", textsearch, 0);
+                } else if (option == 3) {
+                    showTableTT("maLop", textsearch, 3);
+                }
             }
+
         }
     }//GEN-LAST:event_txtSearchKeyReleased
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        QuanLyThongTinSV.setVisible(true);
+        AddSV.setVisible(false);
+    }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void hide_eyeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hide_eyeMousePressed
+        hide_eye.setVisible(false);
+        show_eye.setVisible(true);
+        txtMatKhauSV.setEchoChar('*');
+        txtNhapLaiMatKhauSV.setEchoChar('*');
+    }//GEN-LAST:event_hide_eyeMousePressed
+
+    private void show_eyeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_show_eyeMousePressed
+        show_eye.setVisible(false);
+        hide_eye.setVisible(true);
+        txtMatKhauSV.setEchoChar((char) 0);
+        txtNhapLaiMatKhauSV.setEchoChar((char) 0);
+    }//GEN-LAST:event_show_eyeMousePressed
+
+    private void txtQueQuanSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQueQuanSVActionPerformed
+
+    }//GEN-LAST:event_txtQueQuanSVActionPerformed
+
+    private void txtSoDienThoaiSVjMaLopSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSoDienThoaiSVjMaLopSVActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSoDienThoaiSVjMaLopSVActionPerformed
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        QuanLyThongTinSV.setVisible(true);
+        AddSV.setVisible(false);
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void btnAddSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSVActionPerformed
+
+    }//GEN-LAST:event_btnAddSVActionPerformed
+
+    private void btnAddSVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddSVMouseClicked
+        String hotensv = txtTenSV.getText().trim();
+        String masv = txtMaSoSV.getText().trim();
+        String cccdsv = txtCCCDSV.getText().trim();
+        Date ngaysinhsv = txtNgaySinh.getDate();
+        String malopsv = txtMaLopSV.getText().trim();
+        String sodienthoaisv = txtSoDienThoaiSV.getText().trim();
+        String emailsv = txtEmail.getText().trim();
+        String tendangnhapsv = txtTenDangNhapSV.getText().trim();
+        String matkhau = txtMatKhauSV.getText().trim();
+        String nhaplaimatkhau = txtNhapLaiMatKhauSV.getText().trim();
+
+        // Ràng buộc điều kiện chi tiết
+        String ycmasv = "[A-Z]{1}[0-9]{2}[A-Z]{4}[0-9]{3}";
+        String ycsdt = "^[0]{1}[0-9]{9}";
+        String yccccd = "^([0-9]{9})*([0-9]{12})*$";
+        String ycmalop = "^[A-Z]{1}[0-9]{2}[A-Z]{4}[0-9]{2}";
+        String yctandangnhap = "^[a-zA-Z0-9]+$";
+
+        //Kiểm tra tài khoản, thông tin đã tồn tại hay chưa
+        boolean kiemtramaso = new QuanLySinhVienDAO().KiemTraMaSoSV(masv);
+        boolean kiemtracccd = new QuanLySinhVienDAO().KiemTraCCCDSV(cccdsv);
+        boolean kiemtraemail = new QuanLySinhVienDAO().KiemTraEmailSV(emailsv);
+        boolean kiemtrasdt = new QuanLySinhVienDAO().KiemTraSDTSV(sodienthoaisv);
+
+        if (hotensv.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Không để trống họ tên sinh viên. Vui lòng điền thông tin đầy đủ!");
+        } else if (masv.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Không để trống mã số sinh viên. Vui lòng điền thông tin đầy đủ!");
+        } else if (cccdsv.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Không để trống căn cước công dân sinh viên. Vui lòng điền thông tin đầy đủ!");
+        } else if (malopsv.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Không để trống mã lớp sinh viên. Vui lòng điền thông tin đầy đủ!");
+        } else if (sodienthoaisv.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Không để trống số điện thoại sinh viên. Vui lòng điền thông tin đầy đủ!");
+        } else if (emailsv.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Không để trống email sinh viên. Vui lòng điền thông tin đầy đủ!");
+        } else if (tendangnhapsv.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Không để trống tên đăng nhập. Vui lòng điền thông tin đầy đủ!");
+        } else if (matkhau.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Không để trống mật khẩu. Vui lòng điền thông tin đầy đủ!");
+        } else if (nhaplaimatkhau.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Không để trống nhập lại mật khẩu. Vui lòng điền thông tin đầy đủ!");
+        } else if (!masv.matches(ycmasv)) {
+            JOptionPane.showMessageDialog(null, "Định dạng mã số sinh viên không dúng. Ví dụ : N21DCCN001");
+        } else if (!cccdsv.matches(yccccd)) {
+            JOptionPane.showMessageDialog(null, "Định dạng căn cước công dân không đúng. Vui lòng nhập lại!");
+        } else if (!sodienthoaisv.matches(ycsdt)) {
+            JOptionPane.showMessageDialog(null, "Định dạng số điện thoại không dúng. Ví dụ : 0827364857");
+        } else if (!malopsv.matches(ycmalop)) {
+            JOptionPane.showMessageDialog(null, "Định dạng mã lớp không dúng. Ví dụ : D21CQCN01");
+        } else if (!emailsv.contains("@gmail.com")) {
+            JOptionPane.showMessageDialog(null, "Định dạng gmail không đúng. Vui lòng nhập lại");
+        } else if (!matkhau.equals(nhaplaimatkhau)) {
+            JOptionPane.showMessageDialog(null, "Mật khẩu nhập lại không trùng với mật khẩu. Vui lòng nhập lại!");
+        } else if (kiemtramaso) {
+            JOptionPane.showMessageDialog(null, "Mã số sinh viên đã được đăng ký!");
+        } else {
+            int test = JOptionPane.showConfirmDialog(null, "Bạn chắc có muốn thêm sinh viên hay không !", "Thông báo đăng ký", JOptionPane.YES_NO_OPTION);
+            if (test == JOptionPane.YES_OPTION) {
+                AddTaiKhoan();
+                AddSinhVien();
+                resetForm();
+            } else if (test == JOptionPane.NO_OPTION) {
+                JOptionPane.showMessageDialog(null, "Bạn đã hủy thêm sinh viên thành công");
+            }
+        }
+    }//GEN-LAST:event_btnAddSVMouseClicked
+
+    private void txtTenDangNhapSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenDangNhapSVActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTenDangNhapSVActionPerformed
+
+    private void txtMaLopSVjMaLopSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaLopSVjMaLopSVActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaLopSVjMaLopSVActionPerformed
+
+    private void txtMaSoSVjMaSoSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaSoSVjMaSoSVActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaSoSVjMaSoSVActionPerformed
+
+    private void txtTenSVjHoTenSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenSVjHoTenSVActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTenSVjHoTenSVActionPerformed
+
+    private void rdNujRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdNujRadioButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rdNujRadioButton2ActionPerformed
+
+    private void rdNuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdNuMouseClicked
+
+    }//GEN-LAST:event_rdNuMouseClicked
+
+    private void rdNamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdNamMouseClicked
+
+    }//GEN-LAST:event_rdNamMouseClicked
+
+    private void txtEmailjEmailSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailjEmailSVActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailjEmailSVActionPerformed
+
+    private void txtCCCDSVjCanCuocSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCCCDSVjCanCuocSVActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCCCDSVjCanCuocSVActionPerformed
+
+    private void cbbtrangthaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbtrangthaiActionPerformed
+        String trangthai = "";
+        evcbbtt = cbbtrangthai.getSelectedIndex();
+        int k = cbbtrangthai.getSelectedIndex();
+        QuanLySinhVienDAO svd = new QuanLySinhVienDAO();
+        if (k == 0) {
+            showTable();
+        } else if (k == 1) {
+            showTableTT(1);
+        } else if (k == 2) {
+            showTableTT(3);
+        } else if (k == 3) {
+            showTableTT(2);
+        } else if (k == 4) {
+            showTableTT(0);
+        }
+    }//GEN-LAST:event_cbbtrangthaiActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1612,6 +1637,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
     private javax.swing.JButton btnUpdateSV;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JComboBox<String> cbbtrangthai;
     private javax.swing.JLabel deleteSV;
     private javax.swing.JLabel hide_eye;
     private javax.swing.JLabel jLabel1;
@@ -1701,11 +1727,29 @@ public class QuanLySinhVien extends javax.swing.JPanel {
     private void showTable() {
         listsinhvien = new QuanLySinhVienDAO().getAllThongTinSV();
         Model.setRowCount(0);
-        //String trangthai = null;
         for (ThongTinSinhVien sv : listsinhvien) {
-            Model.addRow(new Object[]{
-                sv.getMaSV(), sv.getTenSV(), sv.getCCCD(), sv.getGioiTinh(), sv.getNgaySinh(), sv.getMaLop(), sv.getSoDienThoai(), sv.getTrangThai()
-            });
+            String trangThaiText = "";
+            switch (sv.getTrangThai()) {
+                case 0:
+                    trangThaiText = "Đã xoá";
+                    break;
+                case 1:
+                    trangThaiText = "Chưa đăng kí";
+                    break;
+                case 2:
+                    trangThaiText = "Đang ở";
+                    break;
+                case 3:
+                    trangThaiText = "Đang chờ duyệt";
+                    break;
+                default:
+                    trangThaiText = "Trạng thái không xác định";
+            }
+            if (!trangThaiText.equals("Đã xoá")) {
+                Model.addRow(new Object[]{
+                    sv.getMaSV(), sv.getTenSV(), sv.getCCCD(), sv.getGioiTinh(), sv.getNgaySinh(), sv.getMaLop(), sv.getSoDienThoai(), trangThaiText
+                });
+            }
         }
         count = -1;
     }
@@ -1870,9 +1914,28 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         Model.setRowCount(0);
 
         for (ThongTinSinhVien sv : listsinhvien) {
-            Model.addRow(new Object[]{
-                sv.getMaSV(), sv.getTenSV(), sv.getCCCD(), sv.getGioiTinh(), sv.getNgaySinh(), sv.getMaLop(), sv.getSoDienThoai(), sv.getTrangThai()
-            });
+            String trangThaiText = "";
+            switch (sv.getTrangThai()) {
+                case 0:
+                    trangThaiText = "Đã xoá";
+                    break;
+                case 1:
+                    trangThaiText = "Chưa đăng kí";
+                    break;
+                case 2:
+                    trangThaiText = "Đang ở";
+                    break;
+                case 3:
+                    trangThaiText = "Đang chờ duyệt";
+                    break;
+                default:
+                    trangThaiText = "Trạng thái không xác định";
+            }
+            if (!trangThaiText.equals("Đã xoá")) {
+                Model.addRow(new Object[]{
+                    sv.getMaSV(), sv.getTenSV(), sv.getCCCD(), sv.getGioiTinh(), sv.getNgaySinh(), sv.getMaLop(), sv.getSoDienThoai(), trangThaiText
+                });
+            }
         }
     }
     
@@ -1881,8 +1944,25 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         Model.setRowCount(0);
 
         for (ThongTinSinhVien sv : listsinhvien) {
+            String trangThaiText = "";
+            switch (sv.getTrangThai()) {
+                case 0:
+                    trangThaiText = "Đã xoá";
+                    break;
+                case 1:
+                    trangThaiText = "Chưa đăng kí";
+                    break;
+                case 2:
+                    trangThaiText = "Đang ở";
+                    break;
+                case 3:
+                    trangThaiText = "Đang chờ duyệt";
+                    break;
+                default:
+                    trangThaiText = "Trạng thái không xác định";
+            }
             Model.addRow(new Object[]{
-                sv.getMaSV(), sv.getTenSV(), sv.getCCCD(), sv.getGioiTinh(), sv.getNgaySinh(), sv.getMaLop(), sv.getSoDienThoai(), sv.getTrangThai()
+                sv.getMaSV(), sv.getTenSV(), sv.getCCCD(), sv.getGioiTinh(), sv.getNgaySinh(), sv.getMaLop(), sv.getSoDienThoai(), trangThaiText
             });
         }
     }
@@ -1898,6 +1978,34 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         txtSearch.addOption(new SearchOption("Tên Sinh Viên", new ImageIcon(getClass().getResource("/img/username.png"))));
         txtSearch.addOption(new SearchOption("CCCD", new ImageIcon(getClass().getResource("/img/creditcard.png"))));
         txtSearch.addOption(new SearchOption("Mã Lớp", new ImageIcon(getClass().getResource("/img/presentation.png"))));
+    }
+    
+    private void showTableTT(int trangthai) {
+        listsinhvien = new QuanLySinhVienDAO().getAllThongTinSVTrangThai(trangthai);
+        Model.setRowCount(0);
+
+        for (ThongTinSinhVien sv : listsinhvien) {
+            String trangThaiText = "";
+            switch (sv.getTrangThai()) {
+                case 0:
+                    trangThaiText = "Đã xoá";
+                    break;
+                case 1:
+                    trangThaiText = "Chưa đăng kí";
+                    break;
+                case 2:
+                    trangThaiText = "Đang ở";
+                    break;
+                case 3:
+                    trangThaiText = "Đang chờ duyệt";
+                    break;
+                default:
+                    trangThaiText = "Trạng thái không xác định";
+            }
+            Model.addRow(new Object[]{
+                sv.getMaSV(), sv.getTenSV(), sv.getCCCD(), sv.getGioiTinh(), sv.getNgaySinh(), sv.getMaLop(), sv.getSoDienThoai(), trangThaiText
+            });
+        }
     }
 
 }
