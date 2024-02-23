@@ -33,7 +33,8 @@ public class DangKiPhong extends javax.swing.JPanel {
     private String email;
     private String gioitinh, loaiphong;
     private JButton selectedButton = null;
-    private int keyradiothang = 1;
+    private int keyradiothang = 3;
+    private String maPhongDuocChon;
 
     public DangKiPhong() {
         initComponents();
@@ -167,12 +168,13 @@ public class DangKiPhong extends javax.swing.JPanel {
             if (fl == 0) {
                 JOptionPane.showMessageDialog(null, "Hiện tại không còn phòng trống loại này vui lòng chọn loại phòng khác");
             } else {
-                System.out.println("masv = "+ masv);
+                //System.out.println("masv = "+ masv);
                 int KTgioitinhhople = new PhongDAO().CheckGioiTinhHopLe(masv,gioiTinh);
                 if (KTgioitinhhople == 0) {
                     JOptionPane.showMessageDialog(null, "Bạn đã chọn phòng có giới tính sai, vui lòng chọn phòng khác");
                 }else{
                     //JOptionPane.showMessageDialog(null, maPhong + " " +  tenPhong + " " +  soLuongSVPhong + " " +  loaiPhong + " " +  tienPhong);
+                    maPhongDuocChon = maPhong;
                     getjdialog();
                 }
             }
@@ -513,31 +515,15 @@ public class DangKiPhong extends javax.swing.JPanel {
                 // System.out.println("so thang:"+sothang());
                 QuanLySinhVienDAO svd = new QuanLySinhVienDAO();
                 String masv = new QuanLySinhVienDAO().layMaSinhVienTuEmail(email);
-                System.out.println("ma sinh vien :" + masv);
+                System.out.println("ma sinh vien: " + masv);
+                System.out.println("ma phong: " + maPhongDuocChon);
                 int test = JOptionPane.showConfirmDialog(null, "Bạn chắc có muốn đăng ký hay không !", "Thông báo đăng ký", JOptionPane.YES_NO_OPTION);
                 if (test == JOptionPane.YES_OPTION) {
-//                    if (rdbutton1.isSelected()) {
-//                        NhapPhong("1", gioitinh);
-//                        svd.updateTrangThaiTheoTDN(masv);
-//                    } else if (rdbutton2.isSelected()) {
-//                        NhapPhong("2", gioitinh);
-//                        svd.updateTrangThaiTheoTDN(masv);
-//                    } else if (rdbutton3.isSelected()) {
-//                        NhapPhong("3", gioitinh);
-//                        svd.updateTrangThaiTheoTDN(masv);
-//                    } else if (rdbutton4.isSelected()) {
-//                        NhapPhong("4", gioitinh);
-//                        svd.updateTrangThaiTheoTDN(masv);
-//                    } else if (rdbutton5.isSelected()) {
-//                        NhapPhong("5", gioitinh);
-//                        svd.updateTrangThaiTheoTDN(masv);
-//                    } else if (rdbutton6.isSelected()) {
-//                        NhapPhong("6", gioitinh);
-//                        svd.updateTrangThaiTheoTDN(masv);
-//                    }
+                    svd.updateTrangThaiKhiSVDangKy(masv);
+//                    NhapPhong("1", gioitinh);
 //                    updateHDKTKTX(masv, keyradiothang, d1n);
-//                    JOptionPane.showMessageDialog(null, "Bạn đã đăng ký thành công");
-                    JOptionPane.showMessageDialog(null, "Bạn đã nhấn vào đăng ký");
+                    ThemThongTinSVDangKy(masv, maPhongDuocChon, keyradiothang, d1n);
+                    JOptionPane.showMessageDialog(null, "Bạn đã đăng ký thành công");
                     jDialog1.dispose();
                 } else if (test == JOptionPane.NO_OPTION) {
                     JOptionPane.showMessageDialog(null, "Bạn đã hủy đăng ký thành công");
@@ -570,4 +556,29 @@ public class DangKiPhong extends javax.swing.JPanel {
     private javax.swing.JRadioButton txtrd2thang;
     private javax.swing.JRadioButton txtrd3thang;
     // End of variables declaration//GEN-END:variables
+    
+    void ThemThongTinSVDangKy(String masv, String maPhongDuocChon, int thang, Date ngayHDBD) {
+        Connection con = KetNoiSQL.getConnection();
+        QuanLySinhVienDAO svd = new QuanLySinhVienDAO();
+        Date datesv;
+        String datestr = "";
+        SimpleDateFormat sp = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar cld = Calendar.getInstance();
+        Date date1 = DateVao.getDate();
+        cld.setTime(date1);
+        cld.add(Calendar.MONTH, thang);
+        datesv = cld.getTime();
+        datestr = sp.format(datesv);
+        String sql = "insert into DangKyPhong (maSV, maPhong, ngayHDKT, ngayHDBD) values(?,?,?,?)";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, masv);
+            ps.setString(2, maPhongDuocChon);
+            ps.setString(3, datestr); // Convert to java.sql.Date
+            ps.setDate(4, new java.sql.Date(ngayHDBD.getTime()));
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(DangKiPhong.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
