@@ -305,4 +305,68 @@ public class QuanLySinhVienDAO {
         }
         return k;
     }
+    
+    public int LayTrangThaiTheoEmail(String email) {
+        int trangthai =0;
+        Connection conn = KetNoiSQL.getConnection();
+        String sql = "select * from SinhVien where email ='" + email + "'";
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                trangthai = rs.getInt("trangThai");
+
+            }
+            preparedStatement.close();
+            conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return trangthai;
+    }
+    
+    public void updateTrangThaiKhiSVDangKy(String masv) {
+        Connection con = KetNoiSQL.getConnection();
+        String sql = "update SinhVien set trangThai=? where maSV='" + masv + "'";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, "3");
+            ps.executeUpdate();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SinhVienDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public List<ThongTinSinhVien> getAllThongTinSVTrangThai(int trangthai) {
+        List<ThongTinSinhVien> listSinhVien = new ArrayList<ThongTinSinhVien>();
+        Connection conn = KetNoiSQL.getConnection();
+        String sql = "select * from SinhVien where trangThai='"+trangthai+"'";
+        //String sql = "select * from (select *,Null as maPhong from (select * from SinhVien except SELECT sv.* FROM SinhVien sv JOIN HopDongKTX hd ON sv.maSV = hd.maSV) as k union all SELECT sv.*, hd.maPhong FROM SinhVien sv JOIN HopDongKTX hd ON sv.maSV = hd.maSV) as k2 where trangThai='" + trangthai + "' ";
+
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                ThongTinSinhVien sv = new ThongTinSinhVien();
+                sv.setMaSV(rs.getString("maSV"));
+                sv.setTenSV(rs.getString("tenSV"));
+                sv.setCCCD(rs.getString("CCCD"));
+                sv.setGioiTinh(rs.getString("gioiTinh"));
+                sv.setNgaySinh(rs.getDate("ngaySinh"));
+                sv.setEmail(rs.getString("email"));
+                sv.setSoDienThoai(rs.getString("soDienThoai"));
+                sv.setQueQuan(rs.getString("queQuan"));
+                sv.setMaLop(rs.getString("maLop"));
+                sv.setTrangThai(rs.getInt("trangThai"));
+                listSinhVien.add(sv);
+            }
+            preparedStatement.close();
+            conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listSinhVien;
+    }
 }

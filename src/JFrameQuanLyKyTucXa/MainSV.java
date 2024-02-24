@@ -12,14 +12,16 @@ import JFrameQuanLyKyTucXa.DangKiPhong;
 
 public class MainSV extends javax.swing.JFrame {
     Connector.KetNoiSQL connect = new Connector.KetNoiSQL();
-    private String email;
+    private String emailsv;
     private DangKiPhong dangKiPhong;
+    String masv;
     
     public MainSV(String email) {
-        this.email = email;
+        this.emailsv = email;
         dangKiPhong = new DangKiPhong(email);
         dangKiPhong.setEmail(email); // Truyền giá trị của biến email
         //dangKiPhong.displayData();
+//        displayLoggedInEmail();
         initComponents();
         //System.out.println("Giá trị của email Main: " + email);
 
@@ -27,6 +29,11 @@ public class MainSV extends javax.swing.JFrame {
         //Cho giao diện nằm giữa màn hình
         setLocationRelativeTo(null);
     }
+    
+//    public void displayLoggedInEmail() {
+//        System.out.println("Email đang đăng nhập: " + emailsv);
+//    }
+
     public void setnameuser(String email) {
         Connection conn = KetNoiSQL.getConnection();
         String sql = "select * from SinhVien where email='" + email + "'";
@@ -35,6 +42,23 @@ public class MainSV extends javax.swing.JFrame {
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 txtnameuser.setText(rs.getString("tenSV"));
+            }
+            conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    void setEmail(String email) {
+        this.emailsv = email;
+        Connection conn = KetNoiSQL.getConnection();
+        String sql = "select * from SinhVien where email='" + email + "'";
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                txtnameuser.setText(rs.getString("tenSV"));
+                masv = rs.getString("maSV");
             }
             conn.close();
         } catch (Exception e) {
@@ -97,7 +121,8 @@ public class MainSV extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         Contents = new javax.swing.JPanel();
         trangChu1 = new JFrameQuanLyKyTucXa.TrangChu();
-        dangKiPhong2 = new JFrameQuanLyKyTucXa.DangKiPhong();
+        dangKiPhong1 = new JFrameQuanLyKyTucXa.DangKiPhong();
+        tBDangKiPhongThanhCong1 = new JFrameQuanLyKyTucXa.TBDangKiPhongThanhCong();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -282,7 +307,8 @@ public class MainSV extends javax.swing.JFrame {
 
         trangChu1.setBackground(new java.awt.Color(255, 255, 255));
         Contents.add(trangChu1, "card2");
-        Contents.add(dangKiPhong2, "card3");
+        Contents.add(dangKiPhong1, "card3");
+        Contents.add(tBDangKiPhongThanhCong1, "card4");
 
         javax.swing.GroupLayout TrangchuLayout = new javax.swing.GroupLayout(Trangchu);
         Trangchu.setLayout(TrangchuLayout);
@@ -324,12 +350,20 @@ public class MainSV extends javax.swing.JFrame {
 
     private void trangchuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trangchuMouseClicked
         trangChu1.setVisible(true);
-        dangKiPhong2.setVisible(false);
+        dangKiPhong1.setVisible(false);
+        tBDangKiPhongThanhCong1.setVisible(false);
     }//GEN-LAST:event_trangchuMouseClicked
 
     private void quanlysvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quanlysvMouseClicked
         trangChu1.setVisible(false);
-        dangKiPhong2.setVisible(true);
+        tBDangKiPhongThanhCong1.setVisible(false);
+        int trangthai = new QuanLySinhVienDAO().LayTrangThaiTheoEmail(emailsv);
+        if (trangthai == 1 || trangthai == 5) {
+            dangKiPhong1.setVisible(true);
+            dangKiPhong1.LayEmail(emailsv);
+        } else {
+            tBDangKiPhongThanhCong1.setVisible(true);
+        }
     }//GEN-LAST:event_quanlysvMouseClicked
 
     private void thongtintaikhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thongtintaikhoanMouseClicked
@@ -386,7 +420,7 @@ public class MainSV extends javax.swing.JFrame {
     private javax.swing.JPanel NameKTX;
     private javax.swing.JPanel Trangchu;
     private javax.swing.JLabel cailaimatkhau;
-    private JFrameQuanLyKyTucXa.DangKiPhong dangKiPhong2;
+    private JFrameQuanLyKyTucXa.DangKiPhong dangKiPhong1;
     private javax.swing.JLabel dangxuat;
     private javax.swing.JLabel dangxuat1;
     private javax.swing.JLabel jLabel1;
@@ -395,6 +429,7 @@ public class MainSV extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel quanlynv;
     private javax.swing.JLabel quanlysv;
+    private JFrameQuanLyKyTucXa.TBDangKiPhongThanhCong tBDangKiPhongThanhCong1;
     private javax.swing.JLabel thongtintaikhoan;
     private JFrameQuanLyKyTucXa.TrangChu trangChu1;
     private javax.swing.JLabel trangchu;

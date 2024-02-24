@@ -284,14 +284,15 @@ public class PhongDAO {
         return date;
     }
 
-    public int demSVinDK(String loaiphong, String gioitinh) {
+    public int demSVinDK(String maPhong) {
         int sl = 0;
         Connection con = KetNoiSQL.getConnection();
-        String sql = "select count(*) as slsv from DangKyPhong dkp join SinhVien sv on dkp.maSV=sv.maSV where gioiTinh=N'" + gioitinh + "' and loaiPhong=N'" + loaiphong + "'";
+        String sql = "SELECT COUNT(*) AS slsv FROM HopDongKTX WHERE maPhong = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, maPhong); // Truyền tham số maPhong vào câu truy vấn
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
+            if (rs.next()) {
                 sl = rs.getInt("slsv");
             }
             ps.close();
@@ -302,65 +303,64 @@ public class PhongDAO {
         return sl;
     }
 
-    public int demSVinDK(String gioitinh) {
-        int sl = 0;
-        Connection con = KetNoiSQL.getConnection();
-        String sql = "select count(*) as slsv from DangKyPhong dkp join SinhVien sv on dkp.maSV=sv.maSV where gioiTinh=N'" + gioitinh + "'";
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                sl = rs.getInt("slsv");
-            }
+//    public int demSVinDK(String gioitinh) {
+//        int sl = 0;
+//        Connection con = KetNoiSQL.getConnection();
+//        String sql = "select count(*) as slsv from DangKyPhong dkp join SinhVien sv on dkp.maSV=sv.maSV where gioiTinh=N'" + gioitinh + "'";
+//        try {
+//            PreparedStatement ps = con.prepareStatement(sql);
+//            ResultSet rs = ps.executeQuery();
+//            while (rs.next()) {
+//                sl = rs.getInt("slsv");
+//            }
+//
+//        } catch (SQLException ex) {
+//            Logger.getLogger(SinhVienDAO.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return sl;
+//    }
 
-        } catch (SQLException ex) {
-            Logger.getLogger(SinhVienDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return sl;
-    }
-
-    public int slsvINPhong(String loaiphong, String gioitinh) {
+    public int slsvINPhong(String maPhong) {
         int slsv = 0;
         Connection con = KetNoiSQL.getConnection();
-        String sql2 = "select loaiPhong ,sum(soLuongSVPhong) as tongSVtt from Phong where loaiPhong=N'" + loaiphong + "' and gioiTinh=N'" + gioitinh + "' group by loaiPhong";
+        String sql = "SELECT soLuongSVPhong FROM Phong WHERE maPhong = ?";
         try {
-            PreparedStatement ps2 = con.prepareStatement(sql2);
-            ResultSet rs2 = ps2.executeQuery();
-            while (rs2.next()) {
-                slsv = rs2.getInt("tongSVtt");
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, maPhong); // Gán giá trị của maPhong vào câu truy vấn
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                slsv = rs.getInt("soLuongSVPhong");
             }
-            ps2.close();
+            ps.close();
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(SinhVienDangKyDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-
         return slsv;
-
     }
 
-    public int slsvINPhong(String gioitinh) {
-        int slsv = 0;
-        Connection con = KetNoiSQL.getConnection();
-
-        String sql2 = "select loaiPhong ,sum(soLuongSVPhong) as tongSVtt from Phong where gioiTinh=N'" + gioitinh + "' group by loaiPhong";
-        try {
-
-            PreparedStatement ps2 = con.prepareStatement(sql2);
-
-            ResultSet rs2 = ps2.executeQuery();
-
-            while (rs2.next()) {
-                slsv = slsv + rs2.getInt("tongSVtt");
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(SinhVienDangKyDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return slsv;
-
-    }
+//    public int slsvINPhong(String gioitinh) {
+//        int slsv = 0;
+//        Connection con = KetNoiSQL.getConnection();
+//
+//        String sql2 = "select loaiPhong ,sum(soLuongSVPhong) as tongSVtt from Phong where gioiTinh=N'" + gioitinh + "' group by loaiPhong";
+//        try {
+//
+//            PreparedStatement ps2 = con.prepareStatement(sql2);
+//
+//            ResultSet rs2 = ps2.executeQuery();
+//
+//            while (rs2.next()) {
+//                slsv = slsv + rs2.getInt("tongSVtt");
+//            }
+//
+//        } catch (SQLException ex) {
+//            Logger.getLogger(SinhVienDangKyDAO.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
+//        return slsv;
+//
+//    }
 
     public List<String> listmaphongTheoLoaiPhongAGT(String loaiphong, String gioitinh) {
         List<String> listmaphong = new ArrayList<>();
@@ -426,33 +426,30 @@ public class PhongDAO {
 
     }
 
-    public int CheckPhong(String loaiphong, String gioitinh) {
+    public int CheckPhong(String maPhong) {
         int t = 1;
-        int slsvDK = demSVinDK(loaiphong, gioitinh);
-        int slsv = slsvINPhong(loaiphong, gioitinh);
-        int slsvtontai = slsvtontaitrongPhong(loaiphong, gioitinh);
-        System.out.println(slsvDK);
+        int slsvdangthue = demSVinDK(maPhong);
+        int slsv = slsvINPhong(maPhong);
+        System.out.println(slsvdangthue);
         System.out.println(slsv);
-        System.out.println(slsvtontai);
-        
-        if (slsvtontai + slsvDK >= slsv) {
+        if (slsvdangthue >= slsv) {
             t = 0;
         }
         return t;
     }
 
-    public int CheckPhong(String gioitinh) {
-        int t = 1;
-        int slsvDK, slsv, slsvtontai;
-        slsvDK = demSVinDK(gioitinh);
-        slsv = slsvINPhong(gioitinh);
-        slsvtontai = slsvtontaitrongPhong(gioitinh);
-        if (slsvtontai + slsvDK >= slsv) {
-            t = 0;
-        }
-
-        return t;
-    }
+//    public int CheckPhong(String gioitinh) {
+//        int t = 1;
+//        int slsvDK, slsv, slsvtontai;
+//        slsvDK = demSVinDK(gioitinh);
+//        slsv = slsvINPhong(gioitinh);
+//        slsvtontai = slsvtontaitrongPhong(gioitinh);
+//        if (slsvtontai + slsvDK >= slsv) {
+//            t = 0;
+//        }
+//
+//        return t;
+//    }
 
     public void AddHopDong(String masv, String maphong, Date ngay1) {
         Connection conn = KetNoiSQL.getConnection();
@@ -593,5 +590,27 @@ public class PhongDAO {
 //       }
 //       
 //   }
+    
+    public int CheckGioiTinhHopLe(String masv, String gioiTinh){
+        int t = 0;
+        Connection con = KetNoiSQL.getConnection();
+        String sql = "SELECT gioiTinh FROM SinhVien WHERE maSV = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, masv); // Truyền tham số maPhong vào câu truy vấn
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                String gioiTinhSinhVien = rs.getString("gioiTinh");
+                if (gioiTinhSinhVien.equals(gioiTinh)) {
+                    t = 1;
+                }
+            }
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(QuanLySinhVienDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return t;
+    }
 
 }
