@@ -86,6 +86,11 @@ public class Main extends javax.swing.JFrame {
         jPanelTrangChu = new JFrameQuanLyKyTucXa.TrangChu();
         jPanelQuanLyNhanVien = new JFrameQuanLyKyTucXa.QuanLyNhanVien();
         jPanelQuanLySinhVien = new JFrameQuanLyKyTucXa.QuanLySinhVien();
+        SVKTX = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        quanLySVDangTrongKTX1 = new JFrameQuanLyKyTucXa.QuanLySVDangTrongKTX();
+        quanLySVDangChoDuyet1 = new JFrameQuanLyKyTucXa.QuanLySVDangChoDuyet();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -340,6 +345,42 @@ public class Main extends javax.swing.JFrame {
         Contents.add(jPanelQuanLyNhanVien, "card4");
         Contents.add(jPanelQuanLySinhVien, "card4");
 
+        SVKTX.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel5.setBackground(new java.awt.Color(19, 90, 112));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(19, 90, 118));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText(" TRANG THÔNG TIN SINH VIÊN Ở KÝ TÚC XÁ CỦA HỌC VIỆN ");
+
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
+
+        quanLySVDangTrongKTX1.setBackground(new java.awt.Color(255, 255, 255));
+        jTabbedPane1.addTab("QUẢN LÝ SINH VIÊN ĐANG Ở KTX", quanLySVDangTrongKTX1);
+
+        quanLySVDangChoDuyet1.setBackground(new java.awt.Color(255, 255, 255));
+        jTabbedPane1.addTab("QUẢN LÝ SINH VIÊN ĐANG CHỜ DUYỆT", quanLySVDangChoDuyet1);
+
+        javax.swing.GroupLayout SVKTXLayout = new javax.swing.GroupLayout(SVKTX);
+        SVKTX.setLayout(SVKTXLayout);
+        SVKTXLayout.setHorizontalGroup(
+            SVKTXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SVKTXLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 1170, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1216, Short.MAX_VALUE)
+        );
+        SVKTXLayout.setVerticalGroup(
+            SVKTXLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SVKTXLayout.createSequentialGroup()
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 734, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 195, Short.MAX_VALUE))
+        );
+
+        Contents.add(SVKTX, "card5");
+
         javax.swing.GroupLayout TrangchuLayout = new javax.swing.GroupLayout(Trangchu);
         Trangchu.setLayout(TrangchuLayout);
         TrangchuLayout.setHorizontalGroup(
@@ -348,7 +389,7 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(TrangchuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Contents, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Contents, javax.swing.GroupLayout.DEFAULT_SIZE, 1216, Short.MAX_VALUE)
                     .addComponent(NameKTX, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -375,9 +416,7 @@ public class Main extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(Trangchu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(Trangchu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -409,7 +448,11 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_cackhoanphiMouseClicked
 
     private void hopdongktxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hopdongktxMouseClicked
-
+        jPanelTrangChu.setVisible(false);
+        jPanelQuanLyNhanVien.setVisible(false);
+        jPanelQuanLySinhVien.setVisible(false);
+        hopdongktx.setVisible(true);
+        SVKTX.setVisible(true);
     }//GEN-LAST:event_hopdongktxMouseClicked
 
     private void quanlyphongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quanlyphongMouseClicked
@@ -419,6 +462,12 @@ public class Main extends javax.swing.JFrame {
     private void trangchuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trangchuMouseClicked
         hideAllPanels();
         jPanelTrangChu.setVisible(true);
+        jPanelQuanLyNhanVien.setVisible(false);
+        jPanelQuanLySinhVien.setVisible(false);
+        //hopdongktx.setVisible(false);
+        quanLySVDangTrongKTX1.setVisible(false);
+        quanLySVDangChoDuyet1.setVisible(false);
+        SVKTX.setVisible(false);
     }//GEN-LAST:event_trangchuMouseClicked
 
     private void dangxuat1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dangxuat1MouseClicked
@@ -449,6 +498,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel Contents;
     private javax.swing.JPanel Menu;
     private javax.swing.JPanel NameKTX;
+    private javax.swing.JPanel SVKTX;
     private javax.swing.JPanel Trangchu;
     private javax.swing.JLabel cackhoanphi;
     private javax.swing.JLabel cailaimatkhau;
@@ -459,9 +509,13 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private JFrameQuanLyKyTucXa.QuanLyNhanVien jPanelQuanLyNhanVien;
     private JFrameQuanLyKyTucXa.QuanLySinhVien jPanelQuanLySinhVien;
     private JFrameQuanLyKyTucXa.TrangChu jPanelTrangChu;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private JFrameQuanLyKyTucXa.QuanLySVDangChoDuyet quanLySVDangChoDuyet1;
+    private JFrameQuanLyKyTucXa.QuanLySVDangTrongKTX quanLySVDangTrongKTX1;
     private javax.swing.JLabel quanlynhanvien;
     private javax.swing.JLabel quanlyphong;
     private javax.swing.JLabel quanlysinhvien;
