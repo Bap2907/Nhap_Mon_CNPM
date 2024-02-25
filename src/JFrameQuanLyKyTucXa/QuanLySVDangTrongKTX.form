@@ -45,10 +45,15 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
+                  <Component id="jLabel2" min="-2" pref="1215" max="-2" attributes="0"/>
+              </Group>
               <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="ScrollPaneSV" min="-2" pref="1053" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
                           <Component id="loadSV" min="-2" pref="50" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="addSV" min="-2" pref="50" max="-2" attributes="0"/>
@@ -58,20 +63,9 @@
                           <Component id="updateSV" min="-2" pref="50" max="-2" attributes="0"/>
                           <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
                           <Component id="deleteSV" min="-2" pref="56" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="cbbtrangthai" min="-2" pref="162" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="426" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="ScrollPaneSV" min="-2" pref="1053" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
-                  <Component id="jLabel2" min="-2" pref="1215" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -79,25 +73,17 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jLabel2" min="-2" pref="60" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                          <Component id="cbbtrangthai" min="-2" pref="44" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="loadSV" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
-                              <Component id="addSV" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
-                              <Component id="viewSV" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
-                              <Component id="updateSV" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
-                              <Component id="deleteSV" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <Component id="loadSV" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="addSV" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="viewSV" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="updateSV" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="deleteSV" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="ScrollPaneSV" min="-2" pref="402" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="159" max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="ScrollPaneSV" min="-2" pref="385" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="182" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -183,24 +169,6 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deleteSVMouseClicked"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cbbtrangthai">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="T&#x1ea5;t c&#x1ea3;"/>
-                <StringItem index="1" value="&#x110;ang ch&#x1edd; duy&#x1ec7;t"/>
-                <StringItem index="2" value="&#x110;ang &#x1edf;"/>
-                <StringItem index="3" value="&#x110;&#xe3; r&#x1edd;i &#x111;i"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbbtrangthaiActionPerformed"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
         <Container class="javax.swing.JScrollPane" name="ScrollPaneSV">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -225,9 +193,9 @@
                     <Column editable="true" title="T&#xea;n sinh vi&#xea;n" type="java.lang.String"/>
                     <Column editable="true" title="M&#xe3; ph&#xf2;ng" type="java.lang.String"/>
                     <Column editable="true" title="Gi&#x1edb;i t&#xed;nh" type="java.lang.String"/>
+                    <Column editable="true" title="Ng&#xe0;y l&#x1ead;p HD" type="java.lang.String"/>
                     <Column editable="true" title="Ng&#xe0;y HDBD" type="java.lang.String"/>
                     <Column editable="true" title="Ng&#xe0;y HDKT" type="java.lang.String"/>
-                    <Column editable="true" title="T&#xec;nh tr&#x1ea1;ng" type="java.lang.String"/>
                   </Table>
                 </Property>
                 <Property name="focusable" type="boolean" value="false"/>

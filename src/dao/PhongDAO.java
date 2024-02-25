@@ -284,7 +284,7 @@ public class PhongDAO {
         return date;
     }
 
-    public int demSVinDK(String maPhong) {
+    public int demSVinDT(String maPhong) {
         int sl = 0;
         Connection con = KetNoiSQL.getConnection();
         String sql = "SELECT COUNT(*) AS slsv FROM HopDongKTX WHERE maPhong = ?";
@@ -303,22 +303,22 @@ public class PhongDAO {
         return sl;
     }
 
-//    public int demSVinDK(String gioitinh) {
-//        int sl = 0;
-//        Connection con = KetNoiSQL.getConnection();
-//        String sql = "select count(*) as slsv from DangKyPhong dkp join SinhVien sv on dkp.maSV=sv.maSV where gioiTinh=N'" + gioitinh + "'";
-//        try {
-//            PreparedStatement ps = con.prepareStatement(sql);
-//            ResultSet rs = ps.executeQuery();
-//            while (rs.next()) {
-//                sl = rs.getInt("slsv");
-//            }
-//
-//        } catch (SQLException ex) {
-//            Logger.getLogger(SinhVienDAO.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return sl;
-//    }
+    public int demSVinDK(String maPhong) {
+        int sl = 0;
+        Connection con = KetNoiSQL.getConnection();
+        String sql = "SELECT COUNT(*) AS slsv FROM DangKyPhong WHERE maPhong = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                sl = rs.getInt("slsv");
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SinhVienDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return sl;
+    }
 
     public int slsvINPhong(String maPhong) {
         int slsv = 0;
@@ -428,11 +428,12 @@ public class PhongDAO {
 
     public int CheckPhong(String maPhong) {
         int t = 1;
-        int slsvdangthue = demSVinDK(maPhong);
+        int slsvdangthue = demSVinDT(maPhong);
+        int slsvdangky = demSVinDK(maPhong);
         int slsv = slsvINPhong(maPhong);
         System.out.println(slsvdangthue);
         System.out.println(slsv);
-        if (slsvdangthue >= slsv) {
+        if (slsvdangthue + slsvdangky >= slsv) {
             t = 0;
         }
         return t;

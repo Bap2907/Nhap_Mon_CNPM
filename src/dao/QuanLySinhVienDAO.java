@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import model.ThongTinSinhVien;
 import model.ThongTinSVDangKyKTX;
+import model.ThongTinSVTrongKTX;
 import java.sql.Timestamp;
 
 
@@ -502,4 +503,36 @@ public class QuanLySinhVienDAO {
         preparedStatement.executeUpdate();
         preparedStatement.close();
     }
+    
+    public List<ThongTinSVTrongKTX> getAllThongTinSVTrongKTX() {
+        List<ThongTinSVTrongKTX> listSinhVien = new ArrayList<ThongTinSVTrongKTX>();
+        Connection conn = KetNoiSQL.getConnection();
+        String query = "SELECT HopDongKTX.maSV, SinhVien.tenSV, HopDongKTX.maPhong, SinhVien.gioiTinh, HopDongKTX.ngayLapHD, HopDongKTX.ngayHDBD, HopDongKTX.ngayHDKT " +
+                       "FROM HopDongKTX " +
+                       "INNER JOIN SinhVien ON SinhVien.maSV = HopDongKTX.maSV ";
+        try {
+            if (conn != null) {
+                PreparedStatement preparedStatement = conn.prepareStatement(query);
+                ResultSet rs = preparedStatement.executeQuery();
+                while (rs.next()) {
+                    ThongTinSVTrongKTX sv = new ThongTinSVTrongKTX();
+                    sv.setMaSV(rs.getString("maSV"));
+                    sv.setTenSV(rs.getString("tenSV"));
+                    sv.setMaPhong(rs.getString("maPhong"));
+                    sv.setGioiTinh(rs.getString("gioiTinh"));
+                    sv.setNgayBDHD(rs.getDate("ngayLapHD"));
+                    sv.setNgayBDHD(rs.getDate("ngayHDBD"));
+                    sv.setNgayKTHD(rs.getDate("ngayHDKT"));
+                    listSinhVien.add(sv);
+                }
+                preparedStatement.close();
+                conn.close();
+            }else{
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return listSinhVien;
+    }
+    
 }
