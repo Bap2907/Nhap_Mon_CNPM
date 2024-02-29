@@ -66,6 +66,7 @@
                           <Component id="NameKTX" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="Contents" pref="1000" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="1006" max="-2" attributes="0"/>
                       </Group>
                       <Component id="Menu" alignment="0" max="32767" attributes="0"/>
                   </Group>
@@ -148,7 +149,7 @@
                       <Component id="cailaimatkhau" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Component id="dangxuat" min="-2" pref="30" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="1471" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -493,20 +494,6 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
           <SubComponents>
-            <Component class="JFrameQuanLyKyTucXa.TrangChu" name="jPanelTrangChu">
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-                  <CardConstraints cardName="card2"/>
-                </Constraint>
-              </Constraints>
-            </Component>
-            <Component class="JFrameQuanLyKyTucXa.QuanLyNhanVien" name="jPanelQuanLyNhanVien">
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-                  <CardConstraints cardName="card4"/>
-                </Constraint>
-              </Constraints>
-            </Component>
             <Component class="JFrameQuanLyKyTucXa.QuanLySinhVien" name="jPanelQuanLySinhVien">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
@@ -572,20 +559,6 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="JFrameQuanLyKyTucXa.QuanLySVDangTrongKTX" name="quanLySVDangTrongKTX1">
-                      <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                        </Property>
-                      </Properties>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="QU&#x1ea2;N L&#xdd; SINH VI&#xca;N &#x110;ANG &#x1ede; KTX">
-                            <Property name="tabTitle" type="java.lang.String" value="QU&#x1ea2;N L&#xdd; SINH VI&#xca;N &#x110;ANG &#x1ede; KTX"/>
-                          </JTabbedPaneConstraints>
-                        </Constraint>
-                      </Constraints>
-                    </Component>
                     <Component class="JFrameQuanLyKyTucXa.QuanLySVDangChoDuyet" name="quanLySVDangChoDuyet1">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -600,10 +573,52 @@
                         </Constraint>
                       </Constraints>
                     </Component>
+                    <Component class="JFrameQuanLyKyTucXa.QuanLySVDangTrongKTX" name="quanLySVDangTrongKTX1">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                      </Properties>
+                      <Constraints>
+                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                          <JTabbedPaneConstraints tabName="QU&#x1ea2;N L&#xdd; SINH VI&#xca;N &#x110;ANG &#x1ede; KTX">
+                            <Property name="tabTitle" type="java.lang.String" value="QU&#x1ea2;N L&#xdd; SINH VI&#xca;N &#x110;ANG &#x1ede; KTX"/>
+                          </JTabbedPaneConstraints>
+                        </Constraint>
+                      </Constraints>
+                    </Component>
                   </SubComponents>
                 </Container>
               </SubComponents>
             </Container>
+            <Component class="JFrameQuanLyKyTucXa.TrangChu" name="jPanelTrangChu">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+                  <CardConstraints cardName="card2"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="JFrameQuanLyKyTucXa.QuanLyNhanVien" name="jPanelQuanLyNhanVien">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+                  <CardConstraints cardName="card4"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="JFrameQuanLyKyTucXa.QuanLyPhong" name="jPanelQuanlyPhong">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+                  <CardConstraints cardName="card6"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="JFrameQuanLyKyTucXa.ThongKePhong" name="jPanelThongKePhong">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+                  <CardConstraints cardName="card7"/>
+                </Constraint>
+              </Constraints>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>
