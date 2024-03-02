@@ -23,7 +23,8 @@ public class KetNoiSQL {
         try {
             con = DriverManager.getConnection(url,userID,password);
             
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return con;
     }

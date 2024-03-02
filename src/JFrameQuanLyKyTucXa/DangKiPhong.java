@@ -62,29 +62,10 @@ public class DangKiPhong extends javax.swing.JPanel {
     }
 
     public void displayData() {
-         // Thay thế bằng cách lấy giới tính thực tế của tài khoản đang đăng nhập
-        //MainSV main = new MainSV(email);
-        //main.setVisible(true);
-        //String gioiTinhDangNhap = main.getGenderForEmail(email);
-        //String email = getEmail();
-//        String email = getEmail();
-//        System.out.println("Giá trị của email của lay: " + email);
-    // Gán giá trị email cho biến thành viên email của lớp DangKiPhong
-//        setEmail(email);
-//        System.out.println("Giá trị của email của set: " + email);
-//        gioitinh = new QuanLySinhVienDAO().layGTSinhVienTuEmail(email);
-//        String gioiTinhDangNhap = "Nam";
-        
-        //String query = "SELECT * FROM Phong WHERE gioiTinh = ?";
         String query = "SELECT * FROM Phong";
-    
-        // Sử dụng GridLayout cho JPanel
         int rows = 0;
         int cols = 3; // Số cột bạn muốn hiển thị
-
         try (PreparedStatement preparedStatement = ketNoiSQL.getConnection().prepareStatement(query)) {
-            //preparedStatement.setString(1, gioiTinhDangNhap); // Thiết lập giới tính của tài khoản đang đăng nhập
-
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 // Kích thước của mỗi ô vuông
                 int squareSize = 130; // Đặt kích thước lớn hơn để hiển thị các thông tin
@@ -161,7 +142,6 @@ public class DangKiPhong extends javax.swing.JPanel {
         gioitinh = new QuanLySinhVienDAO().layGTSinhVienTuEmail(email);
         QuanLySinhVienDAO svd = new QuanLySinhVienDAO();
         String masv = new QuanLySinhVienDAO().layMaSinhVienTuEmail(email);
-        //System.out.println("masv = "+ masv);
         int fl = new PhongDAO().CheckPhong(maPhong);
         int choice = JOptionPane.showConfirmDialog(null, "Bạn có muốn đăng ký phòng không?", "Xác nhận", JOptionPane.YES_NO_OPTION);
         if (choice == JOptionPane.YES_OPTION) { 

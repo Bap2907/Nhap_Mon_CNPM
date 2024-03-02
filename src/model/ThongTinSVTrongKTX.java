@@ -19,7 +19,6 @@ public class ThongTinSVTrongKTX {
         this.tenSV = tenSV;
         this.gioiTinh = gioiTinh;
         this.maPhong = maPhong;
-        this.gioiTinh = gioiTinh;
         this.ngayLapHD = ngayLapHD;
         this.ngayHDBD = ngayHDBD;
         this.ngayHDKT = ngayHDKT;

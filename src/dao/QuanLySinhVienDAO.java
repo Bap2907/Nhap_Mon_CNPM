@@ -343,6 +343,20 @@ public class QuanLySinhVienDAO {
         }
     }
     
+    public void updateTrangThaiKhiAdminDangKy(String masv) {
+        Connection con = KetNoiSQL.getConnection();
+        String sql = "update SinhVien set trangThai=? where maSV='" + masv + "'";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, "2");
+            ps.executeUpdate();
+            ps.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SinhVienDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public List<ThongTinSinhVien> getAllThongTinSVTrangThai(int trangthai) {
         List<ThongTinSinhVien> listSinhVien = new ArrayList<ThongTinSinhVien>();
         Connection conn = KetNoiSQL.getConnection();
