@@ -215,11 +215,11 @@ public class DangKiPhong extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        DateVao = new com.toedter.calendar.JDateChooser();
         jLabel6 = new javax.swing.JLabel();
         txtrd1thang = new javax.swing.JRadioButton();
         txtrd2thang = new javax.swing.JRadioButton();
         txtrd3thang = new javax.swing.JRadioButton();
+        DateVao = new com.toedter.calendar.JDateChooser();
         cbdieukhoang = new javax.swing.JCheckBox();
         btxacnhan = new javax.swing.JButton();
         buttonGroup2 = new javax.swing.ButtonGroup();
@@ -246,20 +246,6 @@ public class DangKiPhong extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(19, 90, 118));
         jLabel2.setText("Thời gian dự kiến vào:");
-
-        DateVao.setToolTipText("");
-        DateVao.setDateFormatString("MM-yyyy");
-        DateVao.setPreferredSize(new java.awt.Dimension(90, 22));
-        DateVao.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                DateVaoMouseClicked(evt);
-            }
-        });
-        DateVao.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                DateVaoPropertyChange(evt);
-            }
-        });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(19, 90, 118));
@@ -299,6 +285,20 @@ public class DangKiPhong extends javax.swing.JPanel {
             }
         });
 
+        DateVao.setToolTipText("");
+        DateVao.setDateFormatString("MM-yyyy");
+        DateVao.setPreferredSize(new java.awt.Dimension(90, 22));
+        DateVao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DateVaoMouseClicked(evt);
+            }
+        });
+        DateVao.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                DateVaoPropertyChange(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -310,28 +310,25 @@ public class DangKiPhong extends javax.swing.JPanel {
                     .addComponent(jLabel6))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(DateVao, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 81, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtrd1thang)
                         .addGap(33, 33, 33)
                         .addComponent(txtrd2thang)
                         .addGap(28, 28, 28)
                         .addComponent(txtrd3thang)
-                        .addGap(41, 41, 41))))
+                        .addGap(41, 41, 41))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(DateVao, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(jLabel2))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(DateVao, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(43, 43, 43)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(DateVao, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
@@ -453,6 +450,7 @@ public class DangKiPhong extends javax.swing.JPanel {
     }//GEN-LAST:event_DateVaoMouseClicked
 
     private void DateVaoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_DateVaoPropertyChange
+        // TODO add your handling code here:
         rangbuotxacnhan();
     }//GEN-LAST:event_DateVaoPropertyChange
 

@@ -436,6 +436,24 @@ public class QuanLySinhVienDAO {
         }
     }
     
+    public void XoaSVKhoiKTX(String maSV) {
+        Connection con = KetNoiSQL.getConnection();
+        String UpdateTrangThaiSV = "update SinhVien set trangThai = 1 where maSV = ?";
+        String DeleteSVDangKyPhong = "delete from HopDongKTX where maSV = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(UpdateTrangThaiSV);
+            ps.setString(1, maSV);
+            ps.executeUpdate();
+            PreparedStatement rs = con.prepareStatement(DeleteSVDangKyPhong);
+            rs.setString(1, maSV);
+            rs.executeUpdate();
+            ps.close();
+            rs.close();
+            con.close();
+        } catch (SQLException e) {
+        }
+    }
+    
     public List<ThongTinSVDangKyKTX> getAllThongTinSVDangKyKTXSearch(String where, String text) {
         List<ThongTinSVDangKyKTX> listSinhVien = new ArrayList<ThongTinSVDangKyKTX>();
         Connection conn = KetNoiSQL.getConnection();
@@ -535,6 +553,39 @@ public class QuanLySinhVienDAO {
                     sv.setMaPhong(rs.getString("maPhong"));
                     sv.setGioiTinh(rs.getString("gioiTinh"));
                     sv.setNgayBDHD(rs.getDate("ngayLapHD"));
+                    sv.setNgayBDHD(rs.getDate("ngayHDBD"));
+                    sv.setNgayKTHD(rs.getDate("ngayHDKT"));
+                    listSinhVien.add(sv);
+                }
+                preparedStatement.close();
+                conn.close();
+            }else{
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return listSinhVien;
+    }
+    
+    public List<ThongTinSVTrongKTX> getAllThongTinSVSearchTK(String where, String text) {
+        List<ThongTinSVTrongKTX> listSinhVien = new ArrayList<ThongTinSVTrongKTX>();
+        Connection conn = KetNoiSQL.getConnection();
+        String query = "SELECT HopDongKTX.maSV, SinhVien.tenSV, HopDongKTX.maPhong, SinhVien.gioiTinh, HopDongKTX.ngayLapHD, HopDongKTX.ngayHDBD, HopDongKTX.ngayHDKT " +
+                       "FROM HopDongKTX " +
+                       "INNER JOIN SinhVien ON SinhVien.maSV = HopDongKTX.maSV " +
+                        //"WHERE " + where + " LIKE N'%" + text + "%'";
+                       "WHERE " + where + " LIKE N'%" + text + "%'";
+        try {
+            if (conn != null) {
+                PreparedStatement preparedStatement = conn.prepareStatement(query);
+                ResultSet rs = preparedStatement.executeQuery();
+                while (rs.next()) {
+                    ThongTinSVTrongKTX sv = new ThongTinSVTrongKTX();
+                    sv.setMaSV(rs.getString("maSV"));
+                    sv.setTenSV(rs.getString("tenSV"));
+                    sv.setMaPhong(rs.getString("maPhong"));
+                    sv.setGioiTinh(rs.getString("gioiTinh"));
+                    sv.setNgayLapHD(rs.getDate("ngayLapHD"));
                     sv.setNgayBDHD(rs.getDate("ngayHDBD"));
                     sv.setNgayKTHD(rs.getDate("ngayHDKT"));
                     listSinhVien.add(sv);

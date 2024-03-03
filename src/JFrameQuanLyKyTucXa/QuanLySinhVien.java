@@ -1942,8 +1942,8 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         }
     }
     
-    private void showTableTT(String where, String text, int trangthaii) {
-        listsinhvien = new QuanLySinhVienDAO().getAllThongTinSVSearchTT(where, text, trangthaii);
+    private void showTableTT(String where, String text, int trangthai) {
+        listsinhvien = new QuanLySinhVienDAO().getAllThongTinSVSearchTT(where, text, trangthai);
         Model.setRowCount(0);
 
         for (ThongTinSinhVien sv : listsinhvien) {
