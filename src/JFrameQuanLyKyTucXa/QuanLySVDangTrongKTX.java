@@ -1390,14 +1390,13 @@ public class QuanLySVDangTrongKTX extends javax.swing.JPanel {
     }
     
     private void showTableSearch(String where, String text) {
-        listsinhvien = new QuanLySinhVienDAO().getAllThongTinSVSearchTK(where, text);
+        listsinhvien = new QuanLySinhVienDAO().getAllThongTinSVSearchTrongKTX(where, text);
         Model.setRowCount(0);
         for (ThongTinSVTrongKTX sv : listsinhvien) {
             Model.addRow(new Object[]{
                 sv.getMaSV(), sv.getTenSV(), sv.getMaPhong(), sv.getGioiTinh(), sv.getNgayLapHD(), sv.getNgayBDHD(), sv.getNgayKTHD()
             });
         }
-        //count = -1;
     }
 
 }

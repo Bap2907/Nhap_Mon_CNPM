@@ -44,9 +44,11 @@ public class QuanLySVDangChoDuyet extends javax.swing.JPanel {
     private String maSV;
     private int evcbbtt;
     private JTable table;
+    private int choice;
 
     public QuanLySVDangChoDuyet() {
         initComponents();
+        AddSearch();
         Model = (DefaultTableModel) tableSV.getModel();
         showTable();
         tableSV.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
@@ -66,6 +68,7 @@ public class QuanLySVDangChoDuyet extends javax.swing.JPanel {
         ScrollPaneSV = new javax.swing.JScrollPane();
         tableSV = new javax.swing.JTable();
         confirmSV = new javax.swing.JLabel();
+        txtSearch = new textfield.TextFieldSearchOption();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -139,6 +142,14 @@ public class QuanLySVDangChoDuyet extends javax.swing.JPanel {
             }
         });
 
+        txtSearch.setBorder(null);
+        txtSearch.setForeground(new java.awt.Color(19, 90, 118));
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -156,7 +167,8 @@ public class QuanLySVDangChoDuyet extends javax.swing.JPanel {
                         .addComponent(deleteSV, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(confirmSV, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(64, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -164,10 +176,12 @@ public class QuanLySVDangChoDuyet extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(loadSV, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                    .addComponent(deleteSV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(confirmSV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(loadSV, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                        .addComponent(deleteSV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(confirmSV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(ScrollPaneSV, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 107, Short.MAX_VALUE))
@@ -247,6 +261,76 @@ public class QuanLySVDangChoDuyet extends javax.swing.JPanel {
         showTable();
     }//GEN-LAST:event_confirmSVMouseClicked
 
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        if (txtSearch.isSelected()) {
+            int option = txtSearch.getSelectedIndex();
+            String textsearch = txtSearch.getText().trim();
+            if (choice == 0) {
+                if (option == 0) {
+                    showTableSearch("maSV", textsearch);
+                } else if (option == 1) {
+                    showTableSearch("maPhong", textsearch);
+                } else if (option == 2) {
+                    showTableSearch("gioiTinh", textsearch);
+                } else if (option == 3) {
+                    showTableSearch("ngayHDKT", textsearch);
+                }
+            } else if (choice == 1) {
+                if (option == 0) {
+                    showTableSearch("maSV", textsearch);
+                } else if (option == 1) {
+                    showTableSearch("maPhong", textsearch);
+                } else if (option == 2) {
+                    showTableSearch("gioiTinh", textsearch);
+                } else if (option == 3) {
+                    showTableSearch("ngayHDKT", textsearch);
+                }
+            } else if (choice == 2) {
+                if (option == 0) {
+                    showTableSearch("maSV", textsearch);
+                } else if (option == 1) {
+                    showTableSearch("maPhong", textsearch);
+                } else if (option == 2) {
+                    showTableSearch("gioiTinh", textsearch);
+                } else if (option == 3) {
+                    showTableSearch("ngayHDKT", textsearch);
+                }
+            } else if (choice == 3) {
+                if (option == 0) {
+                    showTableSearch("maSV", textsearch);
+                } else if (option == 1) {
+                    showTableSearch("maPhong", textsearch);
+                } else if (option == 2) {
+                    showTableSearch("gioiTinh", textsearch);
+                } else if (option == 3) {
+                    showTableSearch("ngayHDKT", textsearch);
+                }
+            } else if (choice == 4) {
+                if (option == 0) {
+                    showTableSearch("maSV", textsearch);
+                } else if (option == 1) {
+                    showTableSearch("maPhong", textsearch);
+                } else if (option == 2) {
+                    showTableSearch("gioiTinh", textsearch);
+                } else if (option == 3) {
+                    showTableSearch("ngayHDKT", textsearch);
+                }
+            }
+        }
+    }//GEN-LAST:event_txtSearchKeyReleased
+    
+    void AddSearch() {
+        txtSearch.addEventOptionSelected(new SearchOptionEvent() {
+            @Override
+            public void optionSelected(SearchOption option, int index) {
+                txtSearch.setHint("Tìm kiếm " + option.getName() + "....");
+            }
+        });
+        txtSearch.addOption(new SearchOption("Mã Sinh Viên", new ImageIcon(getClass().getResource("/img/notebook.png"))));
+        txtSearch.addOption(new SearchOption("Mã phòng", new ImageIcon(getClass().getResource("/img/username.png"))));
+        txtSearch.addOption(new SearchOption("Giới tính", new ImageIcon(getClass().getResource("/img/creditcard.png"))));
+        txtSearch.addOption(new SearchOption("Ngày kết thúc hợp đồng", new ImageIcon(getClass().getResource("/img/presentation.png"))));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane ScrollPaneSV;
@@ -256,6 +340,7 @@ public class QuanLySVDangChoDuyet extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel loadSV;
     private javax.swing.JTable tableSV;
+    private textfield.TextFieldSearchOption txtSearch;
     // End of variables declaration//GEN-END:variables
 
     private void showTable() {
@@ -281,6 +366,16 @@ public class QuanLySVDangChoDuyet extends javax.swing.JPanel {
         for (ThongTinSVDangKyKTX sv : listsinhvien) {
             Model.addRow(new Object[]{
                 sv.getMaSV(), sv.getTenSV(), sv.getMaPhong(), sv.getGioiTinh(), sv.getGioiTinh(), sv.getNgayBDHD(), sv.getNgayKTHD(), trangThaiText
+            });
+        }
+    }
+    
+    private void showTableSearch(String where, String text) {
+        listsinhvien = new QuanLySinhVienDAO().getAllThongTinSVSearchDangKyKTX(where, text);
+        Model.setRowCount(0);
+        for (ThongTinSVDangKyKTX sv : listsinhvien) {
+            Model.addRow(new Object[]{
+                sv.getMaSV(), sv.getTenSV(), sv.getMaPhong(), sv.getGioiTinh(), sv.getNgayBDHD(), sv.getNgayKTHD()
             });
         }
     }
