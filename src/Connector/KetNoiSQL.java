@@ -18,12 +18,13 @@ public class KetNoiSQL {
     static String password = "sa";
 
     public static Connection getConnection() {
-        String url = "jdbc:sqlserver://" + serverName + ":" + portNumber + ";databaseName=" + dbName;
+        String url = "jdbc:sqlserver://" + serverName + ":" + portNumber + ";databaseName=" + dbName ;
         Connection con = null;
         try {
             con = DriverManager.getConnection(url,userID,password);
             
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return con;
     }

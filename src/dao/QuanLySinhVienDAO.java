@@ -16,6 +16,10 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import model.ThongTinSinhVien;
+import model.ThongTinSVDangKyKTX;
+import model.ThongTinSVTrongKTX;
+import java.sql.Timestamp;
+
 
 public class QuanLySinhVienDAO {
     
@@ -369,4 +373,166 @@ public class QuanLySinhVienDAO {
         }
         return listSinhVien;
     }
+    
+    public List<ThongTinSVDangKyKTX> getAllThongTinSVDangKyKTX() {
+        List<ThongTinSVDangKyKTX> listSinhVien = new ArrayList<ThongTinSVDangKyKTX>();
+        Connection conn = KetNoiSQL.getConnection();
+        String query = "SELECT DangKyPhong.maSV, SinhVien.tenSV, DangKyPhong.maPhong, SinhVien.gioiTinh, DangKyPhong.ngayHDBD, DangKyPhong.ngayHDKT " +
+                       "FROM DangKyPhong " +
+                       "INNER JOIN SinhVien ON SinhVien.maSV = DangKyPhong.maSV ";
+        try {
+            if (conn != null) {
+                PreparedStatement preparedStatement = conn.prepareStatement(query);
+                ResultSet rs = preparedStatement.executeQuery();
+                while (rs.next()) {
+                    ThongTinSVDangKyKTX sv = new ThongTinSVDangKyKTX();
+                    sv.setMaSV(rs.getString("maSV"));
+                    sv.setTenSV(rs.getString("tenSV"));
+                    sv.setMaPhong(rs.getString("maPhong"));
+                    sv.setGioiTinh(rs.getString("gioiTinh"));
+                    sv.setNgayBDHD(rs.getDate("ngayHDBD"));
+                    sv.setNgayKTHD(rs.getDate("ngayHDKT"));
+                    listSinhVien.add(sv);
+                }
+                preparedStatement.close();
+                conn.close();
+            }else{
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return listSinhVien;
+    }
+    
+    public void XoaSVKhoiDangChoDuyet(String maSV) {
+        Connection con = KetNoiSQL.getConnection();
+        String UpdateTrangThaiSV = "update SinhVien set trangThai = 1 where maSV = ?";
+        String DeleteSVDangKyPhong = "delete from DangKyPhong where maSV = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(UpdateTrangThaiSV);
+            ps.setString(1, maSV);
+            ps.executeUpdate();
+            PreparedStatement rs = con.prepareStatement(DeleteSVDangKyPhong);
+            rs.setString(1, maSV);
+            rs.executeUpdate();
+            ps.close();
+            rs.close();
+            con.close();
+        } catch (SQLException e) {
+        }
+    }
+    
+    public List<ThongTinSVDangKyKTX> getAllThongTinSVDangKyKTXSearch(String where, String text) {
+        List<ThongTinSVDangKyKTX> listSinhVien = new ArrayList<ThongTinSVDangKyKTX>();
+        Connection conn = KetNoiSQL.getConnection();
+        String query = "SELECT DangKyPhong.maSV, SinhVien.tenSV, DangKyPhong.maPhong, SinhVien.gioiTinh, DangKyPhong.ngayHDBD, DangKyPhong.ngayHDKT " +
+                       "FROM DangKyPhong " +
+                       "INNER JOIN SinhVien ON SinhVien.maSV = DangKyPhong.maSV ";
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(query);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                ThongTinSVDangKyKTX sv = new ThongTinSVDangKyKTX();
+                sv.setMaSV(rs.getString("maSV"));
+                sv.setTenSV(rs.getString("tenSV"));
+                sv.setMaPhong(rs.getString("maPhong"));
+                sv.setGioiTinh(rs.getString("gioiTinh"));
+                sv.setNgayBDHD(rs.getDate("ngayHDBD"));
+                sv.setNgayKTHD(rs.getDate("ngayHDKT"));
+                listSinhVien.add(sv);
+            }
+            preparedStatement.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return listSinhVien;
+    }
+    
+    public void ConfirmSVVaoKTX(String maSV) {
+        Connection con = KetNoiSQL.getConnection();
+        Date date = new Date();
+        Timestamp ngayLapHD = new Timestamp(date.getTime());
+        String query = "SELECT maPhong, ngayHDBD, ngayHDKT FROM DangKyPhong WHERE maSV = ?";
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement(query);
+            preparedStatement.setString(1, maSV);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String maPhong = resultSet.getString("maPhong");
+                Timestamp ngayHDBD = resultSet.getTimestamp("ngayHDBD");
+                Timestamp ngayHDKT = resultSet.getTimestamp("ngayHDKT");
+                insertIntoHopDongKTX(maSV, maPhong, ngayHDBD, ngayHDKT, ngayLapHD);
+            }
+            updateSinhVienTrangThai(maSV);
+            deleteFromDangKyPhong(maSV);
+            resultSet.close();
+            preparedStatement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void insertIntoHopDongKTX(String maSV, String maPhong, Timestamp ngayHDBD, Timestamp ngayHDKT, Timestamp ngayLapHD) throws SQLException {
+        Connection con = KetNoiSQL.getConnection();
+        String query = "INSERT INTO HopDongKTX (maSV, maPhong, ngayLapHD, ngayHDBD, ngayHDKT) VALUES (?, ?, ?, ?, ?)";
+        PreparedStatement preparedStatement = con.prepareStatement(query);
+        preparedStatement.setString(1, maSV);
+        preparedStatement.setString(2, maPhong);
+        preparedStatement.setTimestamp(3, ngayLapHD);
+        preparedStatement.setTimestamp(4, ngayHDBD);
+        preparedStatement.setTimestamp(5, ngayHDKT);
+        preparedStatement.executeUpdate();
+        preparedStatement.close();
+    }
+    
+    private void updateSinhVienTrangThai(String maSV) throws SQLException {
+        Connection con = KetNoiSQL.getConnection();
+        String updateQuery = "UPDATE SinhVien SET trangThai = 2 WHERE maSV = ?";
+        PreparedStatement updateStatement = con.prepareStatement(updateQuery);
+        updateStatement.setString(1, maSV);
+        updateStatement.executeUpdate();
+        updateStatement.close();
+    }
+    
+    private void deleteFromDangKyPhong(String maSV) throws SQLException {
+        Connection con = KetNoiSQL.getConnection();
+        String query = "DELETE FROM DangKyPhong WHERE maSV = ?";
+        PreparedStatement preparedStatement = con.prepareStatement(query);
+        preparedStatement.setString(1, maSV);
+        preparedStatement.executeUpdate();
+        preparedStatement.close();
+    }
+    
+    public List<ThongTinSVTrongKTX> getAllThongTinSVTrongKTX() {
+        List<ThongTinSVTrongKTX> listSinhVien = new ArrayList<ThongTinSVTrongKTX>();
+        Connection conn = KetNoiSQL.getConnection();
+        String query = "SELECT HopDongKTX.maSV, SinhVien.tenSV, HopDongKTX.maPhong, SinhVien.gioiTinh, HopDongKTX.ngayLapHD, HopDongKTX.ngayHDBD, HopDongKTX.ngayHDKT " +
+                       "FROM HopDongKTX " +
+                       "INNER JOIN SinhVien ON SinhVien.maSV = HopDongKTX.maSV ";
+        try {
+            if (conn != null) {
+                PreparedStatement preparedStatement = conn.prepareStatement(query);
+                ResultSet rs = preparedStatement.executeQuery();
+                while (rs.next()) {
+                    ThongTinSVTrongKTX sv = new ThongTinSVTrongKTX();
+                    sv.setMaSV(rs.getString("maSV"));
+                    sv.setTenSV(rs.getString("tenSV"));
+                    sv.setMaPhong(rs.getString("maPhong"));
+                    sv.setGioiTinh(rs.getString("gioiTinh"));
+                    sv.setNgayBDHD(rs.getDate("ngayLapHD"));
+                    sv.setNgayBDHD(rs.getDate("ngayHDBD"));
+                    sv.setNgayKTHD(rs.getDate("ngayHDKT"));
+                    listSinhVien.add(sv);
+                }
+                preparedStatement.close();
+                conn.close();
+            }else{
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return listSinhVien;
+    }
+    
 }
