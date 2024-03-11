@@ -30,6 +30,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumnModel;
 import java.util.ArrayList;
 import java.time.format.DateTimeFormatter;
+import static services.HashingPass.PasswordHash;
 
 /**
  *
@@ -1450,7 +1451,7 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
         String sodienthoainv = txtSoDienThoaiNV.getText().trim();
         String emailnv = txtEmail.getText().trim();
         String tendangnhapnv = txtTenDangNhapNV.getText().trim();
-        String matkhau = txtMatKhauNV.getText().trim();
+        String matkhau = PasswordHash(txtMatKhauNV.getText().trim());
         String nhaplaimatkhau = txtNhapLaiMatKhauNV.getText().trim();
 
         // Ràng buộc điều kiện chi tiết
@@ -2023,7 +2024,7 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
 
             String password = txtMatKhauNV.getText().trim();
             ps1.setString(1, txtTenDangNhapNV.getText().trim());
-            ps1.setString(2, password);
+            ps1.setString(2, PasswordHash(password));
             ps1.setString(3, txtEmail.getText().trim());
             ps1.setString(4, phanquyen);
 
