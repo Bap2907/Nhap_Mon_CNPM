@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 import java.util.Calendar;
+import static services.HashingPass.PasswordHash;
 
 public class SignUp extends javax.swing.JFrame {
 
@@ -842,7 +843,7 @@ public class SignUp extends javax.swing.JFrame {
             String password = txtMatKhauSV.getText().trim();
             ps1.setString(1, txtTenDangNhapSV.getText().trim());
             ps1.setString(2, password);
-            ps1.setString(3, txtEmailSV.getText().trim());
+            ps1.setString(3, PasswordHash(txtEmailSV.getText().trim()));
             ps1.setString(4, "Sinh Vien");
 
             row = ps1.executeUpdate();

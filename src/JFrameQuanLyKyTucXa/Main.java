@@ -61,6 +61,8 @@ public class Main extends javax.swing.JFrame {
         SVKTX.setVisible(false);
         jPanelQuanLyDienNuoc.setVisible(false);
         jPanelHoaDon.setVisible(false);
+        jPanelCaiDatTaiKhoan.setVisible(false);
+        jPanelThongTinTaiKhoan.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -100,6 +102,8 @@ public class Main extends javax.swing.JFrame {
         jPanelThongKePhong = new JFrameQuanLyKyTucXa.ThongKePhong();
         jPanelQuanLyDienNuoc = new JFrameQuanLyKyTucXa.QuanLyDienNuoc();
         jPanelHoaDon = new JFrameQuanLyKyTucXa.JpanelQuanLyTienPhong();
+        jPanelThongTinTaiKhoan = new JFrameQuanLyKyTucXa.ThongTinTaiKhoan();
+        jPanelCaiDatTaiKhoan = new JFrameQuanLyKyTucXa.CaiDatTaiKhoan();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -416,6 +420,8 @@ public class Main extends javax.swing.JFrame {
         Contents.add(jPanelThongKePhong, "card7");
         Contents.add(jPanelQuanLyDienNuoc, "card8");
         Contents.add(jPanelHoaDon, "card9");
+        Contents.add(jPanelThongTinTaiKhoan, "card10");
+        Contents.add(jPanelCaiDatTaiKhoan, "card11");
 
         javax.swing.GroupLayout TrangchuLayout = new javax.swing.GroupLayout(Trangchu);
         Trangchu.setLayout(TrangchuLayout);
@@ -469,11 +475,16 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_dangxuatMouseClicked
 
     private void cailaimatkhauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cailaimatkhauMouseClicked
-
+        hideAllPanels();
+        jPanelCaiDatTaiKhoan.setVisible(true);
+        setnameuser(email);
     }//GEN-LAST:event_cailaimatkhauMouseClicked
 
     private void thongtintaikhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thongtintaikhoanMouseClicked
-
+        hideAllPanels();
+        jPanelThongTinTaiKhoan.setVisible(true);
+        setnameuser(email);
+        this.jPanelThongTinTaiKhoan.showViewTaiKhoanEmail(email);
     }//GEN-LAST:event_thongtintaikhoanMouseClicked
 
     private void thongkeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thongkeMouseClicked
@@ -559,12 +570,14 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private JFrameQuanLyKyTucXa.CaiDatTaiKhoan jPanelCaiDatTaiKhoan;
     private JFrameQuanLyKyTucXa.JpanelQuanLyTienPhong jPanelHoaDon;
     private JFrameQuanLyKyTucXa.QuanLyDienNuoc jPanelQuanLyDienNuoc;
     private JFrameQuanLyKyTucXa.QuanLyNhanVien jPanelQuanLyNhanVien;
     private JFrameQuanLyKyTucXa.QuanLySinhVien jPanelQuanLySinhVien;
     private JFrameQuanLyKyTucXa.QuanLyPhong jPanelQuanlyPhong;
     private JFrameQuanLyKyTucXa.ThongKePhong jPanelThongKePhong;
+    private JFrameQuanLyKyTucXa.ThongTinTaiKhoan jPanelThongTinTaiKhoan;
     private JFrameQuanLyKyTucXa.TrangChu jPanelTrangChu;
     private javax.swing.JTabbedPane jTabbedPane1;
     private JFrameQuanLyKyTucXa.QuanLySVDangChoDuyet quanLySVDangChoDuyet1;
