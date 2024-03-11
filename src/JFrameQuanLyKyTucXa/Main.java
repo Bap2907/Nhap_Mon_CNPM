@@ -155,7 +155,7 @@ public class Main extends javax.swing.JFrame {
         cackhoanphi.setForeground(new java.awt.Color(255, 255, 255));
         cackhoanphi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cackhoanphi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cackhoanphi.png"))); // NOI18N
-        cackhoanphi.setText("Hóa đơn tổng");
+        cackhoanphi.setText("Phí sinh hoạt");
         cackhoanphi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cackhoanphi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
