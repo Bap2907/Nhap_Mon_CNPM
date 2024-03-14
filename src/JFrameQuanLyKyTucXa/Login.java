@@ -10,7 +10,9 @@ import JFrameQuanLyKyTucXa.Main;
 import dao.QuanLyNhanVienDAO;
 import dao.TaiKhoanDAO;
 import java.sql.Connection;
+import services.EmailTest;
 import model.ThongTinNhanVien;
+import static services.HashingPass.PasswordHash;
 public class Login extends javax.swing.JFrame {
     Connector.KetNoiSQL connect = new Connector.KetNoiSQL();
     private String email;
@@ -269,7 +271,7 @@ public class Login extends javax.swing.JFrame {
                 String sql = "select * from TaiKhoan where tenDangNhap=? and matKhau=?";
                 PreparedStatement ps= con.prepareStatement(sql);
                 ps.setString(1,jnameuser.getText());
-                ps.setString(2,jpassword.getText());
+                ps.setString(2,PasswordHash(jpassword.getText()));
                 ResultSet rs = ps.executeQuery();          
                 if (rs.next()){
                     String phanQuyen = rs.getString("phanQuyen");
@@ -304,8 +306,8 @@ public class Login extends javax.swing.JFrame {
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         // TODO add your handling code here:
-//        EmailTest emailtest = new EmailTest();
-//        emailtest.show();
+        EmailTest emailtest = new EmailTest();
+        emailtest.show();
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked

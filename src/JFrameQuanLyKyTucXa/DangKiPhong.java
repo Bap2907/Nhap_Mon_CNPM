@@ -202,7 +202,6 @@ public class DangKiPhong extends javax.swing.JPanel {
         } catch (SQLException ex) {
             Logger.getLogger(QuanLySinhVienDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     @SuppressWarnings("unchecked")
@@ -441,7 +440,7 @@ public class DangKiPhong extends javax.swing.JPanel {
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 598, Short.MAX_VALUE))
+                .addGap(0, 595, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -498,8 +497,6 @@ public class DangKiPhong extends javax.swing.JPanel {
                 int test = JOptionPane.showConfirmDialog(null, "Bạn chắc có muốn đăng ký hay không !", "Thông báo đăng ký", JOptionPane.YES_NO_OPTION);
                 if (test == JOptionPane.YES_OPTION) {
                     svd.updateTrangThaiKhiSVDangKy(masv);
-//                    NhapPhong("1", gioitinh);
-//                    updateHDKTKTX(masv, keyradiothang, d1n);
                     ThemThongTinSVDangKy(masv, maPhongDuocChon, keyradiothang, d1n);
                     JOptionPane.showMessageDialog(null, "Bạn đã đăng ký thành công");
                     jDialog1.dispose();

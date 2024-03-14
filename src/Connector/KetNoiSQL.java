@@ -15,10 +15,10 @@ public class KetNoiSQL {
     static String portNumber = "1433";
     static String dbName = "quanliktxDLT";
     static String userID = "sa";
-    static String password = "dung01236999860";
+    static String password = "123456";
 
     public static Connection getConnection() {
-        String url = "jdbc:sqlserver://" + serverName + ":" + portNumber + ";databaseName=" + dbName;
+        String url = "jdbc:sqlserver://" + serverName + ":" + portNumber + ";databaseName=" + dbName ;
         Connection con = null;
         try {
             con = DriverManager.getConnection(url,userID,password);

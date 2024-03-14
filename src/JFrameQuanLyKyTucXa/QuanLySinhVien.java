@@ -24,6 +24,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import model.ThongTinSinhVien;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
+import static services.HashingPass.PasswordHash;
 import textfield.SearchOptionEvent;
 import textfield.SearchOption;
 
@@ -1822,7 +1823,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
             String password = txtMatKhauSV.getText().trim();
             ps1.setString(1, txtTenDangNhapSV.getText().trim());
             ps1.setString(2, txtEmail.getText().trim());
-            ps1.setString(3, password);
+            ps1.setString(3, PasswordHash(password));
             ps1.setString(4, "Sinh Viên");
 
             row = ps1.executeUpdate();
