@@ -48,16 +48,16 @@ public class ThongTinSVTrongKTX {
         this.gioiTinh = gioiTinh;
     }
     
-    public void setMaPhong(String maPhong) {
-        this.maPhong = maPhong;
-    }
-
     public String getMaPhong() {
         return maPhong;
     }
     
+    public void setMaPhong(String maPhong) {
+        this.maPhong = maPhong;
+    }
+    
     public Date getNgayLapHD() {
-        return ngayHDBD;
+        return ngayLapHD;
     }
 
     public void setNgayLapHD(Date ngayLapHD) {

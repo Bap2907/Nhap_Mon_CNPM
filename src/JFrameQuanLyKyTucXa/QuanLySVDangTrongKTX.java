@@ -53,6 +53,7 @@ public class QuanLySVDangTrongKTX extends javax.swing.JPanel {
     private int keyradiothang = 3;
     private String maSV;
     private int choice;
+    private String email;
 
     public QuanLySVDangTrongKTX() {
         initComponents();
@@ -63,6 +64,7 @@ public class QuanLySVDangTrongKTX extends javax.swing.JPanel {
         tableSV.getTableHeader().setOpaque(false);
         tableSV.getTableHeader().setBackground(new Color(0, 102, 102));
         tableSV.getTableHeader().setForeground(new Color(225, 225, 225));
+        jDialog1.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -70,6 +72,19 @@ public class QuanLySVDangTrongKTX extends javax.swing.JPanel {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        jDialog1 = new javax.swing.JDialog();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        txtrd1thang1 = new javax.swing.JRadioButton();
+        txtrd2thang1 = new javax.swing.JRadioButton();
+        txtrd3thang1 = new javax.swing.JRadioButton();
+        timeKT = new java.awt.TextField();
+        cbdieukhoang = new javax.swing.JCheckBox();
+        btxacnhan = new javax.swing.JButton();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         TrangChuHopDongKTX = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         loadSV = new javax.swing.JLabel();
@@ -80,6 +95,7 @@ public class QuanLySVDangTrongKTX extends javax.swing.JPanel {
         ScrollPaneSV = new javax.swing.JScrollPane();
         tableSV = new javax.swing.JTable();
         txtSearch = new textfield.TextFieldSearchOption();
+        extend = new javax.swing.JLabel();
         AddSVVaoKTX = new javax.swing.JPanel();
         jLabel40 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -136,6 +152,179 @@ public class QuanLySVDangTrongKTX extends javax.swing.JPanel {
         txtNgayHDKT = new java.awt.TextField();
         ComboBoxMaPhong1 = new javax.swing.JComboBox<>();
         btnUpdateSV = new javax.swing.JButton();
+
+        jDialog1.setBackground(new java.awt.Color(255, 255, 255));
+        jDialog1.setSize(new java.awt.Dimension(861, 390));
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(19, 90, 118));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Gia hạn phòng");
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(19, 90, 118)));
+        jPanel1.setForeground(new java.awt.Color(19, 90, 118));
+        jPanel1.setAlignmentX(0.0F);
+        jPanel1.setAlignmentY(0.0F);
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(19, 90, 118));
+        jLabel3.setText("Thời gian kết thúc hợp đồng KTX:");
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(19, 90, 118));
+        jLabel8.setText("Thời gian gia hạn:");
+
+        txtrd1thang1.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup2.add(txtrd1thang1);
+        txtrd1thang1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtrd1thang1.setForeground(new java.awt.Color(19, 90, 118));
+        txtrd1thang1.setSelected(true);
+        txtrd1thang1.setText("3 Tháng");
+        txtrd1thang1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtrd1thang1MouseClicked(evt);
+            }
+        });
+
+        txtrd2thang1.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup2.add(txtrd2thang1);
+        txtrd2thang1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtrd2thang1.setForeground(new java.awt.Color(19, 90, 118));
+        txtrd2thang1.setText("6 tháng");
+        txtrd2thang1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtrd2thang1MouseClicked(evt);
+            }
+        });
+
+        txtrd3thang1.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup2.add(txtrd3thang1);
+        txtrd3thang1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtrd3thang1.setForeground(new java.awt.Color(19, 90, 118));
+        txtrd3thang1.setText("9 tháng");
+        txtrd3thang1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtrd3thang1MouseClicked(evt);
+            }
+        });
+
+        timeKT.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        timeKT.setEditable(false);
+        timeKT.setFont(new java.awt.Font("Dialog", 0, 13)); // NOI18N
+        timeKT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                timeKTActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel8))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtrd1thang1)
+                        .addGap(33, 33, 33)
+                        .addComponent(txtrd2thang1)
+                        .addGap(28, 28, 28)
+                        .addComponent(txtrd3thang1)
+                        .addGap(41, 41, 41))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(timeKT, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3)
+                    .addComponent(timeKT, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtrd1thang1)
+                        .addComponent(txtrd2thang1)
+                        .addComponent(txtrd3thang1)))
+                .addContainerGap(44, Short.MAX_VALUE))
+        );
+
+        cbdieukhoang.setBackground(new java.awt.Color(255, 255, 255));
+        cbdieukhoang.setForeground(new java.awt.Color(19, 90, 118));
+        cbdieukhoang.setText("Xác nhận gia hạn cho sinh viên");
+        cbdieukhoang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbdieukhoangMouseClicked(evt);
+            }
+        });
+        cbdieukhoang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbdieukhoangActionPerformed(evt);
+            }
+        });
+
+        btxacnhan.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btxacnhan.setForeground(new java.awt.Color(19, 90, 118));
+        btxacnhan.setText("Xác nhận");
+        btxacnhan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btxacnhanActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btxacnhan, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(142, 142, 142)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(181, 181, 181)
+                            .addComponent(cbdieukhoang, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(180, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbdieukhoang)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btxacnhan, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                .addGap(27, 27, 27))
+        );
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialog1Layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
 
         TrangChuHopDongKTX.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -238,6 +427,14 @@ public class QuanLySVDangTrongKTX extends javax.swing.JPanel {
             }
         });
 
+        extend.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        extend.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/gh.png"))); // NOI18N
+        extend.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                extendMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout TrangChuHopDongKTXLayout = new javax.swing.GroupLayout(TrangChuHopDongKTX);
         TrangChuHopDongKTX.setLayout(TrangChuHopDongKTXLayout);
         TrangChuHopDongKTXLayout.setHorizontalGroup(
@@ -257,8 +454,10 @@ public class QuanLySVDangTrongKTX extends javax.swing.JPanel {
                         .addComponent(viewSV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(updateSV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(deleteSV, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(extend, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(deleteSV, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -274,7 +473,8 @@ public class QuanLySVDangTrongKTX extends javax.swing.JPanel {
                     .addComponent(viewSV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(updateSV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(deleteSV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(extend, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ScrollPaneSV, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 194, Short.MAX_VALUE))
@@ -904,6 +1104,8 @@ public class QuanLySVDangTrongKTX extends javax.swing.JPanel {
     private void addSVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addSVMouseClicked
         TrangChuHopDongKTX.setVisible(false);
         AddSVVaoKTX.setVisible(true);
+        ViewSV.setVisible(false);
+        UpdateSV.setVisible(false);
         AddComboBoxMasv();
     }//GEN-LAST:event_addSVMouseClicked
 
@@ -915,6 +1117,7 @@ public class QuanLySVDangTrongKTX extends javax.swing.JPanel {
             TrangChuHopDongKTX.setVisible(false);
             AddSVVaoKTX.setVisible(false);
             ViewSV.setVisible(true);
+            UpdateSV.setVisible(false);
             LayThongTinSinhVienView(count);
         }
         showTable();
@@ -956,8 +1159,8 @@ public class QuanLySVDangTrongKTX extends javax.swing.JPanel {
     }//GEN-LAST:event_deleteSVMouseClicked
 
     private void tableSVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableSVMouseClicked
-        //        count = tableSV.getSelectedRow();
-        //        LayMaSinhVien(count);
+        count = tableSV.getSelectedRow();
+        LayMaSinhVien(count);
     }//GEN-LAST:event_tableSVMouseClicked
 
     private void ScrollPaneSVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ScrollPaneSVMouseClicked
@@ -1148,6 +1351,66 @@ public class QuanLySVDangTrongKTX extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtSearchKeyReleased
 
+    private void extendMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_extendMouseClicked
+        count = tableSV.getSelectedRow();
+        if (count == -1) {
+            JOptionPane.showMessageDialog(null, "Vui lòng chọn sinh viên để gia hạn!");
+        } else {
+            LayMaSinhVien(count);
+            ThongTinSVTrongKTX sv = listsinhvien.get(count);
+            String ngayHDKT = sv.getNgayKTHD().toString();
+            timeKT.setText(ngayHDKT);
+            jDialog1.setVisible(true);
+            //new QuanLySinhVienDAO().XoaSVKhoiKTX(maSV);
+            //JOptionPane.showMessageDialog(null, "Gia hạn thành công!");
+        }
+        showTable();
+    }//GEN-LAST:event_extendMouseClicked
+
+    private void txtrd1thang1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtrd1thang1MouseClicked
+        keyradiothang = 3;
+    }//GEN-LAST:event_txtrd1thang1MouseClicked
+
+    private void txtrd2thang1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtrd2thang1MouseClicked
+        keyradiothang = 6;
+    }//GEN-LAST:event_txtrd2thang1MouseClicked
+
+    private void txtrd3thang1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtrd3thang1MouseClicked
+        keyradiothang = 9;
+    }//GEN-LAST:event_txtrd3thang1MouseClicked
+
+    private void btxacnhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btxacnhanActionPerformed
+        QuanLySinhVienDAO svd = new QuanLySinhVienDAO();
+        String masv = new QuanLySinhVienDAO().layMaSinhVienTuEmail(email);
+        System.out.println("ma sinh vien: " + masv);
+        int test = JOptionPane.showConfirmDialog(null, "Bạn chắc có muốn gia hạn hay không !", "Thông báo gia hạn", JOptionPane.YES_NO_OPTION);
+        if (test == JOptionPane.YES_OPTION) {
+            GiaHanThoiGianChoSV(maSV, keyradiothang);
+            GiaHanThoiGianChoSV1(maSV, keyradiothang);
+            JOptionPane.showMessageDialog(null, "Gia hạn thành công");
+            jDialog1.dispose();
+        } else if (test == JOptionPane.NO_OPTION) {
+            //JOptionPane.showMessageDialog(null, "Hủy gia hạn thành công");
+        }
+    }//GEN-LAST:event_btxacnhanActionPerformed
+
+    private void timeKTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeKTActionPerformed
+
+    }//GEN-LAST:event_timeKTActionPerformed
+
+    private void cbdieukhoangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbdieukhoangActionPerformed
+        //        if (cbdieukhoang.isSelected()) {
+        //            btxacnhan.setEnabled(true);
+        //        } else {
+        //            btxacnhan.setEnabled(false);
+        //        }
+        //        rangbuotxacnhan();
+    }//GEN-LAST:event_cbdieukhoangActionPerformed
+
+    private void cbdieukhoangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbdieukhoangMouseClicked
+        rangbuotxacnhan();
+    }//GEN-LAST:event_cbdieukhoangMouseClicked
+
     void AddSearch() {
         txtSearch.addEventOptionSelected(new SearchOptionEvent() {
             @Override
@@ -1173,11 +1436,17 @@ public class QuanLySVDangTrongKTX extends javax.swing.JPanel {
     private javax.swing.JLabel addSV;
     private javax.swing.JButton btnAddSV;
     private javax.swing.JButton btnUpdateSV;
+    private javax.swing.JButton btxacnhan;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JCheckBox cbdieukhoang;
     private javax.swing.JLabel deleteSV;
+    private javax.swing.JLabel extend;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
@@ -1202,11 +1471,16 @@ public class QuanLySVDangTrongKTX extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel59;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel loadSV;
     private javax.swing.JTable tableSV;
+    private java.awt.TextField timeKT;
     private java.awt.TextField txtMaSV;
     private java.awt.TextField txtNgayHDBD;
     private java.awt.TextField txtNgayHDKT;
@@ -1225,8 +1499,11 @@ public class QuanLySVDangTrongKTX extends javax.swing.JPanel {
     private javax.swing.JLabel txtViewSoDienThoaiSV;
     private com.toedter.calendar.JDateChooser txtaddngayHDBD;
     private javax.swing.JRadioButton txtrd1thang;
+    private javax.swing.JRadioButton txtrd1thang1;
     private javax.swing.JRadioButton txtrd2thang;
+    private javax.swing.JRadioButton txtrd2thang1;
     private javax.swing.JRadioButton txtrd3thang;
+    private javax.swing.JRadioButton txtrd3thang1;
     private javax.swing.JLabel updateSV;
     private javax.swing.JLabel viewSV;
     // End of variables declaration//GEN-END:variables
@@ -1373,7 +1650,7 @@ public class QuanLySVDangTrongKTX extends javax.swing.JPanel {
         txtNgayHDBD.setText(sv.getNgayBDHD().toString());
         txtNgayHDKT.setText(sv.getNgayKTHD().toString());
     }
-    
+
     private void updateSV(String masv) {
         try {
             Connection conn = KetNoiSQL.getConnection();
@@ -1388,7 +1665,7 @@ public class QuanLySVDangTrongKTX extends javax.swing.JPanel {
         }
         showTable();
     }
-    
+
     private void showTableSearch(String where, String text) {
         listsinhvien = new QuanLySinhVienDAO().getAllThongTinSVSearchTrongKTX(where, text);
         Model.setRowCount(0);
@@ -1396,6 +1673,67 @@ public class QuanLySVDangTrongKTX extends javax.swing.JPanel {
             Model.addRow(new Object[]{
                 sv.getMaSV(), sv.getTenSV(), sv.getMaPhong(), sv.getGioiTinh(), sv.getNgayLapHD(), sv.getNgayBDHD(), sv.getNgayKTHD()
             });
+        }
+    }
+
+    public void rangbuotxacnhan() {
+        if (cbdieukhoang.isSelected() == true) {
+            btxacnhan.setEnabled(true);
+        } else {
+            btxacnhan.setEnabled(false);
+        }
+    }
+
+    public void GiaHanThoiGianChoSV(String masv, int keyradiothang) {
+        String sqlUpdate = "UPDATE HopDongKTX SET ngayHDBD = ngayHDKT WHERE maSV = ?";
+        try {
+            Connection conn = KetNoiSQL.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sqlUpdate);
+
+            ps.setString(1, masv);
+            ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DangKiPhong.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void GiaHanThoiGianChoSV1(String masv, int keyradiothang) {
+        String sqlSelect = "SELECT ngayHDKT FROM HopDongKTX WHERE maSV = ?";
+        String sqlUpdate = "UPDATE HopDongKTX SET ngayHDKT = ? WHERE maSV = ?";
+
+        try {
+            Connection conn = KetNoiSQL.getConnection();
+
+            // Truy vấn ngày hiện tại của ngayHDKT
+            PreparedStatement psSelect = conn.prepareStatement(sqlSelect);
+            psSelect.setString(1, masv);
+            ResultSet rs = psSelect.executeQuery();
+
+            if (rs.next()) {
+                Date ngayHDKT = rs.getDate("ngayHDKT");
+
+                // Chuyển ngày thành Calendar để thực hiện tính toán
+                Calendar cld = Calendar.getInstance();
+                cld.setTime(ngayHDKT);
+
+                // Cộng thêm số tháng vào phần tháng
+                cld.add(Calendar.MONTH, keyradiothang);
+
+                // Lấy ra ngày mới sau khi cộng
+                Date newNgayHDKT = cld.getTime();
+
+                // Chuẩn bị câu lệnh để cập nhật ngày mới cho ngayHDKT
+                PreparedStatement psUpdate = conn.prepareStatement(sqlUpdate);
+                psUpdate.setDate(1, new java.sql.Date(newNgayHDKT.getTime()));
+                psUpdate.setString(2, masv);
+
+                // Thực hiện câu lệnh cập nhật
+                psUpdate.executeUpdate();
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DangKiPhong.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

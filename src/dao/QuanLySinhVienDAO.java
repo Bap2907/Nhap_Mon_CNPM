@@ -552,7 +552,7 @@ public class QuanLySinhVienDAO {
                     sv.setTenSV(rs.getString("tenSV"));
                     sv.setMaPhong(rs.getString("maPhong"));
                     sv.setGioiTinh(rs.getString("gioiTinh"));
-                    sv.setNgayBDHD(rs.getDate("ngayLapHD"));
+                    sv.setNgayLapHD(rs.getDate("ngayLapHD"));
                     sv.setNgayBDHD(rs.getDate("ngayHDBD"));
                     sv.setNgayKTHD(rs.getDate("ngayHDKT"));
                     listSinhVien.add(sv);
