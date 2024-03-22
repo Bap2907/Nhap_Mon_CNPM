@@ -30,7 +30,7 @@ public class QuanLySinhVienDAO {
         List<ThongTinSinhVien> listSinhVien = new ArrayList<ThongTinSinhVien>();
         Connection conn = KetNoiSQL.getConnection();
         //String sql = "select * from (select *,Null as maPhong from (select * from SinhVien except SELECT sv.* FROM SinhVien sv JOIN HopDongKTX hd ON sv.maSV = hd.maSV) as k union all SELECT sv.*, hd.maPhong FROM SinhVien sv JOIN HopDongKTX hd ON sv.maSV = hd.maSV) as k2";
-        String sql = "select * from SinhVien";
+        String sql = "select * from SinhVien where trangThai <> 0";
         try {
 
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
@@ -219,7 +219,7 @@ public class QuanLySinhVienDAO {
     public List<ThongTinSinhVien> getAllThongTinSVSearch(String where, String text) {
         List<ThongTinSinhVien> listSinhVien = new ArrayList<ThongTinSinhVien>();
         Connection conn = KetNoiSQL.getConnection();
-        String sql = "select * from SinhVien where " + where + " like N'%" + text + "%' ";
+        String sql = "select * from SinhVien where " + where + " like N'%" + text + "%'and trangThai <> 0 ";
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             ResultSet rs = preparedStatement.executeQuery();
@@ -632,6 +632,35 @@ public class QuanLySinhVienDAO {
             }else{
             }
         } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return listSinhVien;
+    }
+    
+    public List<ThongTinSinhVien> getAllThongTinSVDelete() {
+        List<ThongTinSinhVien> listSinhVien = new ArrayList<ThongTinSinhVien>();
+        Connection conn = KetNoiSQL.getConnection();
+        String sql = "select * from SinhVien where trangThai = 0 ";
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                ThongTinSinhVien sv = new ThongTinSinhVien();
+                sv.setMaSV(rs.getString("maSV"));
+                sv.setTenSV(rs.getString("tenSV"));
+                sv.setCCCD(rs.getString("CCCD"));
+                sv.setGioiTinh(rs.getString("gioiTinh"));
+                sv.setNgaySinh(rs.getDate("ngaySinh"));
+                sv.setEmail(rs.getString("email"));
+                sv.setSoDienThoai(rs.getString("soDienThoai"));
+                sv.setQueQuan(rs.getString("queQuan"));
+                sv.setMaLop(rs.getString("maLop"));
+                sv.setTrangThai(rs.getInt("trangThai"));
+                listSinhVien.add(sv);
+            }
+            preparedStatement.close();
+            conn.close();
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return listSinhVien;

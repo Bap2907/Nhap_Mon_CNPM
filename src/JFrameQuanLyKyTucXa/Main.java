@@ -62,7 +62,7 @@ public class Main extends javax.swing.JFrame {
         jPanelQuanLyDienNuoc.setVisible(false);
         jPanelHoaDon.setVisible(false);
         jPanelCaiDatTaiKhoan.setVisible(false);
-        jPanelThongTinTaiKhoan.setVisible(false);
+        thongTinTK_NV.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -102,8 +102,8 @@ public class Main extends javax.swing.JFrame {
         jPanelThongKePhong = new JFrameQuanLyKyTucXa.ThongKePhong();
         jPanelQuanLyDienNuoc = new JFrameQuanLyKyTucXa.QuanLyDienNuoc();
         jPanelHoaDon = new JFrameQuanLyKyTucXa.JpanelQuanLyTienPhong();
-        jPanelThongTinTaiKhoan = new JFrameQuanLyKyTucXa.ThongTinTaiKhoan();
         jPanelCaiDatTaiKhoan = new JFrameQuanLyKyTucXa.CaiDatTaiKhoan();
+        thongTinTK_NV = new JFrameQuanLyKyTucXa.ThongTinTK_NV();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -420,8 +420,8 @@ public class Main extends javax.swing.JFrame {
         Contents.add(jPanelThongKePhong, "card7");
         Contents.add(jPanelQuanLyDienNuoc, "card8");
         Contents.add(jPanelHoaDon, "card9");
-        Contents.add(jPanelThongTinTaiKhoan, "card10");
         Contents.add(jPanelCaiDatTaiKhoan, "card11");
+        Contents.add(thongTinTK_NV, "card11");
 
         javax.swing.GroupLayout TrangchuLayout = new javax.swing.GroupLayout(Trangchu);
         Trangchu.setLayout(TrangchuLayout);
@@ -480,9 +480,9 @@ public class Main extends javax.swing.JFrame {
 
     private void thongtintaikhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thongtintaikhoanMouseClicked
         hideAllPanels();
-        jPanelThongTinTaiKhoan.setVisible(true);
+        thongTinTK_NV.setVisible(true);
         setnameuser(email);
-        this.jPanelThongTinTaiKhoan.showViewTaiKhoanEmail(email);
+        this.thongTinTK_NV.showViewTaiKhoan(email);
     }//GEN-LAST:event_thongtintaikhoanMouseClicked
 
     private void thongkeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thongkeMouseClicked
@@ -575,7 +575,6 @@ public class Main extends javax.swing.JFrame {
     private JFrameQuanLyKyTucXa.QuanLySinhVien jPanelQuanLySinhVien;
     private JFrameQuanLyKyTucXa.QuanLyPhong jPanelQuanlyPhong;
     private JFrameQuanLyKyTucXa.ThongKePhong jPanelThongKePhong;
-    private JFrameQuanLyKyTucXa.ThongTinTaiKhoan jPanelThongTinTaiKhoan;
     private JFrameQuanLyKyTucXa.TrangChu jPanelTrangChu;
     private javax.swing.JTabbedPane jTabbedPane1;
     private JFrameQuanLyKyTucXa.QuanLySVDangChoDuyet quanLySVDangChoDuyet1;
@@ -583,6 +582,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel quanlynhanvien;
     private javax.swing.JLabel quanlyphong;
     private javax.swing.JLabel quanlysinhvien;
+    private JFrameQuanLyKyTucXa.ThongTinTK_NV thongTinTK_NV;
     private javax.swing.JLabel thongke;
     private javax.swing.JLabel thongtintaikhoan;
     private javax.swing.JLabel tienphong;

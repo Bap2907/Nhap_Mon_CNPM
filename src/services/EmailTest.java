@@ -22,6 +22,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.swing.JOptionPane;
+import static services.HashingPass.PasswordHash;
 
 /**
  *
@@ -29,7 +30,7 @@ import javax.swing.JOptionPane;
  */
 public class EmailTest extends javax.swing.JFrame {
 
-    private String randomString;
+//    private String randomString;
     private String matkhaurandom;
     private String email;
 
@@ -61,6 +62,7 @@ public class EmailTest extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(170, 170));
         setUndecorated(true);
+        getContentPane().setLayout(new java.awt.CardLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -123,7 +125,7 @@ public class EmailTest extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 996, Short.MAX_VALUE))
             .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -151,23 +153,12 @@ public class EmailTest extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 282, Short.MAX_VALUE)
                 .addComponent(jLabel22)
                 .addGap(56, 56, 56))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        getContentPane().add(jPanel1, "card2");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -193,19 +184,18 @@ public class EmailTest extends javax.swing.JFrame {
             if (test == JOptionPane.YES_OPTION) {
                 final String username = "trungtamquanlysktxptit@gmail.com";
                 final String password = "hucladfswqalfqil";
-                final String username1 = "phtien15923@gmail.com";
-                final String password1 = "lmwbnovskahwojlt";
-
+                final String username1 = "n21dccn081@student.ptithcm.edu.vn";
+                final String password1 = "uuphbmpvzbbcndyr";
                 String alphabet = "qwertyuiopasdfghjklzxcvbnm";
                 StringBuilder sb = new StringBuilder();
-                Random random = new Random();
-                int length = 9;
-                for (int i = 0; i < length; i++) {
-                    int index = random.nextInt(alphabet.length());
-                    char randomChar = alphabet.charAt(index);
-                    sb.append(randomChar);
-                }
-                randomString = sb.toString();
+//                Random random = new Random();
+//                int length = 9;
+//                for (int i = 0; i < length; i++) {
+//                    int index = random.nextInt(alphabet.length());
+//                    char randomChar = alphabet.charAt(index);
+//                    sb.append(randomChar);
+//                }
+//                randomString = sb.toString();
 
                 Random rd = new Random();
                 int matkhaurd = rd.nextInt(1000000, 10000000);
@@ -233,7 +223,7 @@ public class EmailTest extends javax.swing.JFrame {
                             InternetAddress.parse(txtEmail.getText().trim())
                     );
                     message.setSubject("Trung Tâm Quản Lý Ký Túc Xá - Mã Khôi Phục Mật Khẩu");
-                    message.setText("Tài khoản : " + randomString + "      Mật khẩu setup lại là: " + matkhaurd);
+                    message.setText("Mật khẩu setup lại là: " + matkhaurd);
 
                     Transport.send(message);
                     JOptionPane.showMessageDialog(this, "Gửi mail thành công");
@@ -316,13 +306,13 @@ public class EmailTest extends javax.swing.JFrame {
     void DoiLaiMatKhau() {
         Connection conn = KetNoiSQL.getConnection();
         int row = 0;
-        String sql1 = "update taikhoan set tenDangNhap=?, matKhau=? where email=?";
+        String sql1 = "update taikhoan set matKhau=? where email=?";
         try {
             PreparedStatement ps1 = conn.prepareStatement(sql1);
 
-            ps1.setString(1, randomString);
-            ps1.setString(2, matkhaurandom);
-            ps1.setString(3, email);
+//            ps1.setString(1, randomString);
+            ps1.setString(1, PasswordHash(matkhaurandom));
+            ps1.setString(2, email);
 
             row = ps1.executeUpdate();
             if (row > 0) {

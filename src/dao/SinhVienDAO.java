@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
@@ -382,6 +384,17 @@ public class SinhVienDAO {
         }
 
         return false;
+    }
+    
+    public boolean KiemTrangaysinh(Date ngaysinh) {
+        LocalDate ngaySinhLocalDate = ngaysinh.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate ngayHienTai = LocalDate.now();
+        Period period = Period.between(ngaySinhLocalDate, ngayHienTai);
+        if (period.getYears() >18) { 
+            return true;
+        }else {
+            return false;
+        }
     }
 
     public boolean KiemTraDK(String maSV) {

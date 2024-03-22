@@ -4,7 +4,11 @@ import Connector.KetNoiSQL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import model.ThongTinNhanVien;
 import model.ThongTinPhong;
@@ -15,6 +19,32 @@ public class QuanLyNhanVienDAO {
         List<ThongTinNhanVien> listNhanVien = new ArrayList<ThongTinNhanVien>();
         Connection conn = KetNoiSQL.getConnection();
         String sql = "select * from NhanVien";
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                ThongTinNhanVien nv = new ThongTinNhanVien();
+                nv.setTenNV(rs.getString("tenNV"));
+                nv.setCCCD(rs.getString("CCCD"));
+                nv.setGioiTinh(rs.getString("gioiTinh"));
+                nv.setNgaySinh(rs.getDate("ngaySinh"));
+                nv.setEmail(rs.getString("email"));
+                nv.setSoDienThoai(rs.getString("soDienThoai"));
+                nv.setQueQuan(rs.getString("queQuan"));
+                nv.setChucVu(rs.getString("chucVu"));
+                nv.setTrangThai(rs.getString("trangThai"));
+                listNhanVien.add(nv);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listNhanVien;
+    }
+    
+    public List<ThongTinNhanVien> getAllThongTinNVdelete () {
+        List<ThongTinNhanVien> listNhanVien = new ArrayList<ThongTinNhanVien>();
+        Connection conn = KetNoiSQL.getConnection();
+        String sql = "select * from NhanVien where trangThai= 0";
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             ResultSet rs = preparedStatement.executeQuery();
@@ -66,7 +96,6 @@ public class QuanLyNhanVienDAO {
         }
         return listNhanVien;
     }
-    
     
     
     

@@ -110,6 +110,11 @@ public class CaiDatTaiKhoan extends javax.swing.JPanel {
 
         txtMatKhau.setForeground(new java.awt.Color(19, 90, 118));
         txtMatKhau.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(19, 90, 118)));
+        txtMatKhau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMatKhauActionPerformed(evt);
+            }
+        });
 
         show_eye.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         show_eye.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/show_eye_color.png"))); // NOI18N
@@ -397,10 +402,10 @@ public class CaiDatTaiKhoan extends javax.swing.JPanel {
         // TODO add your handling code here:
         String email = txtEmail.getText().trim();
         String tendangnhap = txtTenDangNhap.getText().trim();
-        String matkhau = txtMatKhau.getText().trim();
+        String matkhau = PasswordHash(txtMatKhau.getText().trim());
         String uptendangnhap = txtUpTenDangNhap.getText().trim();
-        String upmatkhau = txtUpMatKhau.getText().trim();
-        String upnhaplaimatkhau = txtUpNhapLaiMatKhau.getText().trim();
+        String upmatkhau = PasswordHash(txtUpMatKhau.getText().trim());
+        String upnhaplaimatkhau = PasswordHash(txtUpNhapLaiMatKhau.getText().trim());
 
         boolean kiemtratendn = new TaiKhoanDAO().KiemTraTenDNTK(tendangnhap);
 
@@ -434,6 +439,10 @@ public class CaiDatTaiKhoan extends javax.swing.JPanel {
 
 
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void txtMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatKhauActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMatKhauActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -488,32 +497,61 @@ public class CaiDatTaiKhoan extends javax.swing.JPanel {
 
     }
 
+//    void DoiLaiMatKhau() {
+//        if (test == true) {
+//            Connection conn = KetNoiSQL.getConnection();
+//            int row = 0;
+//            String sql1 = "update taikhoan set tenDangNhap=?, matKhau=? where email=?";
+//            try {
+//                PreparedStatement ps1 = conn.prepareStatement(sql1);
+//
+//                String password = PasswordHash(txtMatKhau.getText().trim());
+//                ps1.setString(1, txtUpTenDangNhap.getText().trim());
+//                ps1.setString(2, PasswordHash(password));
+//                ps1.setString(3, email);
+//
+//                row = ps1.executeUpdate();
+//                if (row > 0) {
+//                    JOptionPane.showMessageDialog(null, "Cập nhật Tài khoản thành công");
+//                    resetForm();
+//                } else {
+//                    JOptionPane.showMessageDialog(null, "Nhap ma chua dung");
+//                }
+//                conn.close();
+//            } catch (SQLException ex) {
+//                ex.printStackTrace();
+//            }
+//        }
+//    }
     void DoiLaiMatKhau() {
-        if (test == true) {
-            Connection conn = KetNoiSQL.getConnection();
-            int row = 0;
-            String sql1 = "update taikhoan set tenDangNhap=?, matKhau=? where email=?";
-            try {
-                PreparedStatement ps1 = conn.prepareStatement(sql1);
+    if (test == true) {
+        Connection conn = KetNoiSQL.getConnection();
+        int row = 0;
+        String sql1 = "update taikhoan set tenDangNhap=?, matKhau=? where email=?";
+        try {
+            PreparedStatement ps1 = conn.prepareStatement(sql1);
 
-                String password = txtUpMatKhau.getText().trim();
-                ps1.setString(1, txtUpTenDangNhap.getText().trim());
-                ps1.setString(2, PasswordHash(password));
-                ps1.setString(3, email);
+            String password = PasswordHash(txtMatKhau.getText().trim());
+            ps1.setString(1, txtUpTenDangNhap.getText().trim());
+            ps1.setString(2, password);
+            ps1.setString(3, email);
 
-                row = ps1.executeUpdate();
-                if (row > 0) {
-                    JOptionPane.showMessageDialog(null, "Cập nhật Tài khoản thành công");
-                    resetForm();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Nhap ma chua dung");
-                }
-                conn.close();
-            } catch (SQLException ex) {
-                ex.printStackTrace();
+            row = ps1.executeUpdate();
+            if (row > 0) {
+                JOptionPane.showMessageDialog(null, "Cập nhật Tài khoản thành công");
+                resetForm();
+            } else {
+                JOptionPane.showMessageDialog(null, "Có lỗi xảy ra khi cập nhật Tài khoản");
             }
+            conn.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
+    } else {
+        JOptionPane.showMessageDialog(null, "Vui lòng xác nhận thông tin tài khoản trước khi cập nhật");
     }
+}
+
     void resetForm() {
         // Clear text fields
         txtTenDangNhap.setText("");

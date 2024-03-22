@@ -32,6 +32,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
 
     private List<ThongTinSinhVien> listsinhvien;
     private DefaultTableModel Model;
+    private DefaultTableModel Modeldelete;
     private int count = -1;
     private String maSV, tenDangNhap;
     private QuanLySinhVienDAO quanlysinhviendao;
@@ -44,13 +45,20 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         initComponents();
         AddSearch();
         Model = (DefaultTableModel) tableSV.getModel();
+        Modeldelete = (DefaultTableModel) tableSV1.getModel();
         showTable();
         tableSV.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
         tableSV.getTableHeader().setOpaque(false);
         tableSV.getTableHeader().setBackground(new Color(0,102,102));
         tableSV.getTableHeader().setForeground(new Color(225, 225, 225));
     }
-
+    void hidepanel(){
+        UpdateSV.setVisible(false);
+        QuanLyThongTinSV.setVisible(false);
+        AddSV.setVisible(false);
+        ViewSV.setVisible(false);
+        jPanel1.setVisible(false);
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -68,6 +76,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         tableSV = new javax.swing.JTable();
         txtSearch = new textfield.TextFieldSearchOption();
         cbbtrangthai = new javax.swing.JComboBox<>();
+        Bin = new javax.swing.JLabel();
         AddSV = new javax.swing.JPanel();
         jLabel40 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -150,6 +159,12 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         txtUpSoDienThoaiSV = new javax.swing.JTextField();
         txtUpEmail = new javax.swing.JTextField();
         txtUpNgaySinh = new com.toedter.calendar.JDateChooser();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel61 = new javax.swing.JLabel();
+        deleteSV1 = new javax.swing.JLabel();
+        TableSVDelete = new javax.swing.JScrollPane();
+        tableSV1 = new javax.swing.JTable();
+        restore = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.CardLayout());
@@ -201,7 +216,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         });
 
         deleteSV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        deleteSV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/delete.png"))); // NOI18N
+        deleteSV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/delete_table.png"))); // NOI18N
         deleteSV.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 deleteSVMouseClicked(evt);
@@ -255,10 +270,18 @@ public class QuanLySinhVien extends javax.swing.JPanel {
             }
         });
 
-        cbbtrangthai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Chưa đăng ký", "Đang chờ duyệt", "Đang ở", "Đã xoá" }));
+        cbbtrangthai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Chưa đăng ký", "Đang chờ duyệt", "Đang ở" }));
         cbbtrangthai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbbtrangthaiActionPerformed(evt);
+            }
+        });
+
+        Bin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Bin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/delete.png"))); // NOI18N
+        Bin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BinMouseClicked(evt);
             }
         });
 
@@ -275,9 +298,11 @@ public class QuanLySinhVien extends javax.swing.JPanel {
                 .addComponent(viewSV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(updateSV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(deleteSV, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(151, 151, 151)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Bin, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89)
                 .addComponent(cbbtrangthai, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -288,7 +313,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
                     .addGroup(QuanLyThongTinSVLayout.createSequentialGroup()
                         .addGap(54, 54, 54)
                         .addComponent(ScrollPaneSV, javax.swing.GroupLayout.PREFERRED_SIZE, 1149, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 13, Short.MAX_VALUE))
         );
         QuanLyThongTinSVLayout.setVerticalGroup(
             QuanLyThongTinSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,7 +327,8 @@ public class QuanLySinhVien extends javax.swing.JPanel {
                             .addComponent(addSV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(viewSV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(updateSV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(deleteSV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(deleteSV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Bin, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(QuanLyThongTinSVLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(QuanLyThongTinSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -565,7 +591,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
             AddSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddSVLayout.createSequentialGroup()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addGroup(AddSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AddSVLayout.createSequentialGroup()
                         .addGroup(AddSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -646,7 +672,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
                         .addGroup(AddSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 951, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 924, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         AddSVLayout.setVerticalGroup(
             AddSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -857,7 +883,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
                         .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 963, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ViewSVLayout.createSequentialGroup()
-                        .addGap(0, 40, Short.MAX_VALUE)
+                        .addGap(0, 53, Short.MAX_VALUE)
                         .addGroup(ViewSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ViewSVLayout.createSequentialGroup()
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 1077, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1119,7 +1145,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel60, javax.swing.GroupLayout.DEFAULT_SIZE, 967, Short.MAX_VALUE)
+                .addComponent(jLabel60, javax.swing.GroupLayout.DEFAULT_SIZE, 980, Short.MAX_VALUE)
                 .addGap(131, 131, 131))
             .addGroup(UpdateSVLayout.createSequentialGroup()
                 .addGap(58, 58, 58)
@@ -1218,6 +1244,105 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         );
 
         add(UpdateSV, "card5");
+
+        jLabel61.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel61.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/back_main.png"))); // NOI18N
+        jLabel61.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel61.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel61MouseClicked(evt);
+            }
+        });
+
+        deleteSV1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        deleteSV1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/delete.png"))); // NOI18N
+        deleteSV1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteSV1MouseClicked(evt);
+            }
+        });
+
+        TableSVDelete.setBackground(new java.awt.Color(255, 255, 255));
+        TableSVDelete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TableSVDeleteMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                TableSVDeleteMouseExited(evt);
+            }
+        });
+
+        tableSV1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tableSV1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Mã sinh viên", "Tên sinh viên", "CCCD", "Giới tính", "Ngày sinh", "Mã lớp ", "Số điện thoại", "Trạng thái"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tableSV1.setFocusable(false);
+        tableSV1.setGridColor(new java.awt.Color(255, 255, 255));
+        tableSV1.setRowHeight(25);
+        tableSV1.setSelectionBackground(new java.awt.Color(0, 102, 102));
+        tableSV1.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        tableSV1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableSV1MouseClicked(evt);
+            }
+        });
+        TableSVDelete.setViewportView(tableSV1);
+
+        restore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/loading.png"))); // NOI18N
+        restore.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                restoreMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(TableSVDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 1204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addComponent(jLabel61, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(restore, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(deleteSV1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(deleteSV1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(restore, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel61)))
+                .addGap(18, 18, 18)
+                .addComponent(TableSVDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(123, Short.MAX_VALUE))
+        );
+
+        add(jPanel1, "card6");
     }// </editor-fold>//GEN-END:initComponents
 
     private void tableSVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableSVMouseClicked
@@ -1244,9 +1369,9 @@ public class QuanLySinhVien extends javax.swing.JPanel {
     }//GEN-LAST:event_addSVMouseClicked
 
     private void jLabel55MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel55MouseClicked
+        hidepanel();
         QuanLyThongTinSV.setVisible(true);
-        AddSV.setVisible(false);
-        ViewSV.setVisible(false);
+       
     }//GEN-LAST:event_jLabel55MouseClicked
 
     private void viewSVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewSVMouseClicked
@@ -1284,10 +1409,9 @@ public class QuanLySinhVien extends javax.swing.JPanel {
     }//GEN-LAST:event_deleteSVMouseClicked
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        hidepanel();
         QuanLyThongTinSV.setVisible(true);
-        AddSV.setVisible(false);
-        UpdateSV.setVisible(false);
-        ViewSV.setVisible(false);
+       
     }//GEN-LAST:event_jLabel9MouseClicked
 
     private void rdUpNamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdUpNamMouseClicked
@@ -1456,23 +1580,24 @@ public class QuanLySinhVien extends javax.swing.JPanel {
                 } else if (option == 3) {
                     showTableTT("maLop", textsearch, 2);
                 }
-            } else if (evcbbtt == 4) {
-                if (option == 0) {
-                    showTableTT("maSV", textsearch, 0);
-                } else if (option == 1) {
-                    showTableTT("tenSV", textsearch, 0);
-                } else if (option == 2) {
-                    showTableTT("CCCD", textsearch, 0);
-                } else if (option == 3) {
-                    showTableTT("maLop", textsearch, 3);
-                }
+//            } else if (evcbbtt == 4) {
+//                if (option == 0) {
+//                    showTableTT("maSV", textsearch, 0);
+//                } else if (option == 1) {
+//                    showTableTT("tenSV", textsearch, 0);
+//                } else if (option == 2) {
+//                    showTableTT("CCCD", textsearch, 0);
+//                } else if (option == 3) {
+//                    showTableTT("maLop", textsearch, 3);
+//                }
             }
         }
     }//GEN-LAST:event_txtSearchKeyReleased
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        hidepanel();
         QuanLyThongTinSV.setVisible(true);
-        AddSV.setVisible(false);
+
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void hide_eyeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hide_eyeMousePressed
@@ -1498,8 +1623,9 @@ public class QuanLySinhVien extends javax.swing.JPanel {
     }//GEN-LAST:event_txtSoDienThoaiSVjMaLopSVActionPerformed
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        hidepanel();
         QuanLyThongTinSV.setVisible(true);
-        AddSV.setVisible(false);
+        
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void btnAddSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSVActionPerformed
@@ -1624,16 +1750,77 @@ public class QuanLySinhVien extends javax.swing.JPanel {
             showTableTT(3);
         } else if (k == 3) {
             showTableTT(2);
-        } else if (k == 4) {
-            showTableTT(0);
+//        } else if (k == 4) {
+//            showTableTT(0);
         }
     }//GEN-LAST:event_cbbtrangthaiActionPerformed
+
+    private void BinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BinMouseClicked
+            hidepanel();
+            jPanel1.setVisible(true);
+            showTabledelte();
+            
+    }//GEN-LAST:event_BinMouseClicked
+
+    private void tableSV1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableSV1MouseClicked
+        count = tableSV.getSelectedRow();
+        LayMaSinhVien(count);
+    }//GEN-LAST:event_tableSV1MouseClicked
+
+    private void TableSVDeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableSVDeleteMouseClicked
+        count = tableSV1.getSelectedRow();
+        LayMaSinhVien(count);
+    }//GEN-LAST:event_TableSVDeleteMouseClicked
+
+    private void TableSVDeleteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableSVDeleteMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TableSVDeleteMouseExited
+
+    private void jLabel61MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel61MouseClicked
+        hidepanel();
+        QuanLyThongTinSV.setVisible(true);
+        
+    }//GEN-LAST:event_jLabel61MouseClicked
+
+    private void deleteSV1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteSV1MouseClicked
+        count = tableSV1.getSelectedRow();
+        if (count == -1) {
+            JOptionPane.showMessageDialog(null, "Vui lòng chọn sinh viên để xóa!");
+        } else {
+            int test = JOptionPane.showConfirmDialog(null, "Bạn chắc có muốn xóa sinh viên hay không !", "Thông báo", JOptionPane.YES_NO_OPTION);
+            if (test == JOptionPane.YES_OPTION) {
+                LayMaSinhVien(count);
+                new TaiKhoanDAO().XoaTaiKhoanbin(email);
+                JOptionPane.showMessageDialog(null, "Xoá sinh viên thành công!");
+            } else if (test == JOptionPane.NO_OPTION) {
+                JOptionPane.showMessageDialog(null, "Bạn đã hủy xóa sinh viên thành công");
+            }
+        }
+        showTabledelte();
+    }//GEN-LAST:event_deleteSV1MouseClicked
+
+    private void restoreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restoreMouseClicked
+        count = tableSV1.getSelectedRow();
+        if (count == -1) {
+            JOptionPane.showMessageDialog(null, "Vui lòng chọn sinh viên để khôi phục!");
+        } else {
+            int test = JOptionPane.showConfirmDialog(null, "Bạn chắc có muốn khôi phục sinh viên hay không !", "Thông báo", JOptionPane.YES_NO_OPTION);
+            if (test == JOptionPane.YES_OPTION) {
+                LayMaSinhVien(count);
+                new TaiKhoanDAO().KhoiphucTaiKhoan(email);
+                JOptionPane.showMessageDialog(null, "Khôi phục sinh viên thành công!");
+            } 
+        }
+        showTabledelte();
+    }//GEN-LAST:event_restoreMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AddSV;
+    private javax.swing.JLabel Bin;
     private javax.swing.JPanel QuanLyThongTinSV;
     private javax.swing.JScrollPane ScrollPaneSV;
+    private javax.swing.JScrollPane TableSVDelete;
     private javax.swing.JPanel UpdateSV;
     private javax.swing.JPanel ViewSV;
     private javax.swing.JLabel addSV;
@@ -1643,6 +1830,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox<String> cbbtrangthai;
     private javax.swing.JLabel deleteSV;
+    private javax.swing.JLabel deleteSV1;
     private javax.swing.JLabel hide_eye;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1685,16 +1873,20 @@ public class QuanLySinhVien extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel loadSV;
     private javax.swing.JRadioButton rdNam;
     private javax.swing.JRadioButton rdNu;
     private javax.swing.JRadioButton rdUpNam;
     private javax.swing.JRadioButton rdUpNu;
+    private javax.swing.JLabel restore;
     private javax.swing.JLabel show_eye;
     private javax.swing.JTable tableSV;
+    private javax.swing.JTable tableSV1;
     private javax.swing.JTextField txtCCCDSV;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtMaLopSV;
@@ -1728,35 +1920,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
     private javax.swing.JLabel viewSV;
     // End of variables declaration//GEN-END:variables
     
-    private void showTable() {
-        listsinhvien = new QuanLySinhVienDAO().getAllThongTinSV();
-        Model.setRowCount(0);
-        for (ThongTinSinhVien sv : listsinhvien) {
-            String trangThaiText = "";
-            switch (sv.getTrangThai()) {
-                case 0:
-                    trangThaiText = "Đã xoá";
-                    break;
-                case 1:
-                    trangThaiText = "Chưa đăng kí";
-                    break;
-                case 2:
-                    trangThaiText = "Đang ở";
-                    break;
-                case 3:
-                    trangThaiText = "Đang chờ duyệt";
-                    break;
-                default:
-                    trangThaiText = "Trạng thái không xác định";
-            }
-            if (!trangThaiText.equals("Đã xoá")) {
-                Model.addRow(new Object[]{
-                    sv.getMaSV(), sv.getTenSV(), sv.getCCCD(), sv.getGioiTinh(), sv.getNgaySinh(), sv.getMaLop(), sv.getSoDienThoai(), trangThaiText
-                });
-            }
-        }
-        count = -1;
-    }
+
     
     void AddSinhVien() {
         Connection conn = KetNoiSQL.getConnection();
@@ -1820,7 +1984,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         try {
             PreparedStatement ps1 = conn.prepareStatement(sql1);
 
-            String password = txtMatKhauSV.getText().trim();
+            String password = PasswordHash(txtMatKhauSV.getText().trim());
             ps1.setString(1, txtTenDangNhapSV.getText().trim());
             ps1.setString(2, txtEmail.getText().trim());
             ps1.setString(3, PasswordHash(password));
@@ -1920,9 +2084,9 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         for (ThongTinSinhVien sv : listsinhvien) {
             String trangThaiText = "";
             switch (sv.getTrangThai()) {
-                case 0:
-                    trangThaiText = "Đã xoá";
-                    break;
+//                case 0:
+//                    trangThaiText = "Đã xoá";
+//                    break;
                 case 1:
                     trangThaiText = "Chưa đăng kí";
                     break;
@@ -1942,6 +2106,30 @@ public class QuanLySinhVien extends javax.swing.JPanel {
             }
         }
     }
+        private void showTable() {
+        listsinhvien = new QuanLySinhVienDAO().getAllThongTinSV();
+        Model.setRowCount(0);
+        for (ThongTinSinhVien sv : listsinhvien) {
+            String trangThaiText = "";
+            switch (sv.getTrangThai()) {
+                case 1:
+                    trangThaiText = "Chưa đăng kí";
+                    break;
+                case 2:
+                    trangThaiText = "Đang ở";
+                    break;
+                case 3:
+                    trangThaiText = "Đang chờ duyệt";
+                    break;
+                default:
+                    trangThaiText = "Trạng thái không xác định";
+            }
+                Model.addRow(new Object[]{
+                    sv.getMaSV(), sv.getTenSV(), sv.getCCCD(), sv.getGioiTinh(), sv.getNgaySinh(), sv.getMaLop(), sv.getSoDienThoai(), trangThaiText
+                });
+        }
+        count = -1;
+    }
     
     private void showTableTT(String where, String text, int trangthai) {
         listsinhvien = new QuanLySinhVienDAO().getAllThongTinSVSearchTT(where, text, trangthai);
@@ -1950,9 +2138,6 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         for (ThongTinSinhVien sv : listsinhvien) {
             String trangThaiText = "";
             switch (sv.getTrangThai()) {
-                case 0:
-                    trangThaiText = "Đã xoá";
-                    break;
                 case 1:
                     trangThaiText = "Chưa đăng kí";
                     break;
@@ -1991,9 +2176,6 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         for (ThongTinSinhVien sv : listsinhvien) {
             String trangThaiText = "";
             switch (sv.getTrangThai()) {
-                case 0:
-                    trangThaiText = "Đã xoá";
-                    break;
                 case 1:
                     trangThaiText = "Chưa đăng kí";
                     break;
@@ -2010,6 +2192,17 @@ public class QuanLySinhVien extends javax.swing.JPanel {
                 sv.getMaSV(), sv.getTenSV(), sv.getCCCD(), sv.getGioiTinh(), sv.getNgaySinh(), sv.getMaLop(), sv.getSoDienThoai(), trangThaiText
             });
         }
+    }
+       private void showTabledelte() {
+        listsinhvien = new QuanLySinhVienDAO().getAllThongTinSVDelete();
+        Modeldelete.setRowCount(0);
+        for (ThongTinSinhVien sv : listsinhvien) {
+                Modeldelete.addRow(new Object[]{
+                    sv.getMaSV(), sv.getTenSV(), sv.getCCCD(), sv.getGioiTinh(), sv.getNgaySinh(), sv.getMaLop(), sv.getSoDienThoai(), "đã Xóa"
+                });
+//            }
+        }
+        count = -1;
     }
 
 }

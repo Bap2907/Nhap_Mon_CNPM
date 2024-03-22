@@ -673,14 +673,14 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="JFrameQuanLyKyTucXa.ThongTinTaiKhoan" name="jPanelThongTinTaiKhoan">
+            <Component class="JFrameQuanLyKyTucXa.CaiDatTaiKhoan" name="jPanelCaiDatTaiKhoan">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-                  <CardConstraints cardName="card10"/>
+                  <CardConstraints cardName="card11"/>
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="JFrameQuanLyKyTucXa.CaiDatTaiKhoan" name="jPanelCaiDatTaiKhoan">
+            <Component class="JFrameQuanLyKyTucXa.ThongTinTK_NV" name="thongTinTK_NV">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
                   <CardConstraints cardName="card11"/>
