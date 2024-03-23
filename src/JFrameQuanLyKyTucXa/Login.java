@@ -271,7 +271,7 @@ public class Login extends javax.swing.JFrame {
                 String sql = "select * from TaiKhoan where tenDangNhap=? and matKhau=?";
                 PreparedStatement ps= con.prepareStatement(sql);
                 ps.setString(1,jnameuser.getText());
-                ps.setString(2,PasswordHash(jpassword.getText()));
+                ps.setString(2,PasswordHash(jpassword.getText()));          
                 ResultSet rs = ps.executeQuery();          
                 if (rs.next()){
                     String phanQuyen = rs.getString("phanQuyen");
@@ -282,15 +282,12 @@ public class Login extends javax.swing.JFrame {
                                 JOptionPane.showMessageDialog(null, "Bạn đã nghỉ việc ! Không thể đăng nhập đc!");
                             } else {
                                dispose();
-                               Main main = new Main(email);
+                               Main main = new Main(email,jnameuser.getText());
                                main.setVisible(true);
-//                                email = new TaiKhoanDAO().LayEmail(jnameuser.getText());
-                               main.setnameuser(email);
-
                             }
                         } else if (phanQuyen.equals("Sinh Viên")) {
                             dispose();
-                            MainSV main = new MainSV(email);
+                            MainSV main = new MainSV(email,jnameuser.getText());
                             main.setVisible(true);
                             email = new TaiKhoanDAO().LayEmail(jnameuser.getText());
                             main.setEmail(email);

@@ -665,5 +665,17 @@ public class QuanLySinhVienDAO {
         }
         return listSinhVien;
     }
+     public void Xoathongtinbin(String email) {
+        Connection con = KetNoiSQL.getConnection();
+        String sql = "delete from SinhVien where email = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, email);
+            ps.executeUpdate();
+            ps.close();
+            con.close();
+        } catch (SQLException e) {
+        }
+    }
     
 }

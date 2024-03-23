@@ -1,5 +1,4 @@
 package JFrameQuanLyKyTucXa;
-
 import Connector.KetNoiSQL;
 import JFrameQuanLyKyTucXa.Login;
 import JFrameQuanLyKyTucXa.QuanLyNhanVien;
@@ -30,27 +29,15 @@ import model.ThongTinSinhVien;
 public class Main extends javax.swing.JFrame {
     Connector.KetNoiSQL connect = new Connector.KetNoiSQL();
     private String email;
-    public Main(String email) {
+    private String username;
+    public Main(String email,String username) {
         this.email = email;
+        this.username=username;
         initComponents();
         //setSize(1450,720); 
         //Cho giao diện nằm giữa màn hình
         setLocationRelativeTo(null);
-    }
-    
-    public void setnameuser(String email) {
-        Connection conn = KetNoiSQL.getConnection();
-        String sql = "select * from NhanVien where email='" + email + "'";
-        try {
-            PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()) {
-                txtnameuser.setText(rs.getString("tenNV"));
-            }
-            conn.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        txtnameuser.setText(username);
     }
     private void hideAllPanels() {
         jPanelTrangChu.setVisible(false);
@@ -63,6 +50,7 @@ public class Main extends javax.swing.JFrame {
         jPanelHoaDon.setVisible(false);
         jPanelCaiDatTaiKhoan.setVisible(false);
         thongTinTK_NV.setVisible(false);
+        hopdongktx.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -78,7 +66,6 @@ public class Main extends javax.swing.JFrame {
         hopdongktx = new javax.swing.JLabel();
         cackhoanphi = new javax.swing.JLabel();
         thongke = new javax.swing.JLabel();
-        thongtintaikhoan = new javax.swing.JLabel();
         cailaimatkhau = new javax.swing.JLabel();
         dangxuat = new javax.swing.JLabel();
         dangxuat1 = new javax.swing.JLabel();
@@ -176,18 +163,6 @@ public class Main extends javax.swing.JFrame {
         thongke.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 thongkeMouseClicked(evt);
-            }
-        });
-
-        thongtintaikhoan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        thongtintaikhoan.setForeground(new java.awt.Color(255, 255, 255));
-        thongtintaikhoan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        thongtintaikhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/thongtintaikhoan.png"))); // NOI18N
-        thongtintaikhoan.setText("Thông tin tài khoản");
-        thongtintaikhoan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        thongtintaikhoan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                thongtintaikhoanMouseClicked(evt);
             }
         });
 
@@ -289,8 +264,7 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(quanlysinhvien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(quanlyphong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cailaimatkhau, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(dangxuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(thongtintaikhoan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(dangxuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(MenuLayout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -332,13 +306,11 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(thongke, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tienphong, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(thongtintaikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(61, 61, 61)
                 .addComponent(cailaimatkhau, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(dangxuat, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1427, Short.MAX_VALUE))
+                .addContainerGap(1433, Short.MAX_VALUE))
         );
 
         NameKTX.setBackground(new java.awt.Color(255, 255, 255));
@@ -475,32 +447,20 @@ public class Main extends javax.swing.JFrame {
     private void cailaimatkhauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cailaimatkhauMouseClicked
         hideAllPanels();
         jPanelCaiDatTaiKhoan.setVisible(true);
-        setnameuser(email);
     }//GEN-LAST:event_cailaimatkhauMouseClicked
-
-    private void thongtintaikhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thongtintaikhoanMouseClicked
-        hideAllPanels();
-        thongTinTK_NV.setVisible(true);
-        setnameuser(email);
-        this.thongTinTK_NV.showViewTaiKhoan(email);
-    }//GEN-LAST:event_thongtintaikhoanMouseClicked
 
     private void thongkeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thongkeMouseClicked
         hideAllPanels();
         jPanelThongKePhong.setVisible(true);
-        setnameuser(email);
     }//GEN-LAST:event_thongkeMouseClicked
 
     private void cackhoanphiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cackhoanphiMouseClicked
         hideAllPanels();
         jPanelQuanLyDienNuoc.setVisible(true);
-        setnameuser(email);
     }//GEN-LAST:event_cackhoanphiMouseClicked
 
     private void hopdongktxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hopdongktxMouseClicked
-        jPanelTrangChu.setVisible(false);
-        jPanelQuanLyNhanVien.setVisible(false);
-        jPanelQuanLySinhVien.setVisible(false);
+        hideAllPanels();
         hopdongktx.setVisible(true);
         SVKTX.setVisible(true);
     }//GEN-LAST:event_hopdongktxMouseClicked
@@ -508,40 +468,30 @@ public class Main extends javax.swing.JFrame {
     private void quanlyphongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quanlyphongMouseClicked
         hideAllPanels();
         jPanelQuanlyPhong.setVisible(true);
-        setnameuser(email);
     }//GEN-LAST:event_quanlyphongMouseClicked
 
     private void trangchuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trangchuMouseClicked
         hideAllPanels();
         jPanelTrangChu.setVisible(true);
-        jPanelQuanLyNhanVien.setVisible(false);
-        jPanelQuanLySinhVien.setVisible(false);
-        //hopdongktx.setVisible(false);
-        quanLySVDangTrongKTX1.setVisible(false);
-        quanLySVDangChoDuyet1.setVisible(false);
-        SVKTX.setVisible(false);
     }//GEN-LAST:event_trangchuMouseClicked
 
     private void dangxuat1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dangxuat1MouseClicked
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_dangxuat1MouseClicked
 
     private void quanlysinhvienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quanlysinhvienMouseClicked
         hideAllPanels();
         jPanelQuanLySinhVien.setVisible(true);
-        setnameuser(email);
     }//GEN-LAST:event_quanlysinhvienMouseClicked
 
     private void quanlynhanvienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quanlynhanvienMouseClicked
         hideAllPanels();
         jPanelQuanLyNhanVien.setVisible(true);
-        setnameuser(email);
     }//GEN-LAST:event_quanlynhanvienMouseClicked
 
     private void tienphongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tienphongMouseClicked
         hideAllPanels();
         jPanelHoaDon.setVisible(true);
-        setnameuser(email);
     }//GEN-LAST:event_tienphongMouseClicked
 
     public static void main(String args[]) {
@@ -584,7 +534,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel quanlysinhvien;
     private JFrameQuanLyKyTucXa.ThongTinTK_NV thongTinTK_NV;
     private javax.swing.JLabel thongke;
-    private javax.swing.JLabel thongtintaikhoan;
     private javax.swing.JLabel tienphong;
     private javax.swing.JLabel trangchu;
     private javax.swing.JLabel txtnameuser;

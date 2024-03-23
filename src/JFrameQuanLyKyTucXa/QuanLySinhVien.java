@@ -1791,6 +1791,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
             if (test == JOptionPane.YES_OPTION) {
                 LayMaSinhVien(count);
                 new TaiKhoanDAO().XoaTaiKhoanbin(email);
+                new QuanLySinhVienDAO().Xoathongtinbin(email);
                 JOptionPane.showMessageDialog(null, "Xoá sinh viên thành công!");
             } else if (test == JOptionPane.NO_OPTION) {
                 JOptionPane.showMessageDialog(null, "Bạn đã hủy xóa sinh viên thành công");

@@ -843,11 +843,11 @@ public class SignUp extends javax.swing.JFrame {
         try {
             PreparedStatement ps1 = conn.prepareStatement(sql1);
 
-            String password = txtMatKhauSV.getText().trim();
+            String password = PasswordHash(txtMatKhauSV.getText().trim());
             ps1.setString(1, txtTenDangNhapSV.getText().trim());
             ps1.setString(2, password);
-            ps1.setString(3, PasswordHash(txtEmailSV.getText().trim()));
-            ps1.setString(4, "Sinh Vien");
+            ps1.setString(3, txtEmailSV.getText().trim());
+            ps1.setString(4, "Sinh Viên");
 
             row = ps1.executeUpdate();
             if (row > 0) {
