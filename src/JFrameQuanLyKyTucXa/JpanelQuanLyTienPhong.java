@@ -1172,7 +1172,7 @@ public class JpanelQuanLyTienPhong extends javax.swing.JPanel {
             double tienphong = new HopDongKTXDAO().getTienPhongTheoMaSV(sv.getMaSV());
 
             Connection conn = KetNoiSQL.getConnection();
-            String sql = "insert into hoadonsv(ngayThang,maSV,tienThanhToan,trangThai) values(?,?,?,?)";
+            String sql = "insert into HoaDonSV(ngayThang,maSV,tienThanhToan,trangThai) values(?,?,?,?)";
             try {
                 PreparedStatement ps = conn.prepareStatement(sql);
                 ps.setString(1, ngaythang);

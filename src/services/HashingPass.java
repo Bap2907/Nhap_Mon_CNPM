@@ -19,4 +19,9 @@ public class HashingPass {
         }
         return null;
     }
+
+    public static void main(String[] args) {
+        String hashedPassword = PasswordHash("123");
+        System.out.println("Hashed Password: " + hashedPassword);
+    }
 }

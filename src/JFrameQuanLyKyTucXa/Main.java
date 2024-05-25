@@ -63,6 +63,8 @@ public class Main extends javax.swing.JFrame {
         jPanelHoaDon.setVisible(false);
         jPanelCaiDatTaiKhoan.setVisible(false);
         jPanelThongTinTaiKhoan.setVisible(false);
+        jPanelHopDongKTX.setVisible(false);
+        jPanelQuanLyTienPhong.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -104,6 +106,8 @@ public class Main extends javax.swing.JFrame {
         jPanelHoaDon = new JFrameQuanLyKyTucXa.JpanelQuanLyTienPhong();
         jPanelThongTinTaiKhoan = new JFrameQuanLyKyTucXa.ThongTinTaiKhoan();
         jPanelCaiDatTaiKhoan = new JFrameQuanLyKyTucXa.CaiDatTaiKhoan();
+        jPanelHopDongKTX = new JFrameQuanLyKyTucXa.HopDongKTX();
+        jPanelQuanLyTienPhong = new JFrameQuanLyKyTucXa.JpanelQuanLyTienPhong();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -422,6 +426,8 @@ public class Main extends javax.swing.JFrame {
         Contents.add(jPanelHoaDon, "card9");
         Contents.add(jPanelThongTinTaiKhoan, "card10");
         Contents.add(jPanelCaiDatTaiKhoan, "card11");
+        Contents.add(jPanelHopDongKTX, "card12");
+        Contents.add(jPanelQuanLyTienPhong, "card13");
 
         javax.swing.GroupLayout TrangchuLayout = new javax.swing.GroupLayout(Trangchu);
         Trangchu.setLayout(TrangchuLayout);
@@ -500,11 +506,9 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_cackhoanphiMouseClicked
 
     private void hopdongktxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hopdongktxMouseClicked
-        jPanelTrangChu.setVisible(false);
-        jPanelQuanLyNhanVien.setVisible(false);
-        jPanelQuanLySinhVien.setVisible(false);
-        hopdongktx.setVisible(true);
-        SVKTX.setVisible(true);
+        hideAllPanels();
+        jPanelHopDongKTX.setVisible(true);
+        setnameuser(email);
     }//GEN-LAST:event_hopdongktxMouseClicked
 
     private void quanlyphongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quanlyphongMouseClicked
@@ -542,7 +546,7 @@ public class Main extends javax.swing.JFrame {
 
     private void tienphongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tienphongMouseClicked
         hideAllPanels();
-        jPanelHoaDon.setVisible(true);
+        jPanelQuanLyTienPhong.setVisible(true);
         setnameuser(email);
     }//GEN-LAST:event_tienphongMouseClicked
 
@@ -572,9 +576,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private JFrameQuanLyKyTucXa.CaiDatTaiKhoan jPanelCaiDatTaiKhoan;
     private JFrameQuanLyKyTucXa.JpanelQuanLyTienPhong jPanelHoaDon;
+    private JFrameQuanLyKyTucXa.HopDongKTX jPanelHopDongKTX;
     private JFrameQuanLyKyTucXa.QuanLyDienNuoc jPanelQuanLyDienNuoc;
     private JFrameQuanLyKyTucXa.QuanLyNhanVien jPanelQuanLyNhanVien;
     private JFrameQuanLyKyTucXa.QuanLySinhVien jPanelQuanLySinhVien;
+    private JFrameQuanLyKyTucXa.JpanelQuanLyTienPhong jPanelQuanLyTienPhong;
     private JFrameQuanLyKyTucXa.QuanLyPhong jPanelQuanlyPhong;
     private JFrameQuanLyKyTucXa.ThongKePhong jPanelThongKePhong;
     private JFrameQuanLyKyTucXa.ThongTinTaiKhoan jPanelThongTinTaiKhoan;
