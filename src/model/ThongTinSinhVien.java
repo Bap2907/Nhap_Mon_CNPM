@@ -56,6 +56,14 @@ public class ThongTinSinhVien {
     public void setMaSV(String maSV) {
         this.maSV = maSV;
     }
+    
+    public String getMaPhong() {
+        return maPhong;
+    }
+
+    public void setMaPhong(String maPhong) {
+        this.maPhong = maPhong;
+    }
 
     public String getTenSV() {
         return tenSV;

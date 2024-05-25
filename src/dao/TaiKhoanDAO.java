@@ -153,6 +153,31 @@ public class TaiKhoanDAO {
         }
     }
     
+    public void XoaTaiKhoanbin(String email) {
+        Connection con = KetNoiSQL.getConnection();
+        String sql = "delete from TaiKhoan where email = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, email);
+            ps.executeUpdate();
+            ps.close();
+            con.close();
+        } catch (SQLException e) {
+        }
+    }
+    public void KhoiphucTaiKhoan(String email) {
+        Connection con = KetNoiSQL.getConnection();
+        String sql = "update SinhVien set trangThai = 1 where email = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, email);
+            ps.executeUpdate();
+            ps.close();
+            con.close();
+        } catch (SQLException e) {
+        }
+    }
+    
     public void CapNhatEmail(String email,String text){
         Connection con = KetNoiSQL.getConnection();
         String sql = "update TaiKhoan set email=? where email='" + email + "'";

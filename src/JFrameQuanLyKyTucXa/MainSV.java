@@ -9,15 +9,18 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import java.sql.SQLException;
 import JFrameQuanLyKyTucXa.DangKiPhong;
+import dao.SinhVienDAO;
 
 public class MainSV extends javax.swing.JFrame {
     Connector.KetNoiSQL connect = new Connector.KetNoiSQL();
     private String emailsv;
+    private String username;
     private DangKiPhong dangKiPhong;
     String masv;
     
-    public MainSV(String email) {
+    public MainSV(String email,String username) {
         this.emailsv = email;
+        this.username= username;
         dangKiPhong = new DangKiPhong(email);
         dangKiPhong.setEmail(email); // Truyền giá trị của biến email
         //dangKiPhong.displayData();
@@ -98,7 +101,15 @@ public class MainSV extends javax.swing.JFrame {
 
         return gioiTinh;
     }
-
+    void hidepanel(){
+        trangChu1.setVisible(false);
+        dangKiPhong1.setVisible(false);
+        tBDangKiPhongThanhCong1.setVisible(false);
+        thongTinTaiKhoan1.setVisible(false);
+        khoanPhi_USER1.setVisible(false);
+        caiDatTaiKhoan_SV1.setVisible(false);
+        jPanelKhoanPhiKQ.setVisible(false);
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -110,7 +121,7 @@ public class MainSV extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         quanlysv = new javax.swing.JLabel();
         trangchu = new javax.swing.JLabel();
-        quanlynv = new javax.swing.JLabel();
+        quanlyKhoanphi = new javax.swing.JLabel();
         thongtintaikhoan = new javax.swing.JLabel();
         cailaimatkhau = new javax.swing.JLabel();
         dangxuat = new javax.swing.JLabel();
@@ -121,8 +132,14 @@ public class MainSV extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         Contents = new javax.swing.JPanel();
         trangChu1 = new JFrameQuanLyKyTucXa.TrangChu();
-        dangKiPhong1 = new JFrameQuanLyKyTucXa.DangKiPhong();
         tBDangKiPhongThanhCong1 = new JFrameQuanLyKyTucXa.TBDangKiPhongThanhCong();
+        thongTinTaiKhoan1 = new JFrameQuanLyKyTucXa.ThongTinTaiKhoan();
+        dangKiPhong1 = new JFrameQuanLyKyTucXa.DangKiPhong();
+        khoanPhi_USER1 = new JFrameQuanLyKyTucXa.KhoanPhi_USER();
+        jPanelKhoanPhiKQ = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        caiDatTaiKhoan_SV1 = new JFrameQuanLyKyTucXa.CaiDatTaiKhoan_SV();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -162,12 +179,17 @@ public class MainSV extends javax.swing.JFrame {
             }
         });
 
-        quanlynv.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        quanlynv.setForeground(new java.awt.Color(255, 255, 255));
-        quanlynv.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        quanlynv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/quanlynhanvien.png"))); // NOI18N
-        quanlynv.setText("Các khoản phí");
-        quanlynv.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        quanlyKhoanphi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        quanlyKhoanphi.setForeground(new java.awt.Color(255, 255, 255));
+        quanlyKhoanphi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        quanlyKhoanphi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/quanlynhanvien.png"))); // NOI18N
+        quanlyKhoanphi.setText("Các khoản phí");
+        quanlyKhoanphi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        quanlyKhoanphi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                quanlyKhoanphiMouseClicked(evt);
+            }
+        });
 
         thongtintaikhoan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         thongtintaikhoan.setForeground(new java.awt.Color(255, 255, 255));
@@ -223,7 +245,7 @@ public class MainSV extends javax.swing.JFrame {
         MenuLayout.setHorizontalGroup(
             MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(trangchu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(quanlynv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(quanlyKhoanphi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(quanlysv, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
             .addGroup(MenuLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
@@ -259,7 +281,7 @@ public class MainSV extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addComponent(quanlysv)
                 .addGap(27, 27, 27)
-                .addComponent(quanlynv)
+                .addComponent(quanlyKhoanphi)
                 .addGap(28, 28, 28)
                 .addComponent(thongtintaikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -307,8 +329,48 @@ public class MainSV extends javax.swing.JFrame {
 
         trangChu1.setBackground(new java.awt.Color(255, 255, 255));
         Contents.add(trangChu1, "card2");
-        Contents.add(dangKiPhong1, "card3");
         Contents.add(tBDangKiPhongThanhCong1, "card4");
+        Contents.add(thongTinTaiKhoan1, "card6");
+        Contents.add(dangKiPhong1, "card7");
+        Contents.add(khoanPhi_USER1, "card7");
+
+        jPanelKhoanPhiKQ.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(237, 50, 55));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/thongbao.png"))); // NOI18N
+        jLabel5.setText("Thông báo ");
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(19, 90, 118));
+        jLabel6.setText("Bạn không có bất kỳ chi phí nào cần chi trả");
+
+        javax.swing.GroupLayout jPanelKhoanPhiKQLayout = new javax.swing.GroupLayout(jPanelKhoanPhiKQ);
+        jPanelKhoanPhiKQ.setLayout(jPanelKhoanPhiKQLayout);
+        jPanelKhoanPhiKQLayout.setHorizontalGroup(
+            jPanelKhoanPhiKQLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelKhoanPhiKQLayout.createSequentialGroup()
+                .addGroup(jPanelKhoanPhiKQLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelKhoanPhiKQLayout.createSequentialGroup()
+                        .addGap(197, 197, 197)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelKhoanPhiKQLayout.createSequentialGroup()
+                        .addGap(245, 245, 245)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(587, Short.MAX_VALUE))
+        );
+        jPanelKhoanPhiKQLayout.setVerticalGroup(
+            jPanelKhoanPhiKQLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelKhoanPhiKQLayout.createSequentialGroup()
+                .addGap(108, 108, 108)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(571, Short.MAX_VALUE))
+        );
+
+        Contents.add(jPanelKhoanPhiKQ, "card9");
+        Contents.add(caiDatTaiKhoan_SV1, "card8");
 
         javax.swing.GroupLayout TrangchuLayout = new javax.swing.GroupLayout(Trangchu);
         Trangchu.setLayout(TrangchuLayout);
@@ -349,14 +411,12 @@ public class MainSV extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void trangchuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trangchuMouseClicked
+        hidepanel();
         trangChu1.setVisible(true);
-        dangKiPhong1.setVisible(false);
-        tBDangKiPhongThanhCong1.setVisible(false);
     }//GEN-LAST:event_trangchuMouseClicked
 
     private void quanlysvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quanlysvMouseClicked
-        trangChu1.setVisible(false);
-        tBDangKiPhongThanhCong1.setVisible(false);
+        hidepanel();
         int trangthai = new QuanLySinhVienDAO().LayTrangThaiTheoEmail(emailsv);
         if (trangthai == 1 || trangthai == 5) {
             dangKiPhong1.setVisible(true);
@@ -367,20 +427,42 @@ public class MainSV extends javax.swing.JFrame {
     }//GEN-LAST:event_quanlysvMouseClicked
 
     private void thongtintaikhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thongtintaikhoanMouseClicked
-
+        hidepanel();
+        thongTinTaiKhoan1.setVisible(true);
+        setnameuser(emailsv);
+        this.thongTinTaiKhoan1.showViewTaiKhoanEmail(emailsv);
     }//GEN-LAST:event_thongtintaikhoanMouseClicked
 
     private void cailaimatkhauMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cailaimatkhauMouseClicked
-
+        hidepanel();
+        caiDatTaiKhoan_SV1.setVisible(true);
+        caiDatTaiKhoan_SV1.set(emailsv,username);
+        setnameuser(emailsv);
     }//GEN-LAST:event_cailaimatkhauMouseClicked
 
     private void dangxuatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dangxuatMouseClicked
-
+        int test = JOptionPane.showConfirmDialog(null, "Bạn chắc có muốn đăng xuất hay không !", "Thông báo đăng nhập", JOptionPane.YES_NO_OPTION);
+        if (test == JOptionPane.YES_OPTION) {
+            dispose();
+            Login login = new Login();
+            login.show();
+        }
     }//GEN-LAST:event_dangxuatMouseClicked
 
     private void dangxuat1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dangxuat1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_dangxuat1MouseClicked
+
+    private void quanlyKhoanphiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quanlyKhoanphiMouseClicked
+        hidepanel();
+        int trangthai = new SinhVienDAO().LayTrangThaiTheoEmail(emailsv);
+        if (trangthai == 2 || trangthai == 3) {
+            khoanPhi_USER1.setVisible(true);
+            khoanPhi_USER1.setEmail(emailsv);
+        } else {
+            jPanelKhoanPhiKQ.setVisible(true);
+        }
+    }//GEN-LAST:event_quanlyKhoanphiMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -419,6 +501,7 @@ public class MainSV extends javax.swing.JFrame {
     private javax.swing.JPanel Menu;
     private javax.swing.JPanel NameKTX;
     private javax.swing.JPanel Trangchu;
+    private JFrameQuanLyKyTucXa.CaiDatTaiKhoan_SV caiDatTaiKhoan_SV1;
     private javax.swing.JLabel cailaimatkhau;
     private JFrameQuanLyKyTucXa.DangKiPhong dangKiPhong1;
     private javax.swing.JLabel dangxuat;
@@ -427,9 +510,14 @@ public class MainSV extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel quanlynv;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanelKhoanPhiKQ;
+    private JFrameQuanLyKyTucXa.KhoanPhi_USER khoanPhi_USER1;
+    private javax.swing.JLabel quanlyKhoanphi;
     private javax.swing.JLabel quanlysv;
     private JFrameQuanLyKyTucXa.TBDangKiPhongThanhCong tBDangKiPhongThanhCong1;
+    private JFrameQuanLyKyTucXa.ThongTinTaiKhoan thongTinTaiKhoan1;
     private javax.swing.JLabel thongtintaikhoan;
     private JFrameQuanLyKyTucXa.TrangChu trangChu1;
     private javax.swing.JLabel trangchu;

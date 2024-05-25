@@ -14,10 +14,6 @@ import javax.swing.table.DefaultTableModel;
 import model.ThongTinHoaDonSV;
 import model.ThongTinPhong;
 
-/**
- *
- * @author Phan Tien
- */
 public class ThongKePhong extends javax.swing.JPanel {
 
     private DefaultTableModel Model;

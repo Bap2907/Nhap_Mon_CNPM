@@ -57,14 +57,15 @@
                           <EmptySpace pref="87" max="32767" attributes="0"/>
                           <Component id="ScrollPaneSV" min="-2" pref="1053" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
                           <Component id="loadSV" min="-2" pref="50" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="deleteSV" min="-2" pref="56" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="confirmSV" min="-2" pref="56" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="txtSearch" min="-2" pref="308" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="64" max="32767" attributes="0"/>
@@ -76,10 +77,13 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jLabel2" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="loadSV" alignment="0" pref="50" max="32767" attributes="0"/>
-                      <Component id="deleteSV" alignment="0" max="32767" attributes="0"/>
-                      <Component id="confirmSV" alignment="1" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="loadSV" alignment="0" pref="50" max="32767" attributes="0"/>
+                          <Component id="deleteSV" alignment="0" max="32767" attributes="0"/>
+                          <Component id="confirmSV" alignment="1" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="txtSearch" min="-2" pref="42" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="ScrollPaneSV" min="-2" pref="406" max="-2" attributes="0"/>
@@ -191,6 +195,19 @@
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="confirmSVMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="textfield.TextFieldSearchOption" name="txtSearch">
+          <Properties>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="null"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="76" green="5a" red="13" type="rgb"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSearchKeyReleased"/>
           </Events>
         </Component>
       </SubComponents>

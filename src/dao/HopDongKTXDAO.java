@@ -240,7 +240,7 @@ public class HopDongKTXDAO {
         return formatter1.format(ngay);
     }
 
-     public void updateHopDongKTX(String masv, String maPhong, Date ngayHDKT,Date ngayHDBD) {
+    public void updateHopDongKTX(String masv, String maPhong, Date ngayHDKT, Date ngayHDBD) {
         Connection con = KetNoiSQL.getConnection();
         String sql = "update HopDongKTX set maPhong=?,ngayHDKT=?,ngayHDBD=? where maSV='" + masv + "'";
         try {
@@ -355,7 +355,7 @@ public class HopDongKTXDAO {
     public List<String> LayMaSinhVienChuaCoHopDong() {
         List<String> listmasv = new ArrayList<>();
         Connection con = KetNoiSQL.getConnection();
-        String sql = "Select * from SinhVien where trangThai=1 or trangThai=0";
+        String sql = "Select * from SinhVien where trangThai=1";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -375,11 +375,9 @@ public class HopDongKTXDAO {
         Connection conn = KetNoiSQL.getConnection();
         String sql = "select * from SinhVien where maSV='" + masv + "'";
         try {
-
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-
                 sv.setMaSV(rs.getString("maSV"));
                 sv.setTenSV(rs.getString("tenSV"));
                 sv.setCCCD(rs.getString("CCCD"));
@@ -393,11 +391,9 @@ public class HopDongKTXDAO {
             }
             preparedStatement.close();
             conn.close();
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return sv;
     }
 
@@ -522,4 +518,6 @@ public class HopDongKTXDAO {
         }
         return mp;
     }
+
+
 }

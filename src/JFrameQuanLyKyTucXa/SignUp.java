@@ -653,7 +653,7 @@ public class SignUp extends javax.swing.JFrame {
         boolean kiemtracccdnhanvien = new QuanLyNhanVienDAO().KiemTraCCCDNV(cccdsv);
         boolean kiemtraemailnhanvien = new QuanLyNhanVienDAO().KiemTraEmailNV(emailsv);
         boolean kiemtrasdtnhanvien = new QuanLyNhanVienDAO().KiemTraSDTNV(sodienthoaisv);
-        
+        boolean kiemtrangaysinhsinhvien = new SinhVienDAO().KiemTrangaysinh(ngaysinhsv);
 
         if (hotensv.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Không để trống họ tên sinh viên. Vui lòng điền thông tin đầy đủ!");
@@ -697,7 +697,10 @@ public class SignUp extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Tên đăng nhập sinh viên đã tồn tại!");
         } else if (!tendangnhapsv.matches(yctandangnhap)) {
             JOptionPane.showMessageDialog(this, "Tên đăng nhập sinh viên chỉ có số và chữ trong alphabet");
-        } else
+        } 
+        else if (!kiemtrangaysinhsinhvien) {
+            JOptionPane.showMessageDialog(this, "Sinh Viên chưa đủ 18 tuổi !");
+        }else
         {
             int test = JOptionPane.showConfirmDialog(null, "Bạn chắc có muốn đăng ký hay không !", "Thông báo đăng ký", JOptionPane.YES_NO_OPTION);
             if (test == JOptionPane.YES_OPTION) {
@@ -840,11 +843,11 @@ public class SignUp extends javax.swing.JFrame {
         try {
             PreparedStatement ps1 = conn.prepareStatement(sql1);
 
-            String password = txtMatKhauSV.getText().trim();
+            String password = PasswordHash(txtMatKhauSV.getText().trim());
             ps1.setString(1, txtTenDangNhapSV.getText().trim());
             ps1.setString(2, password);
-            ps1.setString(3, PasswordHash(txtEmailSV.getText().trim()));
-            ps1.setString(4, "Sinh Vien");
+            ps1.setString(3, txtEmailSV.getText().trim());
+            ps1.setString(4, "Sinh Viên");
 
             row = ps1.executeUpdate();
             if (row > 0) {
