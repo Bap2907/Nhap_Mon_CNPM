@@ -2,11 +2,11 @@
 package JFrameQuanLyKyTucXa;
 
 import dao.QuanLyNhanVienDAO;
+import java.text.SimpleDateFormat;
 import model.ThongTinNhanVien;
 public class ThongTinTK_NV extends javax.swing.JPanel {
     public ThongTinTK_NV() {
         initComponents();
-//        showViewTaiKhoan(email);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -23,7 +23,6 @@ public class ThongTinTK_NV extends javax.swing.JPanel {
         txtViewEmailSV = new javax.swing.JLabel();
         jLabel53 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
-        txtViewNgaySinhSV = new com.toedter.calendar.JDateChooser();
         txtViewGioiTinh = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
@@ -31,6 +30,7 @@ public class ThongTinTK_NV extends javax.swing.JPanel {
         jLabel34 = new javax.swing.JLabel();
         txtViewHoTenSV = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
+        txtViewNgaySinhSV = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1068, 580));
 
@@ -78,8 +78,6 @@ public class ThongTinTK_NV extends javax.swing.JPanel {
         jLabel30.setForeground(new java.awt.Color(19, 90, 118));
         jLabel30.setText("Số điện thoại :");
 
-        txtViewNgaySinhSV.setDateFormatString("dd-MM-yyyy");
-
         txtViewGioiTinh.setBackground(new java.awt.Color(255, 255, 255));
         txtViewGioiTinh.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txtViewGioiTinh.setForeground(new java.awt.Color(19, 90, 118));
@@ -108,6 +106,10 @@ public class ThongTinTK_NV extends javax.swing.JPanel {
         jLabel35.setForeground(new java.awt.Color(19, 90, 118));
         jLabel35.setText("Email :");
 
+        txtViewNgaySinhSV.setBackground(new java.awt.Color(255, 255, 255));
+        txtViewNgaySinhSV.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtViewNgaySinhSV.setForeground(new java.awt.Color(19, 90, 118));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -127,10 +129,11 @@ public class ThongTinTK_NV extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtViewSoDienThoaiSV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtViewNgaySinhSV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtViewSoDienThoaiSV, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtViewNgaySinhSV, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(49, 49, 49)
@@ -167,14 +170,15 @@ public class ThongTinTK_NV extends javax.swing.JPanel {
                     .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtViewCCCDSV, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtViewNgaySinhSV, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20)
                         .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(txtViewNgaySinhSV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
                         .addComponent(txtViewMaLopSV, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,7 +196,7 @@ public class ThongTinTK_NV extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtViewEmailSV, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 153, Short.MAX_VALUE))
+                .addGap(0, 147, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -225,7 +229,7 @@ public class ThongTinTK_NV extends javax.swing.JPanel {
     private javax.swing.JLabel txtViewGioiTinh;
     private javax.swing.JLabel txtViewHoTenSV;
     private javax.swing.JLabel txtViewMaLopSV;
-    private com.toedter.calendar.JDateChooser txtViewNgaySinhSV;
+    private javax.swing.JLabel txtViewNgaySinhSV;
     private javax.swing.JLabel txtViewQueQuan;
     private javax.swing.JLabel txtViewSoDienThoaiSV;
     // End of variables declaration//GEN-END:variables
@@ -235,7 +239,9 @@ public class ThongTinTK_NV extends javax.swing.JPanel {
         txtViewGioiTinh.setText(nv.getGioiTinh());
         txtViewMaLopSV.setText(nv.getChucVu());
         txtViewSoDienThoaiSV.setText(nv.getSoDienThoai());
-        txtViewNgaySinhSV.setDate(nv.getNgaySinh());
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy"); // Định dạng ngày tháng
+        String strDate = formatter.format(nv.getNgaySinh()); // Chuyển đổi Date thành String
+        txtViewNgaySinhSV.setText(strDate);
         txtViewCCCDSV.setText(nv.getCCCD());
         txtViewEmailSV.setText(nv.getEmail());
         txtViewQueQuan.setText(nv.getQueQuan());
