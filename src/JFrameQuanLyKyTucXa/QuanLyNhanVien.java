@@ -63,7 +63,7 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
         showTable();
         tableNV.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
         tableNV.getTableHeader().setOpaque(false);
-        tableNV.getTableHeader().setBackground(new Color(19, 90, 118));
+        tableNV.getTableHeader().setBackground(new Color(0,102,102));
         tableNV.getTableHeader().setForeground(new Color(225, 225, 225));
 
         AutoCompleteDecorator.decorate(txtUpQueQuanNV);
@@ -93,6 +93,20 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
         jPanel5 = new javax.swing.JPanel();
+        QuanLyThongTinNV = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableNV = new javax.swing.JTable();
+        addNV = new javax.swing.JLabel();
+        viewNV = new javax.swing.JLabel();
+        editNV = new javax.swing.JLabel();
+        deleteSV = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        PreviousButton = new java.awt.Button();
+        NextButton = new java.awt.Button();
+        bin = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        loadNV = new javax.swing.JLabel();
+        txtSearch = new textfield.TextFieldSearchOption();
         AddNhanVien = new javax.swing.JPanel();
         jLabel40 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -172,26 +186,220 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
         jLabel25 = new javax.swing.JLabel();
         txtUpTrangThai = new javax.swing.JComboBox<>();
         txtUpNgaySinh = new com.toedter.calendar.JDateChooser();
-        QuanLyThongTinNV = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tableNV = new javax.swing.JTable();
-        addNV = new javax.swing.JLabel();
-        viewNV = new javax.swing.JLabel();
-        editNV = new javax.swing.JLabel();
-        deleteSV = new javax.swing.JLabel();
-        loadNV = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        PreviousButton = new java.awt.Button();
-        NextButton = new java.awt.Button();
-        txtSearch = new textfield.TextFieldSearchOption();
-        bin = new javax.swing.JLabel();
         Bin = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableNV1 = new javax.swing.JTable();
         jLabel61 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         jPanel5.setLayout(new java.awt.CardLayout());
+
+        QuanLyThongTinNV.setBackground(new java.awt.Color(255, 255, 255));
+        QuanLyThongTinNV.setMaximumSize(new java.awt.Dimension(0, 0));
+        QuanLyThongTinNV.setPreferredSize(new java.awt.Dimension(1109, 5));
+
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jScrollPane1MouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jScrollPane1MouseExited(evt);
+            }
+        });
+
+        tableNV.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tableNV.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Tên nhân viên", "CCCD", "Giới tính", "Ngày sinh", "Số điện thoại", "Chức vụ", "Trạng thái"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tableNV.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tableNV.setFocusable(false);
+        tableNV.setGridColor(new java.awt.Color(255, 255, 255));
+        tableNV.setRowHeight(25);
+        tableNV.setSelectionBackground(new java.awt.Color(19, 90, 118));
+        tableNV.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        tableNV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableNVMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tableNV);
+
+        addNV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        addNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/add.png"))); // NOI18N
+        addNV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addNV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addNVMouseClicked(evt);
+            }
+        });
+
+        viewNV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        viewNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/magnifyingglass.png"))); // NOI18N
+        viewNV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        viewNV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewNVMouseClicked(evt);
+            }
+        });
+
+        editNV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        editNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/copywriting.png"))); // NOI18N
+        editNV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editNV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                editNVMouseClicked(evt);
+            }
+        });
+
+        deleteSV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        deleteSV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/delete.png"))); // NOI18N
+        deleteSV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        deleteSV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteSVMouseClicked(evt);
+            }
+        });
+
+        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Đang làm việc", "Đã nghỉ việc" }));
+        jComboBox1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBox1MouseClicked(evt);
+            }
+        });
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        PreviousButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        PreviousButton.setForeground(new java.awt.Color(19, 90, 118));
+        PreviousButton.setLabel("<<<<");
+        PreviousButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PreviousButtonActionPerformed(evt);
+            }
+        });
+
+        NextButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        NextButton.setForeground(new java.awt.Color(19, 90, 118));
+        NextButton.setLabel(">>>>");
+        NextButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NextButtonActionPerformed(evt);
+            }
+        });
+
+        bin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        bin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/restore (2).png"))); // NOI18N
+        bin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                binMouseClicked(evt);
+            }
+        });
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(19, 90, 118));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Quản lý thông tin nhân viên");
+        jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(19, 90, 118)));
+
+        loadNV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        loadNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/loading.png"))); // NOI18N
+        loadNV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loadNVMouseClicked(evt);
+            }
+        });
+
+        txtSearch.setBorder(null);
+        txtSearch.setForeground(new java.awt.Color(19, 90, 118));
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
+            }
+        });
+
+        javax.swing.GroupLayout QuanLyThongTinNVLayout = new javax.swing.GroupLayout(QuanLyThongTinNV);
+        QuanLyThongTinNV.setLayout(QuanLyThongTinNVLayout);
+        QuanLyThongTinNVLayout.setHorizontalGroup(
+            QuanLyThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, QuanLyThongTinNVLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(PreviousButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(108, 108, 108)
+                .addComponent(NextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(483, 483, 483))
+            .addGroup(QuanLyThongTinNVLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(QuanLyThongTinNVLayout.createSequentialGroup()
+                .addGroup(QuanLyThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(QuanLyThongTinNVLayout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(loadNV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(addNV, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(viewNV, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(editNV, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(deleteSV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(bin, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(126, 126, 126)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, QuanLyThongTinNVLayout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1156, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 63, Short.MAX_VALUE))
+        );
+        QuanLyThongTinNVLayout.setVerticalGroup(
+            QuanLyThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(QuanLyThongTinNVLayout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(QuanLyThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(QuanLyThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(loadNV, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                        .addComponent(addNV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(viewNV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(editNV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteSV, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bin, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(QuanLyThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGroup(QuanLyThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(NextButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PreviousButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        jPanel5.add(QuanLyThongTinNV, "card2");
 
         AddNhanVien.setBackground(new java.awt.Color(19, 90, 118));
 
@@ -434,9 +642,9 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
                 .addGroup(AddNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 905, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 905, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(249, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddNhanVienLayout.createSequentialGroup()
-                .addGap(0, 79, Short.MAX_VALUE)
+                .addGap(0, 219, Short.MAX_VALUE)
                 .addGroup(AddNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(AddNhanVienLayout.createSequentialGroup()
@@ -573,7 +781,7 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
                         .addGroup(AddNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtChucVuNV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(1662, Short.MAX_VALUE))
         );
 
         jPanel5.add(AddNhanVien, "card3");
@@ -713,7 +921,7 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
                                 .addComponent(txtViewEmailNV, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtViewChucVuNV, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtViewQueQuan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(243, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1093,206 +1301,6 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
 
         jPanel5.add(UpdateNhanVien, "card4");
 
-        QuanLyThongTinNV.setBackground(new java.awt.Color(255, 255, 255));
-        QuanLyThongTinNV.setMaximumSize(new java.awt.Dimension(0, 0));
-        QuanLyThongTinNV.setPreferredSize(new java.awt.Dimension(1109, 5));
-
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(19, 90, 118));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Quản lý thông tin nhân viên");
-        jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(19, 90, 118)));
-
-        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jScrollPane1MouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jScrollPane1MouseExited(evt);
-            }
-        });
-
-        tableNV.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        tableNV.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Tên nhân viên", "CCCD", "Giới tính", "Ngày sinh", "Số điện thoại", "Chức vụ", "Trạng thái"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        tableNV.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        tableNV.setFocusable(false);
-        tableNV.setGridColor(new java.awt.Color(255, 255, 255));
-        tableNV.setRowHeight(25);
-        tableNV.setSelectionBackground(new java.awt.Color(19, 90, 118));
-        tableNV.setSelectionForeground(new java.awt.Color(255, 255, 255));
-        tableNV.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableNVMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tableNV);
-
-        addNV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        addNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/add_table.png"))); // NOI18N
-        addNV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        addNV.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addNVMouseClicked(evt);
-            }
-        });
-
-        viewNV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        viewNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/eye_table.png"))); // NOI18N
-        viewNV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        viewNV.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                viewNVMouseClicked(evt);
-            }
-        });
-
-        editNV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        editNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pencil_table.png"))); // NOI18N
-        editNV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        editNV.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                editNVMouseClicked(evt);
-            }
-        });
-
-        deleteSV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        deleteSV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/delete_table.png"))); // NOI18N
-        deleteSV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        deleteSV.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                deleteSVMouseClicked(evt);
-            }
-        });
-
-        loadNV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        loadNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/load.png"))); // NOI18N
-        loadNV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        loadNV.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                loadNVMouseClicked(evt);
-            }
-        });
-
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Đang làm việc", "Đã nghỉ việc" }));
-        jComboBox1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jComboBox1MouseClicked(evt);
-            }
-        });
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-
-        PreviousButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        PreviousButton.setForeground(new java.awt.Color(19, 90, 118));
-        PreviousButton.setLabel("<<<<");
-        PreviousButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PreviousButtonActionPerformed(evt);
-            }
-        });
-
-        NextButton.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        NextButton.setForeground(new java.awt.Color(19, 90, 118));
-        NextButton.setLabel(">>>>");
-        NextButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NextButtonActionPerformed(evt);
-            }
-        });
-
-        txtSearch.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtSearch.setForeground(new java.awt.Color(19, 90, 118));
-        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtSearchKeyReleased(evt);
-            }
-        });
-
-        bin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/delete.png"))); // NOI18N
-        bin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                binMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout QuanLyThongTinNVLayout = new javax.swing.GroupLayout(QuanLyThongTinNV);
-        QuanLyThongTinNV.setLayout(QuanLyThongTinNVLayout);
-        QuanLyThongTinNVLayout.setHorizontalGroup(
-            QuanLyThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1126, Short.MAX_VALUE)
-            .addGroup(QuanLyThongTinNVLayout.createSequentialGroup()
-                .addGap(80, 80, 80)
-                .addGroup(QuanLyThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 935, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(QuanLyThongTinNVLayout.createSequentialGroup()
-                        .addComponent(loadNV, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(addNV, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(viewNV, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(editNV, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(deleteSV, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(bin)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(105, 105, 105)
-                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, QuanLyThongTinNVLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(PreviousButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(87, 87, 87)
-                .addComponent(NextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(440, 440, 440))
-        );
-        QuanLyThongTinNVLayout.setVerticalGroup(
-            QuanLyThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(QuanLyThongTinNVLayout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(QuanLyThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(addNV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(loadNV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(viewNV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(editNV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deleteSV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bin, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addGroup(QuanLyThongTinNVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(NextButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PreviousButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1685, 1685, 1685))
-        );
-
-        jPanel5.add(QuanLyThongTinNV, "card2");
-
         jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1351,7 +1359,7 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
                 .addGroup(BinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel61, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 947, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(232, Short.MAX_VALUE))
         );
         BinLayout.setVerticalGroup(
             BinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1359,7 +1367,7 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
                 .addGap(77, 77, 77)
                 .addComponent(jLabel61)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1973, Short.MAX_VALUE)
                 .addGap(101, 101, 101))
         );
 
@@ -1377,7 +1385,7 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 8, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1648,108 +1656,9 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
         selectedUpTrangThai = (String) txtUpTrangThai.getSelectedItem();
     }//GEN-LAST:event_txtUpTrangThaiActionPerformed
 
-    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
-        //        if (txtSearch.isSelected()) {
-            //            int option = txtSearch.getSelectedIndex();
-            //            String textsearch = txtSearch.getText().trim();
-            //            if (evcbbtt == 0) {
-                //                if (option == 0) {
-                    //                    showTable("maSV", textsearch);
-                    //                } else if (option == 1) {
-                    //                    showTable("tenSV", textsearch);
-                    //                } else if (option == 2) {
-                    //                    showTable("CCCD", textsearch);
-                    //                } else if (option == 3) {
-                    //                    showTable("maLop", textsearch);
-                    //                }
-                //            } else if (evcbbtt == 1) {
-                //                if (option == 0) {
-                    //                    showTableTT("maSV", textsearch, 0);
-                    //                } else if (option == 1) {
-                    //                    showTableTT("tenSV", textsearch, 0);
-                    //                } else if (option == 2) {
-                    //                    showTableTT("CCCD", textsearch, 0);
-                    //                } else if (option == 3) {
-                    //                    showTableTT("maLop", textsearch, 0);
-                    //                }
-                //            } else if (evcbbtt == 2) {
-                //                if (option == 0) {
-                    //                    showTableTT("maSV", textsearch, 1);
-                    //                } else if (option == 1) {
-                    //                    showTableTT("tenSV", textsearch, 1);
-                    //                } else if (option == 2) {
-                    //                    showTableTT("CCCD", textsearch, 1);
-                    //                } else if (option == 3) {
-                    //                    showTableTT("maLop", textsearch, 1);
-                    //                }
-                //            } else if (evcbbtt == 3) {
-                //                if (option == 0) {
-                    //                    showTableTT("maSV", textsearch, 2);
-                    //                } else if (option == 1) {
-                    //                    showTableTT("tenSV", textsearch, 2);
-                    //                } else if (option == 2) {
-                    //                    showTableTT("CCCD", textsearch, 2);
-                    //                } else if (option == 3) {
-                    //                    showTableTT("maLop", textsearch, 2);
-                    //                }
-                //            } else if (evcbbtt == 4) {
-                //                if (option == 0) {
-                    //                    showTableTT("maSV", textsearch, 3);
-                    //                } else if (option == 1) {
-                    //                    showTableTT("tenSV", textsearch, 3);
-                    //                } else if (option == 2) {
-                    //                    showTableTT("CCCD", textsearch, 3);
-                    //                } else if (option == 3) {
-                    //                    showTableTT("maLop", textsearch, 3);
-                    //                }
-                //            }
-            //
-            //        }
-        if (txtSearch.isSelected()) {
-            int option = txtSearch.getSelectedIndex();
-            String textsearch = txtSearch.getText().trim();
-            if (option == 0) {
-                showTable("maSV", textsearch);
-            } else if (option == 1) {
-                showTable("tenSV", textsearch);
-            } else if (option == 2) {
-                showTable("CCCD", textsearch);
-            } else if (option == 3) {
-                showTable("maLop", textsearch);
-            }
-        }
-    }//GEN-LAST:event_txtSearchKeyReleased
-
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSearchActionPerformed
-
-    private void loadNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadNVMouseClicked
-        // TODO add your handling code here:
-        String selectedStatus = (String) jComboBox1.getSelectedItem();
-
-        // Lấy dữ liệu tương ứng với trạng thái được chọn từ cơ sở dữ liệu
-        List<ThongTinNhanVien> filteredList = new ArrayList<>();
-
-        if (selectedStatus.equals("Tất cả")) {
-            filteredList = new QuanLyNhanVienDAO().getAllThongTinNV();
-        } else if (selectedStatus.equals("Đang làm việc")) {
-            for (ThongTinNhanVien nv : listnhanvien) {
-                if (nv.getTrangThai().contains("Đang")) {
-                    filteredList.add(nv);
-                }
-            }
-        } else if (selectedStatus.equals("Đã nghỉ việc")) {
-            for (ThongTinNhanVien nv : listnhanvien) {
-                if (nv.getTrangThai().contains("Đã")) {
-                    filteredList.add(nv);
-                }
-            }
-        }
-        // Hiển thị dữ liệu lọc trong bảng
-        displayDataInTable(filteredList);
-        count = -1;
-    }//GEN-LAST:event_loadNVMouseClicked
 
     private void deleteSVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteSVMouseClicked
         // TODO add your handling code here:
@@ -1864,6 +1773,27 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
         QuanLyThongTinNV.setVisible(true);
 
     }//GEN-LAST:event_jLabel61MouseClicked
+
+    private void loadNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loadNVMouseClicked
+        showTable();
+        count = -1;
+    }//GEN-LAST:event_loadNVMouseClicked
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        if (txtSearch.isSelected()) {
+            int option = txtSearch.getSelectedIndex();
+            String textsearch = txtSearch.getText().trim();
+            if (option == 0) {
+                showTable("maSV", textsearch);
+            } else if (option == 1) {
+                showTable("tenSV", textsearch);
+            } else if (option == 2) {
+                showTable("CCCD", textsearch);
+            } else if (option == 3) {
+                showTable("maLop", textsearch);
+            }
+        }
+    }//GEN-LAST:event_txtSearchKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
