@@ -30,9 +30,9 @@ public class ThongKePhong extends javax.swing.JPanel {
 
         Model = (DefaultTableModel) tableThongKePhong.getModel();
         showTable();
-        tableThongKePhong.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 14));
+        tableThongKePhong.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
         tableThongKePhong.getTableHeader().setOpaque(false);
-        tableThongKePhong.getTableHeader().setBackground(new Color(19, 90, 118));
+        tableThongKePhong.getTableHeader().setBackground(new Color(0,102,102));
         tableThongKePhong.getTableHeader().setForeground(new Color(225, 225, 225));
         try {
             setup();
@@ -83,6 +83,8 @@ public class ThongKePhong extends javax.swing.JPanel {
         txtsophongnu = new javax.swing.JLabel();
         txtsophongnam = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel40.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -108,7 +110,7 @@ public class ThongKePhong extends javax.swing.JPanel {
         ));
         tableThongKePhong.setGridColor(new java.awt.Color(255, 255, 255));
         tableThongKePhong.setRowHeight(25);
-        tableThongKePhong.setSelectionBackground(new java.awt.Color(19, 90, 118));
+        tableThongKePhong.setSelectionBackground(new java.awt.Color(0, 102, 102));
         tableThongKePhong.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tableThongKePhong.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -117,7 +119,7 @@ public class ThongKePhong extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tableThongKePhong);
 
-        jLabel10.setBackground(new java.awt.Color(19, 90, 118));
+        jLabel10.setBackground(new java.awt.Color(0, 102, 102));
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -414,8 +416,8 @@ public class ThongKePhong extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -428,7 +430,7 @@ public class ThongKePhong extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 29, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -50,7 +50,7 @@ public class Main extends javax.swing.JFrame {
         jPanelHoaDon.setVisible(false);
         jPanelCaiDatTaiKhoan.setVisible(false);
         thongTinTK_NV.setVisible(false);
-        hopdongktx.setVisible(false);
+        //hopdongktx.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -73,6 +73,7 @@ public class Main extends javax.swing.JFrame {
         quanlysinhvien = new javax.swing.JLabel();
         quanlynhanvien = new javax.swing.JLabel();
         tienphong = new javax.swing.JLabel();
+        thongtintaikhoan = new javax.swing.JLabel();
         NameKTX = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -84,13 +85,14 @@ public class Main extends javax.swing.JFrame {
         quanLySVDangChoDuyet1 = new JFrameQuanLyKyTucXa.QuanLySVDangChoDuyet();
         quanLySVDangTrongKTX1 = new JFrameQuanLyKyTucXa.QuanLySVDangTrongKTX();
         jPanelTrangChu = new JFrameQuanLyKyTucXa.TrangChu();
-        jPanelQuanLyNhanVien = new JFrameQuanLyKyTucXa.QuanLyNhanVien();
-        jPanelQuanlyPhong = new JFrameQuanLyKyTucXa.QuanLyPhong();
-        jPanelThongKePhong = new JFrameQuanLyKyTucXa.ThongKePhong();
-        jPanelQuanLyDienNuoc = new JFrameQuanLyKyTucXa.QuanLyDienNuoc();
-        jPanelHoaDon = new JFrameQuanLyKyTucXa.JpanelQuanLyTienPhong();
         jPanelCaiDatTaiKhoan = new JFrameQuanLyKyTucXa.CaiDatTaiKhoan();
         thongTinTK_NV = new JFrameQuanLyKyTucXa.ThongTinTK_NV();
+        jPanelQuanLyNhanVien = new JFrameQuanLyKyTucXa.QuanLyNhanVien();
+        jPanelQuanlyPhong = new JFrameQuanLyKyTucXa.QuanLyPhong();
+        jPanelHoaDon = new JFrameQuanLyKyTucXa.JpanelQuanLyTienPhong();
+        jPanelQuanLyDienNuoc = new JFrameQuanLyKyTucXa.QuanLyDienNuoc();
+        jPanelThongKePhong = new JFrameQuanLyKyTucXa.ThongKePhong();
+        jPanelThongTinTaiKhoan = new JFrameQuanLyKyTucXa.ThongTinTK_NV();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -246,6 +248,18 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        thongtintaikhoan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        thongtintaikhoan.setForeground(new java.awt.Color(255, 255, 255));
+        thongtintaikhoan.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        thongtintaikhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/thongtintaikhoan.png"))); // NOI18N
+        thongtintaikhoan.setText("Thông tin tài khoản");
+        thongtintaikhoan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        thongtintaikhoan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                thongtintaikhoanMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout MenuLayout = new javax.swing.GroupLayout(Menu);
         Menu.setLayout(MenuLayout);
         MenuLayout.setHorizontalGroup(
@@ -276,7 +290,10 @@ public class Main extends javax.swing.JFrame {
                         .addGap(0, 95, Short.MAX_VALUE))
                     .addGroup(MenuLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(tienphong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(tienphong, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(MenuLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(thongtintaikhoan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         MenuLayout.setVerticalGroup(
@@ -306,11 +323,13 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(thongke, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tienphong, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(thongtintaikhoan, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(cailaimatkhau, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(dangxuat, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(1433, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         NameKTX.setBackground(new java.awt.Color(255, 255, 255));
@@ -387,13 +406,14 @@ public class Main extends javax.swing.JFrame {
 
         Contents.add(SVKTX, "card5");
         Contents.add(jPanelTrangChu, "card2");
-        Contents.add(jPanelQuanLyNhanVien, "card4");
-        Contents.add(jPanelQuanlyPhong, "card6");
-        Contents.add(jPanelThongKePhong, "card7");
-        Contents.add(jPanelQuanLyDienNuoc, "card8");
-        Contents.add(jPanelHoaDon, "card9");
         Contents.add(jPanelCaiDatTaiKhoan, "card11");
         Contents.add(thongTinTK_NV, "card11");
+        Contents.add(jPanelQuanLyNhanVien, "card11");
+        Contents.add(jPanelQuanlyPhong, "card11");
+        Contents.add(jPanelHoaDon, "card11");
+        Contents.add(jPanelQuanLyDienNuoc, "card11");
+        Contents.add(jPanelThongKePhong, "card11");
+        Contents.add(jPanelThongTinTaiKhoan, "card12");
 
         javax.swing.GroupLayout TrangchuLayout = new javax.swing.GroupLayout(Trangchu);
         Trangchu.setLayout(TrangchuLayout);
@@ -461,7 +481,7 @@ public class Main extends javax.swing.JFrame {
 
     private void hopdongktxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hopdongktxMouseClicked
         hideAllPanels();
-        hopdongktx.setVisible(true);
+        //.setVisible(true);
         SVKTX.setVisible(true);
     }//GEN-LAST:event_hopdongktxMouseClicked
 
@@ -494,6 +514,13 @@ public class Main extends javax.swing.JFrame {
         jPanelHoaDon.setVisible(true);
     }//GEN-LAST:event_tienphongMouseClicked
 
+    private void thongtintaikhoanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_thongtintaikhoanMouseClicked
+        hideAllPanels();
+        jPanelThongTinTaiKhoan.setVisible(true);
+        //setnameuser(email);
+        //this.jPanelThongTinTaiKhoan.showViewTaiKhoanEmail(email);
+    }//GEN-LAST:event_thongtintaikhoanMouseClicked
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -525,6 +552,7 @@ public class Main extends javax.swing.JFrame {
     private JFrameQuanLyKyTucXa.QuanLySinhVien jPanelQuanLySinhVien;
     private JFrameQuanLyKyTucXa.QuanLyPhong jPanelQuanlyPhong;
     private JFrameQuanLyKyTucXa.ThongKePhong jPanelThongKePhong;
+    private JFrameQuanLyKyTucXa.ThongTinTK_NV jPanelThongTinTaiKhoan;
     private JFrameQuanLyKyTucXa.TrangChu jPanelTrangChu;
     private javax.swing.JTabbedPane jTabbedPane1;
     private JFrameQuanLyKyTucXa.QuanLySVDangChoDuyet quanLySVDangChoDuyet1;
@@ -534,6 +562,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel quanlysinhvien;
     private JFrameQuanLyKyTucXa.ThongTinTK_NV thongTinTK_NV;
     private javax.swing.JLabel thongke;
+    private javax.swing.JLabel thongtintaikhoan;
     private javax.swing.JLabel tienphong;
     private javax.swing.JLabel trangchu;
     private javax.swing.JLabel txtnameuser;

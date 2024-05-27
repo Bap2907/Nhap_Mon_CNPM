@@ -45,7 +45,7 @@ public class QuanLyDienNuoc extends javax.swing.JPanel {
         Model = (DefaultTableModel) tablehd.getModel();
         tablehd.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
         tablehd.getTableHeader().setOpaque(false);
-        tablehd.getTableHeader().setBackground(new Color(19, 90, 118));
+        tablehd.getTableHeader().setBackground(new Color(0,102,102));
         tablehd.getTableHeader().setForeground(new Color(225, 225, 225));
         try {
             showTable();
@@ -144,11 +144,12 @@ public class QuanLyDienNuoc extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tablehd.setGridColor(new java.awt.Color(19, 90, 118));
+        tablehd.setGridColor(new java.awt.Color(0, 102, 102));
         tablehd.setRowHeight(25);
-        tablehd.setSelectionBackground(new java.awt.Color(19, 90, 118));
+        tablehd.setSelectionBackground(new java.awt.Color(0, 102, 102));
         tablehd.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tablehd.setShowGrid(true);
+        tablehd.setUpdateSelectionOnSort(false);
         tablehd.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tablehdMouseClicked(evt);
@@ -369,10 +370,10 @@ public class QuanLyDienNuoc extends javax.swing.JPanel {
                         .addComponent(buttonDelete)
                         .addComponent(buttonReset)))
                 .addGap(20, 20, 20)
-                .addGroup(mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(71, 71, 71))
+                .addGroup(mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         add(main, "card2");
