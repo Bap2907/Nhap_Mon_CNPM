@@ -23,19 +23,15 @@ public class MainSV extends javax.swing.JFrame {
         this.username= username;
         dangKiPhong = new DangKiPhong(email);
         dangKiPhong.setEmail(email); // Truyền giá trị của biến email
-        //dangKiPhong.displayData();
-//        displayLoggedInEmail();
+        
         initComponents();
         //System.out.println("Giá trị của email Main: " + email);
+        //dangKiPhong.displayData(email);
 
         //setSize(1450,720); 
         //Cho giao diện nằm giữa màn hình
         setLocationRelativeTo(null);
     }
-    
-//    public void displayLoggedInEmail() {
-//        System.out.println("Email đang đăng nhập: " + emailsv);
-//    }
 
     public void setnameuser(String email) {
         Connection conn = KetNoiSQL.getConnection();
@@ -420,6 +416,7 @@ public class MainSV extends javax.swing.JFrame {
         int trangthai = new QuanLySinhVienDAO().LayTrangThaiTheoEmail(emailsv);
         if (trangthai == 1 || trangthai == 5) {
             dangKiPhong1.setVisible(true);
+            System.out.println("email>>>1: "+ emailsv);
             dangKiPhong1.LayEmail(emailsv);
         } else {
             tBDangKiPhongThanhCong1.setVisible(true);
