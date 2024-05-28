@@ -39,7 +39,6 @@ public class DangKiPhong extends javax.swing.JPanel {
     public DangKiPhong() {
         initComponents();
         ketNoiSQL = new KetNoiSQL();
-        setEmail(email);
         displayData(); 
         jDialog1.setLocationRelativeTo(null);
     }

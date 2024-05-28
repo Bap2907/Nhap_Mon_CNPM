@@ -21,6 +21,7 @@ public class MainSV extends javax.swing.JFrame {
     public MainSV(String email,String username) {
         this.emailsv = email;
         this.username= username;
+                System.out.println(">>>"+ email);
         dangKiPhong = new DangKiPhong(email);
         dangKiPhong.setEmail(email); // Truyền giá trị của biến email
         //dangKiPhong.displayData();

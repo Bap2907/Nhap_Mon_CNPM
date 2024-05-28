@@ -289,7 +289,6 @@ public class Login extends javax.swing.JFrame {
                             dispose();
                             MainSV main = new MainSV(email,jnameuser.getText());
                             main.setVisible(true);
-                            email = new TaiKhoanDAO().LayEmail(jnameuser.getText());
                             main.setEmail(email);
                             main.setnameuser(email);
                         }
