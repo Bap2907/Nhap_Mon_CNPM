@@ -39,7 +39,8 @@ public class DangKiPhong extends javax.swing.JPanel {
     public DangKiPhong() {
         initComponents();
         ketNoiSQL = new KetNoiSQL();
-        displayData(); 
+        setEmail(email);
+        //displayData(); 
         jDialog1.setLocationRelativeTo(null);
     }
     
@@ -54,6 +55,8 @@ public class DangKiPhong extends javax.swing.JPanel {
     
     public void LayEmail(String email) {
         this.email = email;
+        System.out.println("email>>>2: "+ email);
+        displayData();
     }
     
     public String getEmail() {
@@ -61,10 +64,12 @@ public class DangKiPhong extends javax.swing.JPanel {
     }
 
     public void displayData() {
-        String query = "SELECT * FROM Phong";
+        gioitinh = new QuanLySinhVienDAO().layGTSinhVienTuEmail(email);
+        String query = "SELECT * FROM Phong WHERE gioitinh = ?";
         int rows = 0;
         int cols = 3; // Số cột bạn muốn hiển thị
         try (PreparedStatement preparedStatement = ketNoiSQL.getConnection().prepareStatement(query)) {
+            preparedStatement.setString(1, gioitinh);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 // Kích thước của mỗi ô vuông
                 int squareSize = 130; // Đặt kích thước lớn hơn để hiển thị các thông tin
