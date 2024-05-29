@@ -8,10 +8,12 @@ import JFrameQuanLyKyTucXa.Main;
 //import JFrameQuanLyKiTucXa.Main_NV;
 //import JFrameQuanLyKiTucXa.Main_USER;
 import dao.QuanLyNhanVienDAO;
+import dao.QuanLySinhVienDAO;
 import dao.TaiKhoanDAO;
 import java.sql.Connection;
 import services.EmailTest;
 import model.ThongTinNhanVien;
+import model.ThongTinSinhVien;
 import static services.HashingPass.PasswordHash;
 public class Login extends javax.swing.JFrame {
     Connector.KetNoiSQL connect = new Connector.KetNoiSQL();
@@ -281,13 +283,19 @@ public class Login extends javax.swing.JFrame {
                                Main main = new Main(email,jnameuser.getText());
                                main.setVisible(true);
                             }
-                        } else if (phanQuyen.equals("Sinh Viên")) {
-                            dispose();
-                            MainSV main = new MainSV(email,jnameuser.getText());
-                            main.setVisible(true);
-                            main.setEmail(email);
-                            main.setnameuser(email);
-                        }
+                       } else if (phanQuyen.equals("Sinh Viên")) {
+                           QuanLySinhVienDAO nv = new QuanLySinhVienDAO();
+                           int trangthai = nv.LayTrangThaiTheoEmail(email);
+                           if (trangthai == 0) {
+                               JOptionPane.showMessageDialog(null, "Tài khoản đã hết hạn sử dụng ! vui lòng liên hệ với Nhân viên để biết thêm thông tin chi tiết !");
+                           } else {
+                           dispose();
+                           MainSV main = new MainSV(email,jnameuser.getText());
+                           main.setVisible(true);
+                           main.setEmail(email);
+                           main.setnameuser(email);
+                       }
+                       }
                 }else{ 
                     JOptionPane.showMessageDialog(null,"UserName hoặc Password Không Đúng !!!");
                 }

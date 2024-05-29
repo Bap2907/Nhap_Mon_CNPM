@@ -1381,6 +1381,8 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Không để trống căn cước công dân nhân viên. Vui lòng điền thông tin đầy đủ!");
         }else if (ngaysinhnv == null) {
             JOptionPane.showMessageDialog(this, "Không để trống ngày sinh sinh viên. Vui lòng điền thông tin đầy đủ!");
+        }else if (!rdUpNam.isSelected() && !rdUpNu.isSelected()) {
+            JOptionPane.showMessageDialog(null, "Hãy chọn giới tính !");
         } else if (sodienthoainv.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Không để trống số điện thoại nhân viên. Vui lòng điền thông tin đầy đủ!");
         } else if (emailnv.isEmpty()) {
@@ -1495,6 +1497,8 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Không để trống căn cước công dân nhân viên. Vui lòng điền thông tin đầy đủ!");
         }else if (ngaysinhnv == null) {
             JOptionPane.showMessageDialog(this, "Không để trống ngày sinh sinh viên. Vui lòng điền thông tin đầy đủ!");
+        }else if (!rdNam.isSelected() && !rdNu.isSelected()) {
+            JOptionPane.showMessageDialog(null, "Hãy chọn giới tính !");
         } else if (sodienthoainv.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Không để trống số điện thoại nhân viên. Vui lòng điền thông tin đầy đủ!");
         } else if (emailnv.isEmpty()) {
@@ -1609,27 +1613,27 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
     }//GEN-LAST:event_txtSearchActionPerformed
 
     private void deleteNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteNVMouseClicked
-        // TODO add your handling code here:s
-        if (count == -1) {
-            JOptionPane.showMessageDialog(null, "Vui lòng chọn Nhân Viên để xóa!");
-        } else {
-            int test = JOptionPane.showConfirmDialog(null, "Bạn chắc có muốn xóa Nhân Viên hay không !", "Thông báo", JOptionPane.YES_NO_OPTION);
-            if (test == JOptionPane.YES_OPTION) {
-                LayCCCDNhanVien(count);
-                if(!email.equals(email_account)){
-                    System.out.println("1>>>"+ email_account);
-                    System.out.println("2>>>"+ email);
-                    new TaiKhoanDAO().MoveToBinNV(email);
-    //                deleteTaiKhoan(email);
-                    showTable();
-                }else 
-                    System.out.println("3>>>"+ email_account);
-                    System.out.println("4>>>"+ email);
-                    JOptionPane.showMessageDialog(null, "Nhân viên bạn chọn hiện đang là tài khoản bạn đăng nhập, không thể xóa !");
-            } else if (test == JOptionPane.NO_OPTION) {
-                JOptionPane.showMessageDialog(null, "Bạn đã hủy xóa Nhân Viên thành công");
+    if (count == -1) {
+        JOptionPane.showMessageDialog(null, "Vui lòng chọn Nhân Viên để xóa!");
+    } else {
+        int test = JOptionPane.showConfirmDialog(null, "Bạn chắc có muốn xóa Nhân Viên hay không !", "Thông báo", JOptionPane.YES_NO_OPTION);
+        if (test == JOptionPane.YES_OPTION) {
+            LayCCCDNhanVien(count);
+            if (!email.equals(email_account)) {
+                System.out.println("1>>> " + email_account);
+                System.out.println("2>>> " + email);
+                new TaiKhoanDAO().MoveToBinNV(email);
+                // deleteTaiKhoan(email);
+                showTable();
+            } else {
+                System.out.println("3>>> " + email_account);
+                System.out.println("4>>> " + email);
+                JOptionPane.showMessageDialog(null, "Nhân viên bạn chọn hiện đang là tài khoản bạn đăng nhập, không thể xóa!");
             }
+        } else if (test == JOptionPane.NO_OPTION) {
+            JOptionPane.showMessageDialog(null, "Bạn đã hủy xóa Nhân Viên thành công");
         }
+    }
     }//GEN-LAST:event_deleteNVMouseClicked
 
     private void editNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editNVMouseClicked

@@ -256,7 +256,7 @@
                 <StringItem index="1" value="Ch&#x1b0;a &#x111;&#x103;ng k&#xfd;"/>
                 <StringItem index="2" value="&#x110;ang ch&#x1edd; duy&#x1ec7;t"/>
                 <StringItem index="3" value="&#x110;ang &#x1edf;"/>
-                <StringItem index="4" value="&#x110;&#xe3; xo&#xe1;"/>
+                <StringItem index="4" value=" "/>
               </StringArray>
             </Property>
           </Properties>
@@ -369,13 +369,6 @@
                           <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="491" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="hide_eye" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Component id="show_eye" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel20" alignment="0" min="-2" pref="135" max="-2" attributes="0"/>
@@ -394,6 +387,11 @@
                                           <Component id="txtNhapLaiMatKhauSV" min="-2" pref="240" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="btnAddSV" alignment="1" min="-2" pref="159" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="hide_eye" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="show_eye" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -464,13 +462,6 @@
                                                   </Group>
                                               </Group>
                                               <Component id="jLabel2" min="-2" pref="62" max="-2" attributes="0"/>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="hide_eye" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
-                                                      <Component id="show_eye" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
                                           </Group>
                                           <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                                           <Component id="btnAddSV" min="-2" pref="35" max="-2" attributes="0"/>
@@ -500,39 +491,50 @@
                                                   <Component id="jLabel47" min="-2" pref="17" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="jLabel41" min="-2" pref="17" max="-2" attributes="0"/>
-                                              <Component id="txtNgaySinh" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
-                                                  <Component id="txtMaLopSV" min="-2" max="-2" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="1" attributes="0">
+                                                      <Component id="jLabel41" min="-2" pref="17" max="-2" attributes="0"/>
+                                                      <Component id="txtNgaySinh" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                                                          <Component id="txtMaLopSV" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <Component id="jLabel44" alignment="0" min="-2" pref="17" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="3" attributes="0">
+                                                      <Component id="jLabel42" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
+                                                      <Component id="rdNam" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="rdNu" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Component id="jLabel49" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="txtSoDienThoaiSV" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Component id="txtQueQuanSV" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="jLabel50" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="1" attributes="0">
+                                                      <Component id="jLabel43" alignment="1" min="-2" pref="17" max="-2" attributes="0"/>
+                                                      <Component id="txtEmail" alignment="1" min="-2" pref="23" max="-2" attributes="0"/>
+                                                  </Group>
                                               </Group>
-                                              <Component id="jLabel44" alignment="0" min="-2" pref="17" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="jLabel42" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
-                                              <Component id="rdNam" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="rdNu" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jLabel49" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="txtSoDienThoaiSV" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="txtQueQuanSV" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jLabel50" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="jLabel43" alignment="1" min="-2" pref="17" max="-2" attributes="0"/>
-                                              <Component id="txtEmail" alignment="1" min="-2" pref="23" max="-2" attributes="0"/>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="hide_eye" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
+                                                      <Component id="show_eye" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -1109,6 +1111,9 @@
         <Component class="javax.swing.JLabel" name="show_eye">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/img/show_eye.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="show_eyeMousePressed"/>
@@ -1117,6 +1122,9 @@
         <Component class="javax.swing.JLabel" name="hide_eye">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/img/hide_eye.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="hide_eyeMousePressed"/>
