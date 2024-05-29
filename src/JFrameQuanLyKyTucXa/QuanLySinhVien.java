@@ -275,7 +275,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
             }
         });
 
-        cbbtrangthai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Chưa đăng ký", "Đang chờ duyệt", "Đang ở" }));
+        cbbtrangthai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Chưa đăng ký", "Đang chờ duyệt", "Đang ở", "Đã xoá" }));
         cbbtrangthai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbbtrangthaiActionPerformed(evt);
@@ -1773,8 +1773,8 @@ public class QuanLySinhVien extends javax.swing.JPanel {
             showTableTT(3);
         } else if (k == 3) {
             showTableTT(2);
-//        } else if (k == 4) {
-//            showTableTT(0);
+        } else if (k == 4) {
+            showTableTT(0);
         }
     }//GEN-LAST:event_cbbtrangthaiActionPerformed
 
@@ -2046,10 +2046,13 @@ public class QuanLySinhVien extends javax.swing.JPanel {
     }
     
     private void LayMaSinhVien(int count) {
-        ThongTinSinhVien sv = listsinhvien.get(count);
-        maSV = sv.getMaSV();
-        gioitinh = sv.getGioiTinh();
-        email = sv.getEmail();
+        if (count >= 0) {
+            ThongTinSinhVien sv = listsinhvien.get(count);
+            maSV = sv.getMaSV();
+            gioitinh = sv.getGioiTinh();
+            email = sv.getEmail();
+        } else {
+        }
     }
     
     private void updateSV(String masv) {
@@ -2211,8 +2214,11 @@ public class QuanLySinhVien extends javax.swing.JPanel {
                 case 3:
                     trangThaiText = "Đang chờ duyệt";
                     break;
+                case 4:
+                    trangThaiText = "Đã xoá";
+                    break;
                 default:
-                    trangThaiText = "Trạng thái không xác định";
+                    trangThaiText = "Đã xoá";
             }
             Model.addRow(new Object[]{
                 sv.getMaSV(), sv.getTenSV(), sv.getCCCD(), sv.getGioiTinh(), sv.getNgaySinh(), sv.getMaLop(), sv.getSoDienThoai(), trangThaiText

@@ -130,14 +130,15 @@ public class MainSV extends javax.swing.JFrame {
         trangChu1 = new JFrameQuanLyKyTucXa.TrangChu();
         tBDangKiPhongThanhCong1 = new JFrameQuanLyKyTucXa.TBDangKiPhongThanhCong();
         thongTinTaiKhoan1 = new JFrameQuanLyKyTucXa.ThongTinTaiKhoan();
-        dangKiPhong1 = new JFrameQuanLyKyTucXa.DangKiPhong();
         khoanPhi_USER1 = new JFrameQuanLyKyTucXa.KhoanPhi_USER();
         jPanelKhoanPhiKQ = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         caiDatTaiKhoan_SV1 = new JFrameQuanLyKyTucXa.CaiDatTaiKhoan_SV();
+        dangKiPhong1 = new JFrameQuanLyKyTucXa.DangKiPhong();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
 
         Trangchu.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -327,7 +328,6 @@ public class MainSV extends javax.swing.JFrame {
         Contents.add(trangChu1, "card2");
         Contents.add(tBDangKiPhongThanhCong1, "card4");
         Contents.add(thongTinTaiKhoan1, "card6");
-        Contents.add(dangKiPhong1, "card7");
         Contents.add(khoanPhi_USER1, "card7");
 
         jPanelKhoanPhiKQ.setBackground(new java.awt.Color(255, 255, 255));
@@ -367,6 +367,7 @@ public class MainSV extends javax.swing.JFrame {
 
         Contents.add(jPanelKhoanPhiKQ, "card9");
         Contents.add(caiDatTaiKhoan_SV1, "card8");
+        Contents.add(dangKiPhong1, "card8");
 
         javax.swing.GroupLayout TrangchuLayout = new javax.swing.GroupLayout(Trangchu);
         Trangchu.setLayout(TrangchuLayout);
