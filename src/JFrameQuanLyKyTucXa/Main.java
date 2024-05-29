@@ -507,6 +507,7 @@ public class Main extends javax.swing.JFrame {
     private void quanlynhanvienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quanlynhanvienMouseClicked
         hideAllPanels();
         jPanelQuanLyNhanVien.setVisible(true);
+        this.jPanelQuanLyNhanVien.setemail_account(email);
     }//GEN-LAST:event_quanlynhanvienMouseClicked
 
     private void tienphongMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tienphongMouseClicked

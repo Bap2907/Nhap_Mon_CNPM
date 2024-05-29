@@ -2,6 +2,7 @@ package JFrameQuanLyKyTucXa;
 
 import Connector.KetNoiSQL;
 import dao.QuanLySinhVienDAO;
+import dao.SinhVienDAO;
 import dao.TaiKhoanDAO;
 import java.awt.Color;
 import java.awt.Font;
@@ -138,7 +139,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         txtViewQueQuan = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
         txtViewEmailSV = new javax.swing.JLabel();
-        txtViewNgaySinhSV = new com.toedter.calendar.JDateChooser();
+        txtViewNgaySinhSV = new javax.swing.JLabel();
         UpdateSV = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel56 = new javax.swing.JLabel();
@@ -875,6 +876,11 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         txtViewEmailSV.setForeground(new java.awt.Color(19, 90, 118));
         txtViewEmailSV.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        txtViewNgaySinhSV.setBackground(new java.awt.Color(255, 255, 255));
+        txtViewNgaySinhSV.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        txtViewNgaySinhSV.setForeground(new java.awt.Color(19, 90, 118));
+        txtViewNgaySinhSV.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
         javax.swing.GroupLayout ViewSVLayout = new javax.swing.GroupLayout(ViewSV);
         ViewSV.setLayout(ViewSVLayout);
         ViewSVLayout.setHorizontalGroup(
@@ -928,9 +934,9 @@ public class QuanLySinhVien extends javax.swing.JPanel {
                                             .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(ViewSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtViewCCCDSV, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
-                                            .addComponent(txtViewNgaySinhSV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                        .addGroup(ViewSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtViewCCCDSV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtViewNgaySinhSV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(356, 356, 356))))))
         );
         ViewSVLayout.setVerticalGroup(
@@ -953,10 +959,10 @@ public class QuanLySinhVien extends javax.swing.JPanel {
                 .addGroup(ViewSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtViewCCCDSV, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                .addGap(20, 20, 20)
                 .addGroup(ViewSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtViewNgaySinhSV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtViewNgaySinhSV, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addGroup(ViewSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel36, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1422,7 +1428,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
             int test = JOptionPane.showConfirmDialog(null, "Bạn chắc có muốn xóa sinh viên hay không !", "Thông báo", JOptionPane.YES_NO_OPTION);
             if (test == JOptionPane.YES_OPTION) {
                 LayMaSinhVien(count);
-                new TaiKhoanDAO().XoaTaiKhoan(email);
+                new TaiKhoanDAO().MoveToBinSV(email);
                 JOptionPane.showMessageDialog(null, "Xoá sinh viên thành công!");
             } else if (test == JOptionPane.NO_OPTION) {
                 JOptionPane.showMessageDialog(null, "Bạn đã hủy xóa sinh viên thành công");
@@ -1472,7 +1478,21 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         String malopsv = txtUpMaLopSV.getText().trim();
         String sodienthoaisv = txtUpSoDienThoaiSV.getText().trim();
         String emailsv = txtUpEmail.getText().trim();
-
+        if (hotensv.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Không để trống họ tên sinh viên. Vui lòng điền thông tin đầy đủ!");
+        } else if (masv.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Không để trống mã số sinh viên. Vui lòng điền thông tin đầy đủ!");
+        } else if (cccdsv.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Không để trống căn cước công dân sinh viên. Vui lòng điền thông tin đầy đủ!");
+        }else if (ngaysinhsv == null) {
+            JOptionPane.showMessageDialog(this, "Không để trống ngày sinh sinh viên. Vui lòng điền thông tin đầy đủ!");
+        }else if (malopsv.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Không để trống mã lớp sinh viên. Vui lòng điền thông tin đầy đủ!");
+        } else if (sodienthoaisv.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Không để trống số điện thoại sinh viên. Vui lòng điền thông tin đầy đủ!");
+        } else if (emailsv.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Không để trống email sinh viên. Vui lòng điền thông tin đầy đủ!");
+        }else{
         // Ràng buộc điều kiện chi tiết
         String ycmasv = "[A-Z]{1}[0-9]{2}[A-Z]{4}[0-9]{3}";
         String ycsdt = "^[0]{1}[0-9]{9}";
@@ -1485,20 +1505,8 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         boolean kiemtracccd = new QuanLySinhVienDAO().UpKiemTraCCCDSV(cccdsv, cccd);
         boolean kiemtraemail = new QuanLySinhVienDAO().UpKiemTraEmailSV(emailsv, email);
         boolean kiemtrasdt = new QuanLySinhVienDAO().UpKiemTraSDTSV(sodienthoaisv, sdt);
-
-        if (hotensv.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Không để trống họ tên sinh viên. Vui lòng điền thông tin đầy đủ!");
-        } else if (masv.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Không để trống mã số sinh viên. Vui lòng điền thông tin đầy đủ!");
-        } else if (cccdsv.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Không để trống căn cước công dân sinh viên. Vui lòng điền thông tin đầy đủ!");
-        } else if (malopsv.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Không để trống mã lớp sinh viên. Vui lòng điền thông tin đầy đủ!");
-        } else if (sodienthoaisv.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Không để trống số điện thoại sinh viên. Vui lòng điền thông tin đầy đủ!");
-        } else if (emailsv.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Không để trống email sinh viên. Vui lòng điền thông tin đầy đủ!");
-        } else if (!masv.matches(ycmasv)) {
+        boolean kiemtrangaysinhsinhvien = new SinhVienDAO().KiemTrangaysinh(ngaysinhsv);
+        if (!masv.matches(ycmasv)) {
             JOptionPane.showMessageDialog(null, "Định dạng mã số sinh viên không dúng. Ví dụ : N21DCCN001");
         } else if (!cccdsv.matches(yccccd)) {
             JOptionPane.showMessageDialog(null, "Định dạng căn cước công dân không đúng. Vui lòng nhập lại!");
@@ -1508,6 +1516,8 @@ public class QuanLySinhVien extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Định dạng mã lớp không dúng. Ví dụ : D21CQCN01");
         } else if (!emailsv.contains("@gmail.com")) {
             JOptionPane.showMessageDialog(null, "Định dạng gmail không đúng. Vui lòng nhập lại");
+        }else if (!kiemtrangaysinhsinhvien) {
+            JOptionPane.showMessageDialog(this, "Sinh Viên chưa đủ 18 tuổi !");
         }  else {
             int test = JOptionPane.showConfirmDialog(null, "Bạn chắc có muốn cập nhật thông tin sinh viên hay không !", "Thông báo đăng ký", JOptionPane.YES_NO_OPTION);
             if (test == JOptionPane.YES_OPTION) {
@@ -1519,6 +1529,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Bạn đã hủy cập nhật thành công");
             }
         }
+    }
     }//GEN-LAST:event_btnUpdateSVMouseClicked
 
     private void updateSVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateSVMouseClicked
@@ -1666,26 +1677,14 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         String tendangnhapsv = txtTenDangNhapSV.getText().trim();
         String matkhau = txtMatKhauSV.getText().trim();
         String nhaplaimatkhau = txtNhapLaiMatKhauSV.getText().trim();
-
-        // Ràng buộc điều kiện chi tiết
-        String ycmasv = "[A-Z]{1}[0-9]{2}[A-Z]{4}[0-9]{3}";
-        String ycsdt = "^[0]{1}[0-9]{9}";
-        String yccccd = "^([0-9]{9})*([0-9]{12})*$";
-        String ycmalop = "^[A-Z]{1}[0-9]{2}[A-Z]{4}[0-9]{2}";
-        String yctandangnhap = "^[a-zA-Z0-9]+$";
-
-        //Kiểm tra tài khoản, thông tin đã tồn tại hay chưa
-        boolean kiemtramaso = new QuanLySinhVienDAO().KiemTraMaSoSV(masv);
-        boolean kiemtracccd = new QuanLySinhVienDAO().KiemTraCCCDSV(cccdsv);
-        boolean kiemtraemail = new QuanLySinhVienDAO().KiemTraEmailSV(emailsv);
-        boolean kiemtrasdt = new QuanLySinhVienDAO().KiemTraSDTSV(sodienthoaisv);
-
         if (hotensv.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Không để trống họ tên sinh viên. Vui lòng điền thông tin đầy đủ!");
         } else if (masv.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Không để trống mã số sinh viên. Vui lòng điền thông tin đầy đủ!");
         } else if (cccdsv.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Không để trống căn cước công dân sinh viên. Vui lòng điền thông tin đầy đủ!");
+        }else if (ngaysinhsv == null) {
+            JOptionPane.showMessageDialog(this, "Không để trống ngày sinh sinh viên. Vui lòng điền thông tin đầy đủ!");
         } else if (malopsv.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Không để trống mã lớp sinh viên. Vui lòng điền thông tin đầy đủ!");
         } else if (sodienthoaisv.isEmpty()) {
@@ -1698,7 +1697,22 @@ public class QuanLySinhVien extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Không để trống mật khẩu. Vui lòng điền thông tin đầy đủ!");
         } else if (nhaplaimatkhau.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Không để trống nhập lại mật khẩu. Vui lòng điền thông tin đầy đủ!");
-        } else if (!masv.matches(ycmasv)) {
+        }else{
+        // Ràng buộc điều kiện chi tiết
+        String ycmasv = "[A-Z]{1}[0-9]{2}[A-Z]{4}[0-9]{3}";
+        String ycsdt = "^[0]{1}[0-9]{9}";
+        String yccccd = "^([0-9]{9})*([0-9]{12})*$";
+        String ycmalop = "^[A-Z]{1}[0-9]{2}[A-Z]{4}[0-9]{2}";
+        String yctandangnhap = "^[a-zA-Z0-9]+$";
+
+        //Kiểm tra tài khoản, thông tin đã tồn tại hay chưa
+        boolean kiemtramaso = new QuanLySinhVienDAO().KiemTraMaSoSV(masv);
+        boolean kiemtracccd = new QuanLySinhVienDAO().KiemTraCCCDSV(cccdsv);
+        boolean kiemtraemail = new QuanLySinhVienDAO().KiemTraEmailSV(emailsv);
+        boolean kiemtrasdt = new QuanLySinhVienDAO().KiemTraSDTSV(sodienthoaisv);
+        boolean kiemtrangaysinhsinhvien = new SinhVienDAO().KiemTrangaysinh(ngaysinhsv);
+        
+        if (!masv.matches(ycmasv)) {
             JOptionPane.showMessageDialog(null, "Định dạng mã số sinh viên không dúng. Ví dụ : N21DCCN001");
         } else if (!cccdsv.matches(yccccd)) {
             JOptionPane.showMessageDialog(null, "Định dạng căn cước công dân không đúng. Vui lòng nhập lại!");
@@ -1712,6 +1726,8 @@ public class QuanLySinhVien extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Mật khẩu nhập lại không trùng với mật khẩu. Vui lòng nhập lại!");
         } else if (kiemtramaso) {
             JOptionPane.showMessageDialog(null, "Mã số sinh viên đã được đăng ký!");
+        }else if (!kiemtrangaysinhsinhvien) {
+            JOptionPane.showMessageDialog(this, "Sinh Viên chưa đủ 18 tuổi !");
         } else {
             int test = JOptionPane.showConfirmDialog(null, "Bạn chắc có muốn thêm sinh viên hay không !", "Thông báo đăng ký", JOptionPane.YES_NO_OPTION);
             if (test == JOptionPane.YES_OPTION) {
@@ -1721,6 +1737,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
             } else if (test == JOptionPane.NO_OPTION) {
                 JOptionPane.showMessageDialog(null, "Bạn đã hủy thêm sinh viên thành công");
             }
+        }
         }
     }//GEN-LAST:event_btnAddSVMouseClicked
 
@@ -1831,7 +1848,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
             int test = JOptionPane.showConfirmDialog(null, "Bạn chắc có muốn khôi phục sinh viên hay không !", "Thông báo", JOptionPane.YES_NO_OPTION);
             if (test == JOptionPane.YES_OPTION) {
                 LayMaSinhVien(count);
-                new TaiKhoanDAO().KhoiphucTaiKhoan(email);
+                new TaiKhoanDAO().KhoiphucTaiKhoanSV(email);
                 JOptionPane.showMessageDialog(null, "Khôi phục sinh viên thành công!");
             } 
         }
@@ -1938,7 +1955,7 @@ public class QuanLySinhVien extends javax.swing.JPanel {
     private javax.swing.JLabel txtViewHoTenSV;
     private javax.swing.JLabel txtViewMaLopSV;
     private javax.swing.JLabel txtViewMaSoSV;
-    private com.toedter.calendar.JDateChooser txtViewNgaySinhSV;
+    private javax.swing.JLabel txtViewNgaySinhSV;
     private javax.swing.JLabel txtViewQueQuan;
     private javax.swing.JLabel txtViewSoDienThoaiSV;
     private javax.swing.JLabel updateSV;
@@ -2039,7 +2056,9 @@ public class QuanLySinhVien extends javax.swing.JPanel {
         }
         txtViewMaLopSV.setText(sv.getMaLop());
         txtViewSoDienThoaiSV.setText(sv.getSoDienThoai());
-        txtViewNgaySinhSV.setDate(sv.getNgaySinh());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+         String date = sdf.format(sv.getNgaySinh());
+        txtViewNgaySinhSV.setText(date);
         txtViewCCCDSV.setText(sv.getCCCD());
         txtViewEmailSV.setText(sv.getEmail());
         txtViewQueQuan.setText(sv.getQueQuan());

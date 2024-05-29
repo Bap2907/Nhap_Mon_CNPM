@@ -18,7 +18,7 @@ public class QuanLyNhanVienDAO {
     public List<ThongTinNhanVien> getAllThongTinNV() {
         List<ThongTinNhanVien> listNhanVien = new ArrayList<ThongTinNhanVien>();
         Connection conn = KetNoiSQL.getConnection();
-        String sql = "select * from NhanVien";
+        String sql = "select * from NhanVien where trangThai= 0 ";
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             ResultSet rs = preparedStatement.executeQuery();
@@ -44,7 +44,7 @@ public class QuanLyNhanVienDAO {
     public List<ThongTinNhanVien> getAllThongTinNVdelete () {
         List<ThongTinNhanVien> listNhanVien = new ArrayList<ThongTinNhanVien>();
         Connection conn = KetNoiSQL.getConnection();
-        String sql = "select * from NhanVien where trangThai= 0";
+        String sql = "select * from NhanVien where trangThai= 1";
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             ResultSet rs = preparedStatement.executeQuery();
@@ -287,7 +287,7 @@ public class QuanLyNhanVienDAO {
 
     }
 
-    public boolean UpKiemTraSDTNV(String sodienthoai,String test) {
+    public boolean UpKiemTraSDTNV(String sodienthoai) {
         ThongTinNhanVien sv = new ThongTinNhanVien();
         Connection conn = KetNoiSQL.getConnection();
         String sql = "select * from NhanVien where soDienThoai ='" + sodienthoai + "'";
@@ -296,9 +296,7 @@ public class QuanLyNhanVienDAO {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
-                if (!test.equals(sodienthoai)) {
                     return true;
-                }
             }
             conn.close();
         } catch (Exception e) {

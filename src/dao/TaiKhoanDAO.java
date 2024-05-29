@@ -140,9 +140,22 @@ public class TaiKhoanDAO {
         return false;
     }
     
-    public void XoaTaiKhoan(String email) {
+    public void MoveToBinSV(String email) {
         Connection con = KetNoiSQL.getConnection();
         String sql = "update SinhVien set trangThai = 0 where email = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, email);
+            ps.executeUpdate();
+            ps.close();
+            con.close();
+        } catch (SQLException e) {
+        }
+    }
+    
+    public void MoveToBinNV(String email) {
+        Connection con = KetNoiSQL.getConnection();
+        String sql = "update NhanVien set trangThai = 1 where email = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, email);
@@ -165,9 +178,21 @@ public class TaiKhoanDAO {
         } catch (SQLException e) {
         }
     }
-    public void KhoiphucTaiKhoan(String email) {
+    public void KhoiphucTaiKhoanSV(String email) {
         Connection con = KetNoiSQL.getConnection();
         String sql = "update SinhVien set trangThai = 1 where email = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, email);
+            ps.executeUpdate();
+            ps.close();
+            con.close();
+        } catch (SQLException e) {
+        }
+    }
+        public void KhoiphucTaiKhoanNV(String email) {
+        Connection con = KetNoiSQL.getConnection();
+        String sql = "update NhanVien set trangThai = 0 where email = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, email);
