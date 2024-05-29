@@ -574,7 +574,7 @@ public class JpanelQuanLyTienPhong extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tablehd.setGridColor(new java.awt.Color(19, 90, 118));
+        tablehd.setGridColor(new java.awt.Color(0, 102, 102));
         tablehd.setRowHeight(25);
         tablehd.setSelectionBackground(new java.awt.Color(19, 90, 118));
         tablehd.setSelectionForeground(new java.awt.Color(255, 255, 255));

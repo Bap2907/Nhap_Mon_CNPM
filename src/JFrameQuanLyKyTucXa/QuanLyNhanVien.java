@@ -1609,7 +1609,7 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
     }//GEN-LAST:event_txtSearchActionPerformed
 
     private void deleteNVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteNVMouseClicked
-        // TODO add your handling code here:
+        // TODO add your handling code here:s
         if (count == -1) {
             JOptionPane.showMessageDialog(null, "Vui lòng chọn Nhân Viên để xóa!");
         } else {

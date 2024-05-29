@@ -27,14 +27,20 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import dao.PhongDAO;
 
+import java.awt.BorderLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+
 public class DangKiPhong extends javax.swing.JPanel {
-    
+
     private KetNoiSQL ketNoiSQL;
     private String email;
     private String gioitinh, loaiphong;
     private JButton selectedButton = null;
     private int keyradiothang = 3;
     private String maPhongDuocChon;
+    private boolean dataDisplayed = false;
 
     public DangKiPhong() {
         initComponents();
@@ -43,22 +49,24 @@ public class DangKiPhong extends javax.swing.JPanel {
         //displayData(); 
         jDialog1.setLocationRelativeTo(null);
     }
-    
+
     public DangKiPhong(String email) {
         this.email = email;
         setEmail(email);
     }
-    
+
     public void setEmail(String email) {
         this.email = email;
     }
-    
+
     public void LayEmail(String email) {
         this.email = email;
-        System.out.println("email>>>2: "+ email);
-        displayData();
+        if (!dataDisplayed) {
+            displayData();
+            dataDisplayed = true; // Đặt cờ thành true sau khi displayData() chạy
+        }
     }
-    
+
     public String getEmail() {
         return this.email;
     }
@@ -66,21 +74,23 @@ public class DangKiPhong extends javax.swing.JPanel {
     public void displayData() {
         gioitinh = new QuanLySinhVienDAO().layGTSinhVienTuEmail(email);
         String query = "SELECT * FROM Phong WHERE gioitinh = ?";
-        int rows = 0;
-        int cols = 3; // Số cột bạn muốn hiển thị
+        JPanel panel = new JPanel();
+        int cols = 3;
+        int squareWidth = 300;  // Chiều rộng của mỗi ô
+        int squareHeight = 200; // Chiều cao của mỗi ô
+
         try (PreparedStatement preparedStatement = ketNoiSQL.getConnection().prepareStatement(query)) {
             preparedStatement.setString(1, gioitinh);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                // Kích thước của mỗi ô vuông
-                int squareSize = 130; // Đặt kích thước lớn hơn để hiển thị các thông tin
+                panel.setLayout(new GridBagLayout());
+                panel.setBackground(Color.WHITE);
+                GridBagConstraints gbc = new GridBagConstraints();
+                gbc.insets = new Insets(10, 10, 10, 10); // khoảng cách giữa các ô
 
-            // Thiết lập kích thước cho JPanel
-                setPreferredSize(new Dimension(cols * squareSize, rows * squareSize));
-        
-            // Thiết lập GridLayout cho JPanel
-                setLayout(new GridLayout(rows, cols));
+                int row = 0;
+                int col = 0;
 
-            // Duyệt qua kết quả truy vấn và hiển thị dữ liệu trong từng ô
+                // Duyệt qua kết quả truy vấn và hiển thị dữ liệu trong từng ô
                 while (resultSet.next()) {
                     // Lấy dữ liệu từ cột cần hiển thị
                     String maPhong = resultSet.getString("maPhong");
@@ -90,35 +100,48 @@ public class DangKiPhong extends javax.swing.JPanel {
                     double tienPhong = resultSet.getDouble("tienPhong");
                     String gioiTinh = resultSet.getString("gioiTinh");
 
-                // Tạo chuỗi chứa thông tin hiển thị trong mỗi ô
-                    String labelText = "Thông tin phòng " +
-                        "<br/>Mã Phòng: " + maPhong +
-                        "<br/>Tên Phòng: " + tenPhong +
-                        "<br/>Giới tính: " + gioiTinh +
-                        "<br/>Số lượng SV: " + soLuongSVPhong +
-                        "<br/>Loại Phòng: " + loaiPhong +
-                        "<br/>Tiền phòng: " + tienPhong;
+                    // Tạo chuỗi chứa thông tin hiển thị trong mỗi ô
+                    String labelText = "Thông tin phòng "
+                            + "<br/>Mã Phòng: " + maPhong
+                            + "<br/>Tên Phòng: " + tenPhong
+                            + "<br/>Giới tính: " + gioiTinh
+                            + "<br/>Số lượng SV: " + soLuongSVPhong
+                            + "<br/>Loại Phòng: " + loaiPhong
+                            + "<br/>Tiền phòng: " + tienPhong;
 
-                // Tạo JButton để hiển thị dữ liệu
+                    // Tạo JButton để hiển thị dữ liệu
                     JButton button = new JButton("<html>" + labelText + "</html>");
-                    button.setPreferredSize(new Dimension(squareSize, squareSize));
-                    customizeButton(button, squareSize, maPhong, tenPhong, soLuongSVPhong, loaiPhong, tienPhong, gioiTinh);
+                    button.setPreferredSize(new Dimension(squareWidth, squareHeight));
+                    customizeButton(button, maPhong, gioiTinh);
 
-                // Thêm JButton vào giao diện
-                    add(button);
+                    // Thiết lập vị trí cho nút trong lưới
+                    gbc.gridx = col;
+                    gbc.gridy = row;
+                    panel.add(button, gbc);
 
-                // Tăng chỉ số dòng
-                    rows++;
-
-                // Nếu đã đủ số dòng theo cols, thì reset rows và tăng chỉ số cột
-                    if (rows >= cols) {
-                        rows = 0;
-                        cols++;
+                    col++;
+                    if (col >= cols) {
+                        col = 0;
+                        row++;
                     }
                 }
             }
-        
-        // Cập nhật giao diện
+
+            // Tạo JScrollPane để bao bọc JPanel
+            JScrollPane scrollPane = new JScrollPane(panel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+            scrollPane.setPreferredSize(new Dimension(400, 300)); // Kích thước ưa thích của JScrollPane
+
+            // Tạo một JPanel chính để chứa JScrollPane và khoảng trống
+            JPanel mainPanel = new JPanel(new BorderLayout());
+            mainPanel.add(Box.createVerticalStrut(70), BorderLayout.NORTH); // Tạo khoảng cách 70px phía trên
+            mainPanel.add(scrollPane, BorderLayout.CENTER);
+            mainPanel.add(Box.createVerticalStrut(50), BorderLayout.SOUTH); // Tạo khoảng cách 50px phía dưới
+
+            // Thêm JPanel chính vào JPanel chính
+            setLayout(new BorderLayout());
+            add(mainPanel, BorderLayout.CENTER);
+
+            // Cập nhật giao diện
             revalidate();
             repaint();
 
@@ -127,36 +150,37 @@ public class DangKiPhong extends javax.swing.JPanel {
         }
     }
 
-    
-    private void customizeButton(JButton button, int squareSize, String maPhong, String tenPhong, int soLuongSVPhong, String loaiPhong, double tienPhong, String gioiTinh) {
+    private void customizeButton(JButton button, String maPhong, String gioiTinh) {
         button.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+
         button.setHorizontalAlignment(SwingConstants.CENTER);
         button.setVerticalAlignment(SwingConstants.CENTER);
+
         int borderWidth = 20;
         button.setBorder(BorderFactory.createLineBorder(Color.WHITE, borderWidth));
         button.setBorderPainted(true); // Ẩn viền của JButton
         button.setOpaque(true);
         button.setBackground(Color.getHSBColor(204, 204, 204));
 
-        button.addActionListener(e -> handleButtonClick(button, maPhong, tenPhong, soLuongSVPhong, loaiPhong, tienPhong, gioiTinh)); // Xử lý sự kiện khi nút được nhấp
+        button.addActionListener(e -> handleButtonClick(button, maPhong, gioiTinh)); // Xử lý sự kiện khi nút được nhấp
     }
 
-    private void handleButtonClick(JButton button, String maPhong, String tenPhong, int soLuongSVPhong, String loaiPhong, double tienPhong, String gioiTinh) {
+    private void handleButtonClick(JButton button, String maPhong, String gioiTinh) {
         String buttonText = button.getText();
         gioitinh = new QuanLySinhVienDAO().layGTSinhVienTuEmail(email);
         QuanLySinhVienDAO svd = new QuanLySinhVienDAO();
         String masv = new QuanLySinhVienDAO().layMaSinhVienTuEmail(email);
         int fl = new PhongDAO().CheckPhong(maPhong);
         int choice = JOptionPane.showConfirmDialog(null, "Bạn có muốn đăng ký phòng không?", "Xác nhận", JOptionPane.YES_NO_OPTION);
-        if (choice == JOptionPane.YES_OPTION) { 
+        if (choice == JOptionPane.YES_OPTION) {
             if (fl == 0) {
                 JOptionPane.showMessageDialog(null, "Hiện tại không còn phòng trống loại này vui lòng chọn loại phòng khác");
             } else {
                 //System.out.println("masv = "+ masv);
-                int KTgioitinhhople = new PhongDAO().CheckGioiTinhHopLe(masv,gioiTinh);
+                int KTgioitinhhople = new PhongDAO().CheckGioiTinhHopLe(masv, gioiTinh);
                 if (KTgioitinhhople == 0) {
                     JOptionPane.showMessageDialog(null, "Bạn đã chọn phòng có giới tính sai, vui lòng chọn phòng khác");
-                }else{
+                } else {
                     //JOptionPane.showMessageDialog(null, maPhong + " " +  tenPhong + " " +  soLuongSVPhong + " " +  loaiPhong + " " +  tienPhong);
                     maPhongDuocChon = maPhong;
                     getjdialog();
@@ -166,16 +190,15 @@ public class DangKiPhong extends javax.swing.JPanel {
         }
         updateButtonColor(button);
     }
-    
+
     private void updateButtonColor(JButton clickedButton) {
         // Nếu đã có JButton được chọn trước đó, đặt lại màu sắc
         if (selectedButton != null) {
             selectedButton.setBackground(Color.getHSBColor(204, 204, 204));
         }
-        // Lưu trữ JButton mới được chọn
         selectedButton = clickedButton;
     }
-    
+
     public void getjdialog() {
         jDialog1.setModal(true);
         jDialog1.setVisible(true);
@@ -183,7 +206,7 @@ public class DangKiPhong extends javax.swing.JPanel {
         Border border = BorderFactory.createLineBorder(Color.BLACK);
         jDialog1.getRootPane().setBorder(border);
     }
-    
+
     public void rangbuotxacnhan() {
         Date ngayhientai = new Date();
         Date ngayvao = DateVao.getDate();
@@ -193,7 +216,7 @@ public class DangKiPhong extends javax.swing.JPanel {
             btxacnhan.setEnabled(false);
         }
     }
-    
+
     public void updateTrangThaiTheoTDN(String masv) {
         Connection con = KetNoiSQL.getConnection();
         String sql = "update SinhVien set trangThai=? where maSV='" + masv + "'";
@@ -484,16 +507,12 @@ public class DangKiPhong extends javax.swing.JPanel {
 
     private void btxacnhanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btxacnhanActionPerformed
         try {
-            // TODO add your handling code here:
             SimpleDateFormat sp = new SimpleDateFormat("MM-yyyy");
             String d1 = sp.format(DateVao.getDate());
-            // String d2=sp.format(DateRa.getDate());
             Date d1n = sp.parse(d1);
             Date ngayhientai = new Date();
 
-            //System.out.println("Dayy:"+t);
             if (d1n.compareTo(ngayhientai) > 0) {
-                // System.out.println("so thang:"+sothang());
                 QuanLySinhVienDAO svd = new QuanLySinhVienDAO();
                 String masv = new QuanLySinhVienDAO().layMaSinhVienTuEmail(email);
                 System.out.println("ma sinh vien: " + masv);
@@ -535,7 +554,7 @@ public class DangKiPhong extends javax.swing.JPanel {
     private javax.swing.JRadioButton txtrd2thang;
     private javax.swing.JRadioButton txtrd3thang;
     // End of variables declaration//GEN-END:variables
-    
+
     void ThemThongTinSVDangKy(String masv, String maPhongDuocChon, int thang, Date ngayHDBD) {
         Connection con = KetNoiSQL.getConnection();
         QuanLySinhVienDAO svd = new QuanLySinhVienDAO();
