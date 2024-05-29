@@ -148,7 +148,7 @@ public class Main extends javax.swing.JFrame {
         cackhoanphi.setForeground(new java.awt.Color(255, 255, 255));
         cackhoanphi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cackhoanphi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cackhoanphi.png"))); // NOI18N
-        cackhoanphi.setText("Hóa đơn tổng");
+        cackhoanphi.setText("Phí dịch vụ");
         cackhoanphi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cackhoanphi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -237,7 +237,7 @@ public class Main extends javax.swing.JFrame {
         tienphong.setForeground(new java.awt.Color(255, 255, 255));
         tienphong.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tienphong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/bank_color.png"))); // NOI18N
-        tienphong.setText("Thông tin phí phòng");
+        tienphong.setText("Quản lí tiền phòng");
         tienphong.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tienphong.setMaximumSize(new java.awt.Dimension(110, 20));
         tienphong.setMinimumSize(new java.awt.Dimension(110, 20));
